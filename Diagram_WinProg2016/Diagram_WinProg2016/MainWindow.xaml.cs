@@ -24,5 +24,17 @@ namespace Diagram_WinProg2016
         {
             InitializeComponent();
         }
+
+        private void insertclass_Click(object sender, RoutedEventArgs e)
+        {
+           Shape Rendershape = new Rectangle()
+            {
+                Fill = Brushes.Blue,
+                Height = 20,
+                Width = 20
+            };
+            canvas.Children.Add(Rendershape); 
+            
+        }
     }
 }

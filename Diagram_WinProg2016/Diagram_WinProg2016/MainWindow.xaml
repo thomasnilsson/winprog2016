@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Diagram_WinProg2016"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="720
+        Title="Diagram App" Height="450" Width="720
         ">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -22,12 +22,12 @@
                 <MenuItem Header="_Delete"/>
             </MenuItem>
             <MenuItem Header="_Insert">
-                <MenuItem Header="_New Class"/>
+                <MenuItem Header="_New Class" x:Name="insertclass" Click="insertclass_Click"/>
                 <MenuItem Header="_New Arrow"/>
             </MenuItem>
 
 
         </Menu>
-        <StackPanel></StackPanel>
+        <Canvas Name="canvas"></Canvas>
     </DockPanel>
 </Window>
