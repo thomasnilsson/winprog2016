@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:Diagram_WinProg2016"
              mc:Ignorable="d" 
              d:DesignHeight="130" d:DesignWidth="150">
-    <Grid x:Name ="ClassBox" MouseMove="Control_MouseMove" 
-          MouseLeftButtonUp="Control_MouseLeftButtonUp" MouseLeftButtonDown="Control_MouseLeftButtonDown">
+    <Grid x:Name ="ClassBox" >
         <RichTextBox x:Name="FieldBox" FontSize="10" HorizontalAlignment="Left" Height="50" Margin="0,30,0,0" VerticalAlignment="Top" Width="150">
             <FlowDocument>
                 <Paragraph>

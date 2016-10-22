@@ -29,3 +29,5 @@ C:\Users\Thomas\Desktop\Kopi af win 16\Diagram_WinProg2016\Diagram_WinProg2016\o
 C:\Users\Thomas\Desktop\Kopi af win 16\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\App.g.cs
 C:\Users\Thomas\Desktop\Kopi af win 16\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\ClassUserControl.baml
 C:\Users\Thomas\Desktop\Kopi af win 16\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\MainWindow.baml
+C:\Users\Thomas\Documents\Visual Studio 2015\Projects\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\ClassUserControl.g.cs
+C:\Users\Thomas\Documents\Visual Studio 2015\Projects\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\ClassUserControl.baml
