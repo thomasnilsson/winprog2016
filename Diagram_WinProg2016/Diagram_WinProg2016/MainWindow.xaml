@@ -25,9 +25,9 @@
                 <MenuItem Header="_New Class" x:Name="insertclass" Click="insertclass_Click"/>
                 <MenuItem Header="_New Arrow"/>
             </MenuItem>
-
-
         </Menu>
-        <Canvas Name="canvas"></Canvas>
+        <Grid x:Name="MainGrid">
+            
+        </Grid>
     </DockPanel>
 </Window>

@@ -27,14 +27,15 @@ namespace Diagram_WinProg2016
 
         private void insertclass_Click(object sender, RoutedEventArgs e)
         {
-           Shape Rendershape = new Rectangle()
-            {
-                Fill = Brushes.Blue,
-                Height = 20,
-                Width = 20
-            };
-            canvas.Children.Add(Rendershape); 
+            ClassUserControl newClass = new ClassUserControl();
+
+            MainGrid.Children.Add(newClass); 
             
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
