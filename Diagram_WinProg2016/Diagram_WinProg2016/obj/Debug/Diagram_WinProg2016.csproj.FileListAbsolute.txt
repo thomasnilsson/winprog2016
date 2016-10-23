@@ -31,3 +31,19 @@ C:\Users\Thomas\Desktop\Kopi af win 16\Diagram_WinProg2016\Diagram_WinProg2016\o
 C:\Users\Thomas\Desktop\Kopi af win 16\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\MainWindow.baml
 C:\Users\Thomas\Documents\Visual Studio 2015\Projects\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\ClassUserControl.g.cs
 C:\Users\Thomas\Documents\Visual Studio 2015\Projects\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\ClassUserControl.baml
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe.config
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.exe
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.pdb
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.pdb
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csprojResolveAssemblyReference.cache
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\ClassUserControl.g.cs
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\MainWindow.g.cs
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\App.g.cs
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.cache
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.lref
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\ClassUserControl.baml
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\MainWindow.baml
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
+C:\Users\Mathias\OneDrive\Bachelor i Softwareteknologi\5. Semester\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache

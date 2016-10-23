@@ -23,7 +23,7 @@
             </MenuItem>
             <MenuItem Header="_Insert">
                 <MenuItem Header="_New Class" x:Name="insertclass" Click="insertclass_Click"/>
-                <MenuItem Header="_New Arrow"/>
+                <MenuItem Header="_New Arrow" x:Name="inserarrow" Click="insertarrow_Click"/>
             </MenuItem>
         </Menu>
         <Grid x:Name="MainGrid">

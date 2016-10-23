@@ -49,6 +49,14 @@ namespace Diagram_WinProg2016 {
         #line hidden
         
         
+        #line 26 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.MenuItem inserarrow;
+        
+        #line default
+        #line hidden
+        
+        
         #line 29 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Grid MainGrid;
@@ -96,6 +104,15 @@ namespace Diagram_WinProg2016 {
             #line hidden
             return;
             case 2:
+            this.inserarrow = ((System.Windows.Controls.MenuItem)(target));
+            
+            #line 26 "..\..\MainWindow.xaml"
+            this.inserarrow.Click += new System.Windows.RoutedEventHandler(this.insertarrow_Click);
+            
+            #line default
+            #line hidden
+            return;
+            case 3:
             this.MainGrid = ((System.Windows.Controls.Grid)(target));
             return;
             }

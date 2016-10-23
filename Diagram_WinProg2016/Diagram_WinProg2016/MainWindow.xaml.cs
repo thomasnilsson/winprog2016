@@ -28,12 +28,15 @@ namespace Diagram_WinProg2016
         private void insertclass_Click(object sender, RoutedEventArgs e)
         {
             ClassUserControl newClass = new ClassUserControl();
-
             MainGrid.Children.Add(newClass); 
-            
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+		private void insertarrow_Click(object sender, RoutedEventArgs e)
+		{
+			
+		}
+
+		private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
