@@ -77,6 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Class.cs" />
+    <Compile Include="Model\IElement.cs" />
+    <Compile Include="Model\NotifyBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

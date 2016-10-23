@@ -67,6 +67,10 @@ namespace Diagram_WinProg2016
             }
         }
 
+        private void delete_button_Click(object sender, RoutedEventArgs e)
+        {
+            (Parent as Grid).Children.Remove(this);
+        }
     }
     
 }
