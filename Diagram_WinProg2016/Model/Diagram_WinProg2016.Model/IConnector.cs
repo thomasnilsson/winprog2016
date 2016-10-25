@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Diagram_WinProg2016.Model
 {
-    public class Class1
-    {
-    }
+	interface IConnector
+	{
+		Class startClass { get; }
+		Class endClass { get; }
+		int ID { get; }
+	}
 }

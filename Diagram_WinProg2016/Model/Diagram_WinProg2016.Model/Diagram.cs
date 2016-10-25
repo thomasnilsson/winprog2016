@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Diagram_WinProg2016.Model
 {
-    interface IElement
-    {
-    }
+	class Diagram
+	{
+		public List<Class> Classes { get; set; }
+		public List<Connector> Connectors { get; set; }
+	}
 }
