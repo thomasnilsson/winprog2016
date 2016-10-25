@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diagram_WinProg2016.Model
 {
-	class Diagram
+	public class Diagram
 	{
 		public List<Class> Classes { get; set; }
 		public List<Connector> Connectors { get; set; }

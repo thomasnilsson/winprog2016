@@ -7,15 +7,15 @@ using System.ComponentModel;
 
 namespace Diagram_WinProg2016.Model
 {
-	class Class : NotifyBase, IClass
+	public class Class : NotifyBase, IClass
 	{
 		public int ID { get; set; }
-		public int X { get; set; }
-		public int Y { get; set; }
-		public int Height { get; set; }
-		public int Width { get; set; }
-		public int GridCenterX { get { return X + Width / 2; } set { X = value - Width / 2; NotifyPropertyChanged(() => X); } }
-		public int GridCenterY { get { return Y + Height / 2; } set { Y = value - Width / 2; NotifyPropertyChanged(() => Y); } }
+		public double X { get; set; }
+		public double Y { get; set; }
+		public double Height { get; set; }
+		public double Width { get; set; }
+		public double GridCenterX { get { return X + Width / 2; } set { X = value - Width / 2; NotifyPropertyChanged(() => X); } }
+		public double GridCenterY { get { return Y + Height / 2; } set { Y = value - Width / 2; NotifyPropertyChanged(() => Y); } }
 		public string ClassName { get; set; }
 		public List<string> Fields { get; set; }
 		public List<string> Methods { get; set; }

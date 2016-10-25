@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+
 using Diagram_WinProg2016.Model;
 
 namespace Diagram_WinProg2016.ViewModel
 {
 	class ClassViewModel
 	{
-		private Class ClassObj { get; }
-		private ClassViewModel(Class classObj) {
+		protected Class ClassObj { get; }
+		protected ClassViewModel(Class classObj) {
 			classObj = ClassObj;
 		}
+
 		public List<string> Data { get; set; }
 		public double Height
 		{

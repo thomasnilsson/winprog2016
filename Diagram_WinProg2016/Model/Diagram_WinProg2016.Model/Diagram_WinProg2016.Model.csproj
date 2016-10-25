@@ -40,10 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Arrow.cs" />
+    <Compile Include="Connector.cs" />
     <Compile Include="Class.cs" />
-    <Compile Include="IElement.cs" />
+    <Compile Include="EConnector.cs" />
+    <Compile Include="Diagram.cs" />
+    <Compile Include="IClass.cs" />
+    <Compile Include="IConnector.cs" />
     <Compile Include="NotifyBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

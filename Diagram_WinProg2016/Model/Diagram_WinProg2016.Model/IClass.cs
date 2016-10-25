@@ -18,8 +18,6 @@ namespace Diagram_WinProg2016.Model
 		string ClassName { get; set; }
 		List<string> Fields { get; set; }
 		List<string> Methods { get; set; }
-		double CenterX { get; set; }
-		double CenterY { get; set; }
 
 		string ToString();
 	}
