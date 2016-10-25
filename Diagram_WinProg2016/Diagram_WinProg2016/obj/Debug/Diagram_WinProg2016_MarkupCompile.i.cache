@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\
+C:\Users\Mathias\OneDrive\Workspaces\Visual Studio\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\
 Diagram_WinProg2016
 none
 false
 DEBUG;TRACE
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\View\App.xaml
-21183866551
+C:\Users\Mathias\OneDrive\Workspaces\Visual Studio\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\View\App.xaml
+31851704121
 
-13-1512350653
+14843742609
 13738642453
-View\ClassUserControl.xaml;View\MainWindow.xaml;
+View\UserControls\ConnectorUserControl.xaml;View\UserControls\ClassUserControl.xaml;View\MainWindow.xaml;
 
 False
 

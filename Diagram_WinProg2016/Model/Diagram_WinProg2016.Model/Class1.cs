@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Diagram_WinProg2016.Model
 {
-    class Arrow
+    public class Class1
     {
     }
 }

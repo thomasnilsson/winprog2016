@@ -6,19 +6,10 @@ using System.Threading.Tasks;
 
 namespace Diagram_WinProg2016.Model
 {
-
-	class Arrow
+	class Connector
 	{
 		private Class startClass;
 		private Class endClass;
-
-		public Arrow(){
-
-		}
-
-		public Arrow(Class startClass, Class endClass) {
-			this.startClass = startClass;
-			this.endClass = endClass;
-		}
+		public int ID { get; set; }
 	}
 }
