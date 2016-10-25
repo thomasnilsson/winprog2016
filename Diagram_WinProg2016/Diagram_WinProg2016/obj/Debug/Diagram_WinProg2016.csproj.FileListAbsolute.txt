@@ -63,3 +63,4 @@ C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MenuUserControl.g.cs
