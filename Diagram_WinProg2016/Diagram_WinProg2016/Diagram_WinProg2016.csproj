@@ -63,6 +63,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Commands\ExportToPDF.cs" />
+    <Compile Include="Commands\Open.cs" />
+    <Compile Include="Commands\Save.cs" />
+    <Compile Include="Commands\UndoRedControllerClass.cs" />
+    <Compile Include="Commands\UndoRedoControllerCmd.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
