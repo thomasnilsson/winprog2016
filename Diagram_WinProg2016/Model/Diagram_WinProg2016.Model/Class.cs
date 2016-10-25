@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace Diagram_WinProg2016.Model
 {
-	class Class : NotifyBase
+	class Class : NotifyBase, IClass
 	{
 		public int ID { get; set; }
 		public int X { get; set; }
@@ -29,6 +29,5 @@ namespace Diagram_WinProg2016.Model
             Methods[0] = "Methods";
         }
 		public override string ToString() => $"{GetType().Name} ({ID})";
-		public event PropertyChangedEventHandler PropertyChanged;
     }
 }
