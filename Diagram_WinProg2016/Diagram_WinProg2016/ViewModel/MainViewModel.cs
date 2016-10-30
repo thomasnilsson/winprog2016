@@ -39,6 +39,7 @@ namespace Diagram_WinProg2016.ViewModel
         {
             Classes = new ObservableCollection<Class>();
             AddClassCommand = new RelayCommand(AddClassBox);
+            isAddingEdge = false;
 
 
         }
