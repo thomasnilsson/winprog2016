@@ -40,7 +40,17 @@ namespace Diagram_WinProg2016.Model
             fields.Add("First Field");
             methods.Add("Second Method");
         }
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                isSelected = value;
+                NotifyPropertyChanged("IsSelected");
+            }
 
+        }
         //public event PropertyChangedEventHandler PropertyChanged;
     }
 }

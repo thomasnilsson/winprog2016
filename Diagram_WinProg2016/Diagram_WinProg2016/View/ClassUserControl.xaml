@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Diagram_WinProg2016"
+             mc:Ignorable="d" 
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
-             mc:Ignorable="d" 
              Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}"
              d:DesignHeight="130" d:DesignWidth="150">
     <Grid x:Name ="ClassBox" >
