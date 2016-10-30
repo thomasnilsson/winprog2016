@@ -63,7 +63,6 @@ C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MenuUserControl.g.cs
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csprojResolveAssemblyReference.cache
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\ClassUserControl.g.cs
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.g.cs
@@ -93,3 +92,18 @@ C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.g.cs
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml

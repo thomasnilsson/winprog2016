@@ -79,6 +79,10 @@
     <Compile Include="Commands\IUndoRedoCommand.cs" />
     <Compile Include="Commands\UndoRedoController.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="View\Arrows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ClassUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,6 +98,9 @@
     <Compile Include="View\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Arrows.xaml.cs">
+      <DependentUpon>Arrows.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ClassUserControl.xaml.cs">
       <DependentUpon>ClassUserControl.xaml</DependentUpon>

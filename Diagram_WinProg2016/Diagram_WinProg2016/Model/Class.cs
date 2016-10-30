@@ -34,7 +34,7 @@ namespace Diagram_WinProg2016.Model
             Number = newNum;
             X = Y = 100; //start pos
             Width = Height = 200; //initial size
-            className = "New Class"; //initial class name
+            className = "My New Class"; //initial class name
             fields = new List<string>();
             methods = new List<string>();
             fields.Add("First Field");
