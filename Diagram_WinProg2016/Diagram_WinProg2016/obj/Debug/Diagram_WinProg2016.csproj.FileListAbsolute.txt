@@ -90,7 +90,6 @@ C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\ClassUserControl.baml
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.baml
-C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MenuUserControl.baml
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache

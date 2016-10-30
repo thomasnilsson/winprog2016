@@ -77,6 +77,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\AddClassCommand.cs" />
     <Compile Include="Commands\IUndoRedoCommand.cs" />
+    <Compile Include="Commands\UndoRedoController.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="View\ClassUserControl.xaml">
       <SubType>Designer</SubType>
@@ -89,8 +90,6 @@
     <Compile Include="Commands\ExportToPDF.cs" />
     <Compile Include="Commands\Open.cs" />
     <Compile Include="Commands\Save.cs" />
-    <Compile Include="Commands\UndoRedControllerClass.cs" />
-    <Compile Include="Commands\UndoRedoControllerCmd.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
