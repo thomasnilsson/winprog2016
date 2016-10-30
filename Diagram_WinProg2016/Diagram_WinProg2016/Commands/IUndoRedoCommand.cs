@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace _02350_Gruppe5.Command
+namespace Diagram_WinProg2016.Command
 {
     //Interface til at implementere undo/redo
     public interface IUndoRedoCommand

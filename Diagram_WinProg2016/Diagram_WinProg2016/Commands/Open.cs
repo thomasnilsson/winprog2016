@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diagram_WinProg2016.Commands
+namespace Diagram_WinProg2016.Command
 {
     class Open
     {

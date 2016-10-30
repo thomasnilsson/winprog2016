@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _02350_Gruppe5.Command
+namespace Diagram_WinProg2016.Command
 {
     //
     // Class used to add ClassBox's to the Grid
