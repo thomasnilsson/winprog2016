@@ -4,17 +4,22 @@
 winexe
 C#
 .cs
-C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\
 Diagram_WinProg2016
 none
 false
 DEBUG;TRACE
-C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\View\App.xaml
+C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\View\App.xaml
 21183866551
 
+<<<<<<< HEAD
 21245052907
 69-989571360
+=======
+22-780091865
+69-146125562
+>>>>>>> origin/master
 View\ClassUserControl.xaml;View\MainWindow.xaml;
 
-False
+True
 
