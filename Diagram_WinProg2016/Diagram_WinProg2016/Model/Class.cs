@@ -23,9 +23,10 @@ namespace Diagram_WinProg2016.Model
 
         public Class()
         {
-            ClassName = "Class Name";
-            Fields[0] = "Fields";
-            Methods[0] = "Methods";
+            ClassName = "My Class Name";
+            Fields[0] = "My Fields";
+            Methods[0] = "My Methods";
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
