@@ -42,5 +42,18 @@ namespace Diagram_WinProg2016.Model
         }
 
         //public event PropertyChangedEventHandler PropertyChanged;
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                isSelected = value;
+                NotifyPropertyChanged("IsSelected");
+            }
+
+        }
     }
+
+    
 }

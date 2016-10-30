@@ -48,32 +48,7 @@ namespace Diagram_WinProg2016.ViewModel
         }
         //////////////////Mouse actions//////////////////////////////////
 
-        //// Action for Mouse down trigger on Edge
-        //public void MouseDownEdge(MouseButtonEventArgs e)
-        //{
-        //    if (!isAddingEdge)
-        //    {
-        //        if (SelectedClassBox.Count == 1)
-        //        {
-        //            SelectedClassBox.ElementAt(0).IsSelected = false;
-        //            SelectedClassBox.Clear();
-        //        }
-        //        e.MouseDevice.Target.CaptureMouse();
-        //        FrameworkElement edgeElement = (FrameworkElement)e.MouseDevice.Target;
-        //        Edge edge = (Edge)edgeElement.DataContext;
-        //        edge.IsSelected = true;
-        //        if (selectedEdge != null)
-        //        {
-        //            selectedEdge.IsSelected = false;
-        //        }
-        //        selectedEdge = edge;
-        //    }
-        //}
-        //// Action for Mouse up trigger on Edge
-        //public void MouseUpEdge(MouseButtonEventArgs e)
-        //{
-        //    e.MouseDevice.Target.ReleaseMouseCapture();
-        //}
+       
         // Action for Mouse down trigger on ClassBox
         // Hvis der ikke er ved at blive tilføjet en kant så fanges musen når en musetast trykkes ned. Dette bruges til at flytte punkter.
         public void MouseDownClassBox(MouseButtonEventArgs e)
@@ -113,7 +88,7 @@ namespace Diagram_WinProg2016.ViewModel
             if (Mouse.Captured != null && !isAddingEdge)
             {
                 FrameworkElement movingClass = (FrameworkElement)e.MouseDevice.Target;
-                ClassBox movingClassBox = (ClassBox)movingClass.DataContext;
+                Class movingClassBox = (Class)movingClass.DataContext;
 
                 Canvas canvas = FindParentOfType<Canvas>(movingClass);
                 Point mousePosition = Mouse.GetPosition(canvas);
@@ -126,19 +101,6 @@ namespace Diagram_WinProg2016.ViewModel
 
                 if (oldPosY + mousePosition.Y >= 0) { moveClassBoxPoint.Y = movingClassBox.Y = oldPosY + (int)mousePosition.Y; }
                 else { moveClassBoxPoint.Y = movingClassBox.Y = 0; }
-
-                // Updating the edges associated with the classbox being moved
-                foreach (Edge edge in Edges)
-                {
-                    if (movingClassBox.Equals(edge.EndA))
-                    {
-                        edge.Points = new Edge(movingClassBox, edge.EndB).Points;
-                    }
-                    if (movingClassBox.Equals(edge.EndB))
-                    {
-                        edge.Points = new Edge(edge.EndA, movingClassBox).Points;
-                    }
-                }
             }
         }
         // Action for Mouse up trigger on ClassBox
@@ -146,32 +108,13 @@ namespace Diagram_WinProg2016.ViewModel
         public void MouseUpClassBox(MouseButtonEventArgs e)
         {
             FrameworkElement movingClass = (FrameworkElement)e.MouseDevice.Target;
-            ClassBox movingClassBox = (ClassBox)movingClass.DataContext;
+            Class movingClassBox = (Class)movingClass.DataContext;
 
-            if (isAddingEdge)
-            {
-                // Hvis det er den første klasse der er blevet trykket på under tilføjelsen af kanten, så gemmes punktet bare og punktet bliver markeret som valgt.
-                if (addingEdgeEndA == null)
-                {
-                    addingEdgeEndA = movingClassBox;
-                    addingEdgeEndA.IsSelected = true;
-                }
-                // Ellers hvis det ikke er den første og de to noder der hører til klasserne er forskellige, så oprettes kanten med kommando.
-                else if (addingEdgeEndA != movingClassBox)
-                {
-                    undoRedoController.AddAndExecute(new AddEdgeCommand(Edges, addingEdgeEndA, (ClassBox)movingClass.DataContext));
-                    // De tilhørende værdier nulstilles.
-                    isAddingEdge = false;
-                    RaisePropertyChanged("ModeOpacity");
-                    addingEdgeEndA.IsSelected = false;
-                    addingEdgeEndA = null;
-                }
-            }
-            else if (moveClassBoxPoint != default(Point))
+            if (moveClassBoxPoint != default(Point))
             {
                 Canvas canvas = FindParentOfType<Canvas>(movingClass);
                 Point mousePosition = Mouse.GetPosition(canvas);
-                undoRedoController.AddAndExecute(new MoveClassBoxCommand(movingClassBox, Edges, movingClassBox.X, movingClassBox.Y, (int)oldPosX, (int)oldPosY));
+                undoRedoController.AddAndExecute(new MoveClassBoxCommand(movingClassBox, movingClassBox.X, movingClassBox.Y, (int)oldPosX, (int)oldPosY));
                 // Nulstil værdier.
                 moveClassBoxPoint = new Point();
                 // Musen frigøres.
