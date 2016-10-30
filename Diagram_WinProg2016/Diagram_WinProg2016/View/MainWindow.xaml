@@ -11,7 +11,8 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_Open Diagram"/>
-                <MenuItem Header="_Save Diagram"/>
+                <Button Command="{Binding}">
+                    <MenuItem Header="_Save Diagram"/>
                 <MenuItem Header="_Export to PDF"/>
             </MenuItem>
             <MenuItem Header="_Edit">
@@ -23,7 +24,7 @@
             </MenuItem>
             <MenuItem Header="_Insert">
                 <MenuItem Header="_New Class" x:Name="insertclass" Click="insertclass_Click"/>
-                <MenuItem Header="_New Arrow"/>
+                <MenuItem Header="_New Arrows" />
             </MenuItem>
         </Menu>
         <Grid x:Name="MainGrid">
