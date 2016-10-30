@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Diagram_WinProg2016.Model
 {
-    interface IElement
+    public interface IElement
     {
+        void test();
+
+
     }
 }
