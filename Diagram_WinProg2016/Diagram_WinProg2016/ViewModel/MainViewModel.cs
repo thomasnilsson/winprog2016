@@ -22,7 +22,7 @@ namespace Diagram_WinProg2016.ViewModel
         public ObservableCollection<Class> Classes{ get; set; }
 
         public ICommand AddClassCommand { get; private set; }
-        ublic ICommand OpenDiagram { get; private set; }
+        public ICommand OpenDiagram { get; private set; }
         public ObservableCollection<Class> ClassBoxes { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
