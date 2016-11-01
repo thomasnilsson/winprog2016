@@ -10,6 +10,7 @@
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="Diagram App" Height="450" Width="720
         ">
+    <!--xmlns:cmd="http://www.galasoft.ch/mvvmlight"-->
     <Window.Resources>
         <!-- Dette DataTemplate fortæller vinduet hvordan Node klassen skal vises grafisk. Denne grafiske beskrivelse er samlet i NodeUserControl. -->
         <DataTemplate DataType="{x:Type Model:Class}">
