@@ -22,6 +22,8 @@ namespace Diagram_WinProg2016.ViewModel
         public ObservableCollection<Class> Classes{ get; set; }
 
         public ICommand AddClassCommand { get; private set; }
+        public ICommand SaveAsPngCommand { get; private set; }
+
         public ObservableCollection<Class> ClassBoxes { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
@@ -40,6 +42,8 @@ namespace Diagram_WinProg2016.ViewModel
             Classes = new ObservableCollection<Class>();
             AddClassCommand = new RelayCommand(AddClassBox);
             isAddingEdge = false;
+            SaveAsPngCommand = new RelayCommand<StackPanel>(saveScreen);
+
 
 
         }
@@ -47,9 +51,15 @@ namespace Diagram_WinProg2016.ViewModel
         {
             //undoRedoController.AddAndExecute(new AddClassCommand(ClassBoxs));
         }
+        public void saveScreen(StackPanel input)
+        {
+            new SaveAsPngCommand(input);
+
+        }
+
         //////////////////Mouse actions//////////////////////////////////
 
-       
+
         // Action for Mouse down trigger on ClassBox
         // Hvis der ikke er ved at blive tilføjet en kant så fanges musen når en musetast trykkes ned. Dette bruges til at flytte punkter.
         public void MouseDownClassBox(MouseButtonEventArgs e)

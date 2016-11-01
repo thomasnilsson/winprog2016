@@ -92,7 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Commands\ExportToPDF.cs" />
+    <Compile Include="Commands\SaveAsPngCommand.cs" />
     <Compile Include="Commands\Open.cs" />
     <Compile Include="Commands\Save.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

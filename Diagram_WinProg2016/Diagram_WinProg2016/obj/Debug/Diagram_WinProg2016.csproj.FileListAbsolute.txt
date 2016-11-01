@@ -109,3 +109,34 @@ C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.g.cs
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe.config
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.exe
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.pdb
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.pdb
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csprojResolveAssemblyReference.cache
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.g.cs
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\ClassUserControl.g.cs
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.g.cs
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.g.cs
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.cache
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.lref
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\ClassUserControl.baml
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.baml
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache
