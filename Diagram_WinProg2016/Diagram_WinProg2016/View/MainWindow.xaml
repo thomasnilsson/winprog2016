@@ -3,23 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+        xmlns:vm="clr-namespace:Diagram_WinProg2016.ViewModel"
         xmlns:Model="clr-namespace:Diagram_WinProg2016.Model"
         xmlns:local="clr-namespace:Diagram_WinProg2016"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="Diagram App" Height="450" Width="720
         ">
-    <!--xmlns:cmd="http://www.galasoft.ch/mvvmlight"-->
+
     <Window.Resources>
-        <!-- Dette DataTemplate fortæller vinduet hvordan Node klassen skal vises grafisk. Denne grafiske beskrivelse er samlet i NodeUserControl. -->
-        <DataTemplate DataType="{x:Type Model:Class}">
+        <DataTemplate DataType="{x:Type vm:MainViewModel}">
             <Canvas>
                 <local:ClassUserControl/>
             </Canvas>
         </DataTemplate>
     </Window.Resources>
+   
+    
     <DockPanel>
+        
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_Open Diagram" Command="{Binding OpenDiagram}"/>
@@ -42,8 +44,10 @@
                 <MenuItem Header="_New Arrow"/>
             </MenuItem>
         </Menu>
+        
         <Grid x:Name="MainGrid">
             <ItemsControl ItemsSource="{Binding Class}" Name="class" />
         </Grid>
+        
     </DockPanel>
 </Window>

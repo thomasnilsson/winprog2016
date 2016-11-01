@@ -55,7 +55,7 @@ namespace Diagram_WinProg2016.ViewModel
         public void AddClassBox()
         {
             undoRedoController.AddAndExecute(new AddClassCommand(Classes));
-            Trace.WriteLine("text");
+            Trace.WriteLine("ADD CLASS COMMAND WAS EXECUTED");
         }
         public void saveScreen(StackPanel input)
         {
