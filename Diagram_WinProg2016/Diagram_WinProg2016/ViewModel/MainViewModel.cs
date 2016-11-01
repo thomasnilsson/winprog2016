@@ -22,8 +22,12 @@ namespace Diagram_WinProg2016.ViewModel
         public ObservableCollection<Class> Classes{ get; set; }
 
         public ICommand AddClassCommand { get; private set; }
+<<<<<<< HEAD
         public ICommand SaveAsPngCommand { get; private set; }
 
+=======
+        public ICommand OpenDiagram { get; private set; }
+>>>>>>> origin/master
         public ObservableCollection<Class> ClassBoxes { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
@@ -31,9 +35,9 @@ namespace Diagram_WinProg2016.ViewModel
         // Er der ved at blive tilfojet en kant?
         private bool isAddingEdge;
 
-        //Punkter når der flyttes rundt. 
-        private Point moveClassBoxPoint;// Gemmer det første punkt som punktet har under en flytning.
-        private Point offsetPosition; //Bruges så klassen bliver flyttet flot rundt
+        //Punkter nÃ¥r der flyttes rundt. 
+        private Point moveClassBoxPoint;// Gemmer det fÃ¸rste punkt som punktet har under en flytning.
+        private Point offsetPosition; //Bruges sÃ¥ klassen bliver flyttet flot rundt
         private int oldPosX; // bruges naar moveClassCommand kaldes
         private int oldPosY;// bruges naar moveClassCommand kaldes
 
@@ -41,6 +45,7 @@ namespace Diagram_WinProg2016.ViewModel
         {
             Classes = new ObservableCollection<Class>();
             AddClassCommand = new RelayCommand(AddClassBox);
+            OpenDiagram = new RelayCommand(OpenNewDiagram);
             isAddingEdge = false;
             SaveAsPngCommand = new RelayCommand<StackPanel>(saveScreen);
 
@@ -58,10 +63,28 @@ namespace Diagram_WinProg2016.ViewModel
         }
 
         //////////////////Mouse actions//////////////////////////////////
+       
+       public void OpenNewDiagram()
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.FileName = "Document"; // Default file name
+            dlg.DefaultExt = ".png"; // Default file extension
+            dlg.Filter = "PNG documents (.png)|*.png"; // Filter files by extension 
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+           
+            if (result == true)
+            {//Needs to clear the diagram if one is open
+                string name = dlg.FileName;
+                new Open();
+            }
+        }
 
 
         // Action for Mouse down trigger on ClassBox
-        // Hvis der ikke er ved at blive tilføjet en kant så fanges musen når en musetast trykkes ned. Dette bruges til at flytte punkter.
+        // Hvis der ikke er ved at blive tilfÃ¸jet en kant sÃ¥ fanges musen nÃ¥r en musetast trykkes ned. Dette bruges til at flytte punkter.
         public void MouseDownClassBox(MouseButtonEventArgs e)
         {
             if (!isAddingEdge)
@@ -95,7 +118,7 @@ namespace Diagram_WinProg2016.ViewModel
         // Action for Mouse move trigger
         public void MouseMoveClassBox(MouseEventArgs e)
         {
-            // Tjek at musen er fanget og at der ikke er ved at blive tilføjet en kant.
+            // Tjek at musen er fanget og at der ikke er ved at blive tilfÃ¸jet en kant.
             if (Mouse.Captured != null && !isAddingEdge)
             {
                 FrameworkElement movingClass = (FrameworkElement)e.MouseDevice.Target;
@@ -115,7 +138,7 @@ namespace Diagram_WinProg2016.ViewModel
             }
         }
         // Action for Mouse up trigger on ClassBox
-        // Benyttes til at flytte punkter og tilføje kanter.
+        // Benyttes til at flytte punkter og tilfÃ¸je kanter.
         public void MouseUpClassBox(MouseButtonEventArgs e)
         {
             FrameworkElement movingClass = (FrameworkElement)e.MouseDevice.Target;
@@ -126,9 +149,9 @@ namespace Diagram_WinProg2016.ViewModel
                 Canvas canvas = FindParentOfType<Canvas>(movingClass);
                 Point mousePosition = Mouse.GetPosition(canvas);
                 undoRedoController.AddAndExecute(new MoveClassBoxCommand(movingClassBox, movingClassBox.X, movingClassBox.Y, (int)oldPosX, (int)oldPosY));
-                // Nulstil værdier.
+                // Nulstil vÃ¦rdier.
                 moveClassBoxPoint = new Point();
-                // Musen frigøres.
+                // Musen frigÃ¸res.
                 e.MouseDevice.Target.ReleaseMouseCapture();
             }
             else
