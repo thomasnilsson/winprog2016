@@ -140,3 +140,4 @@ C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\w
 C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
 C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
 C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache
+C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs

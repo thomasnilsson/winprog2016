@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Diagnostics;
 using System.Windows.Shapes;
 
 namespace Diagram_WinProg2016
@@ -29,8 +30,10 @@ namespace Diagram_WinProg2016
         {
             ClassUserControl newClass = new ClassUserControl();
 
-            MainGrid.Children.Add(newClass); 
-            
+            MainGrid.Children.Add(newClass);
+            Trace.WriteLine("onclick oprettede ny class");
+
+
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)

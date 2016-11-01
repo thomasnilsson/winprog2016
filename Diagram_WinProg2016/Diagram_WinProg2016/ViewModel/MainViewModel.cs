@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Diagnostics;
 using System.Windows.Shapes;
 
 namespace Diagram_WinProg2016.ViewModel
@@ -22,12 +23,12 @@ namespace Diagram_WinProg2016.ViewModel
         public ObservableCollection<Class> Classes{ get; set; }
 
         public ICommand AddClassCommand { get; private set; }
-<<<<<<< HEAD
+
         public ICommand SaveAsPngCommand { get; private set; }
 
-=======
+
         public ICommand OpenDiagram { get; private set; }
->>>>>>> origin/master
+
         public ObservableCollection<Class> ClassBoxes { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
@@ -48,18 +49,17 @@ namespace Diagram_WinProg2016.ViewModel
             OpenDiagram = new RelayCommand(OpenNewDiagram);
             isAddingEdge = false;
             SaveAsPngCommand = new RelayCommand<StackPanel>(saveScreen);
-
-
-
+            Classes.Add(new Class(Classes.Count));
+            Trace.WriteLine("Classes: " + Classes.Count);
         }
         public void AddClassBox()
         {
-            //undoRedoController.AddAndExecute(new AddClassCommand(ClassBoxs));
+            undoRedoController.AddAndExecute(new AddClassCommand(Classes));
+            Trace.WriteLine("text");
         }
         public void saveScreen(StackPanel input)
         {
             new SaveAsPngCommand(input);
-
         }
 
         //////////////////Mouse actions//////////////////////////////////

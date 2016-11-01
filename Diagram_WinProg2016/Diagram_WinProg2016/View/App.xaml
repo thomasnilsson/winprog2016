@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Diagram_WinProg2016"
+             xmlns:vm="clr-namespace:Diagram_WinProg2016.ViewModel"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-         
+        <vm:ViewModelLocator xmlns:vm="clr-namespace:Diagram_WinProg2016.ViewModel" x:Key="Locator" />
     </Application.Resources>
 </Application>
