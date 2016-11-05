@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
 using Diagram_WinProg2016.Model;
+using System.ComponentModel;
 
 namespace Diagram_WinProg2016.ViewModel
 {
-	class ClassViewModel
+	class ClassViewModel : INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
 		protected Class classObj { get; }
 
 		protected ClassViewModel(Class classObj) {
-			classObj = classObj;
+			this.classObj = classObj;
 		}
 
 		public List<string> Data { get; set; }
@@ -18,7 +20,7 @@ namespace Diagram_WinProg2016.ViewModel
 			get { return classObj.Height; }
 			set
 			{
-				classObj.Height = value; OnPropertyChanged();
+				classObj.Height = value; OnPropertyChanged("Height");
 			}
 		}
 
@@ -27,7 +29,7 @@ namespace Diagram_WinProg2016.ViewModel
 			get { return classObj.Width; }
 			set
 			{
-				classObj.Width = value; OnPropertyChanged();
+				classObj.Width = value; OnPropertyChanged("Width");
 			}
 		}
 
@@ -37,8 +39,7 @@ namespace Diagram_WinProg2016.ViewModel
 			set
 			{
 				classObj.X = value;
-				OnPropertyChanged();
-				OnPropertyChanged(nameof(XCenter));
+				OnPropertyChanged("X");
 			}
 		}
 		public double Y
@@ -47,13 +48,22 @@ namespace Diagram_WinProg2016.ViewModel
 			set
 			{
 				classObj.Y = value;
-				OnPropertyChanged();
-				OnPropertyChanged(nameof(YCenter));
+				OnPropertyChanged("Y");
 			}
 		}
 		public string className {
 			get { return classObj.ClassName; }
 		}
 		public override string ToString() => classObj.ToString();
+
+		protected void OnPropertyChanged(string name)
+		{
+			PropertyChangedEventHandler handler = PropertyChanged;
+			if (handler != null)
+			{
+				handler(this, new PropertyChangedEventArgs(name));
+			}
+		}
 	}
+
 }
