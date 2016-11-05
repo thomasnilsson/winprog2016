@@ -26,7 +26,7 @@ namespace Diagram_WinProg2016
         public ClassUserControl()
         {
             InitializeComponent();
-
+			this.DataContext 
             this.MouseLeftButtonDown += new MouseButtonEventHandler(Control_MouseLeftButtonDown);
             this.MouseLeftButtonUp += new MouseButtonEventHandler(Control_MouseLeftButtonUp);
             this.MouseMove += new MouseEventHandler(Control_MouseMove);

@@ -41,7 +41,7 @@ namespace Diagram_WinProg2016 {
     public partial class ClassUserControl : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
         
         
-        #line 9 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
+        #line 12 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Grid ClassBox;
         
@@ -49,7 +49,7 @@ namespace Diagram_WinProg2016 {
         #line hidden
         
         
-        #line 11 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
+        #line 14 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button delete_button;
         
@@ -57,7 +57,7 @@ namespace Diagram_WinProg2016 {
         #line hidden
         
         
-        #line 12 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
+        #line 15 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.RichTextBox FieldBox;
         
@@ -65,7 +65,7 @@ namespace Diagram_WinProg2016 {
         #line hidden
         
         
-        #line 19 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
+        #line 22 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.RichTextBox MethodBox;
         
@@ -73,7 +73,7 @@ namespace Diagram_WinProg2016 {
         #line hidden
         
         
-        #line 26 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
+        #line 29 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox textBox;
         
@@ -116,7 +116,7 @@ namespace Diagram_WinProg2016 {
             case 2:
             this.delete_button = ((System.Windows.Controls.Button)(target));
             
-            #line 11 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
+            #line 14 "..\..\..\..\View\UserControls\ClassUserControl.xaml"
             this.delete_button.Click += new System.Windows.RoutedEventHandler(this.delete_button_Click);
             
             #line default

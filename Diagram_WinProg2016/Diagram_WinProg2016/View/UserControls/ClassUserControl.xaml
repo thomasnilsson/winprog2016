@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:Diagram_WinProg2016"
              mc:Ignorable="d" 
              d:DesignHeight="130" d:DesignWidth="150">
-    <Grid x:Name ="ClassBox" >
+	<UserControl.DataContext>
+		<local:ClassViewModel/>
+	</UserControl.DataContext>
+	<Grid x:Name ="ClassBox" >
         <Rectangle Fill="Gray" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.418,-0.136"/>
         <Button x:Name="delete_button"  Content="X" FontSize ="8" HorizontalAlignment="Left" Margin="136,0,0,0" VerticalAlignment="Top" Width="14" Height="15" Click="delete_button_Click"/>
         <RichTextBox x:Name="FieldBox" FontSize="10" HorizontalAlignment="Left" Height="50" Margin="0,30,0,0" VerticalAlignment="Top" Width="150">

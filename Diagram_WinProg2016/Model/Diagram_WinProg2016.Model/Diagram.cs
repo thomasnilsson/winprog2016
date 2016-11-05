@@ -8,7 +8,7 @@ namespace Diagram_WinProg2016.Model
 {
 	public class Diagram
 	{
-		public List<Class> Classes { get; set; }
-		public List<Connector> Connectors { get; set; }
+		public List<Class> classes { get; set; }
+		public List<Connector> connectors { get; set; }
 	}
 }

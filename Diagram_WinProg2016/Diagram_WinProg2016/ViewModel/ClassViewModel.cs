@@ -1,57 +1,59 @@
 ﻿using System.Collections.Generic;
-
 using Diagram_WinProg2016.Model;
 
 namespace Diagram_WinProg2016.ViewModel
 {
 	class ClassViewModel
 	{
-		protected Class ClassObj { get; }
+		protected Class classObj { get; }
+
 		protected ClassViewModel(Class classObj) {
-			classObj = ClassObj;
+			classObj = classObj;
 		}
 
 		public List<string> Data { get; set; }
+
 		public double Height
 		{
-			get { return ClassObj.Height; }
+			get { return classObj.Height; }
 			set
 			{
-				ClassObj.Height = value; OnPropertyChanged();
+				classObj.Height = value; OnPropertyChanged();
 			}
 		}
-		public int Number => ClassObj.Number;
-		public ClassObj Type => ClassObj.Type;
 
 		public double Width
 		{
-			get { return ClassObj.Width; }
+			get { return classObj.Width; }
 			set
 			{
-				ClassObj.Width = value; OnPropertyChanged();
+				classObj.Width = value; OnPropertyChanged();
 			}
 		}
 
 		public double X
 		{
-			get { return ClassObj.X; }
+			get { return classObj.X; }
 			set
 			{
-				ClassObj.X = value;
+				classObj.X = value;
 				OnPropertyChanged();
 				OnPropertyChanged(nameof(XCenter));
 			}
 		}
 		public double Y
 		{
-			get { return ClassObj.Y; }
+			get { return classObj.Y; }
 			set
 			{
-				ClassObj.Y = value;
+				classObj.Y = value;
 				OnPropertyChanged();
 				OnPropertyChanged(nameof(YCenter));
 			}
 		}
-		public override string ToString() => ClassObj.ToString();
+		public string className {
+			get { return classObj.ClassName; }
+		}
+		public override string ToString() => classObj.ToString();
 	}
 }

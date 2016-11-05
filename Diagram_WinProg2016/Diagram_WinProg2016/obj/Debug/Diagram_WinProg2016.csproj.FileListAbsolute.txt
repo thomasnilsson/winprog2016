@@ -66,3 +66,6 @@ C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2
 C:\Users\Mathias\OneDrive\Workspaces\Visual Studio\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe.config
 C:\Users\Mathias\OneDrive\Workspaces\Visual Studio\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.exe
 C:\Users\Mathias\OneDrive\Workspaces\Visual Studio\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.pdb
+C:\Users\mathi\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe.config
+C:\Users\mathi\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.exe
+C:\Users\mathi\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.pdb
