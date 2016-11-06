@@ -25,20 +25,5 @@ namespace Diagram_WinProg2016
         {
             InitializeComponent();
         }
-
-        private void insertclass_Click(object sender, RoutedEventArgs e)
-        {
-            ClassUserControl newClass = new ClassUserControl();
-
-            MainGrid.Children.Add(newClass);
-            Trace.WriteLine("onclick oprettede ny class");
-
-
-        }
-
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }

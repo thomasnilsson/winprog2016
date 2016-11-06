@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Diagram_WinProg2016
+namespace Diagram_WinProg2016.View
 {
     /// <summary>
     /// Interaction logic for ClassUserControl.xaml

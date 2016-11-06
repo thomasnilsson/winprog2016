@@ -1,34 +1,47 @@
-﻿<UserControl x:Class="Diagram_WinProg2016.ClassUserControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl x:Class="Diagram_WinProg2016.View.ClassUserControl"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Diagram_WinProg2016"
              mc:Ignorable="d" 
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-             xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
-             Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}"
-             d:DesignHeight="130" d:DesignWidth="150">
-    <Grid x:Name ="ClassBox" >
-        <Rectangle Fill="Gray" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.418,-0.136"/>
-        <Button x:Name="delete_button"  Content="X" FontSize ="8" HorizontalAlignment="Left" Margin="136,0,0,0" VerticalAlignment="Top" Width="14" Height="15" Click="delete_button_Click"/>
-        <RichTextBox x:Name="FieldBox" FontSize="10" HorizontalAlignment="Left" Height="50" Margin="0,30,0,0" VerticalAlignment="Top" Width="150">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="Fields"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-        <RichTextBox x:Name="MethodBox" FontSize="10" HorizontalAlignment="Left" Height="50" Margin="0,80,0,0" VerticalAlignment="Top" Width="150">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="Methods"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-        <TextBox x:Name="textBox" FontSize="10" HorizontalAlignment="Left" Height="15
-" TextWrapping="Wrap" Text="Class Name" VerticalAlignment="Top" Width="150" Margin="0,15,0,0"/>
 
+             Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
 
-    </Grid>
+    <Border Name="borderBox" BorderThickness="1" Background="White" BorderBrush="Black"  Width="{Binding Width}" Height="{Binding Height}" Opacity="{Binding DataContext.ModeOpacity, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
+        <!-- ClassBox layout -->
+
+        <Grid x:Name ="Class" Width="{Binding Width}" Height="{Binding Height}">
+            <!-- ClassBox information -->
+            <Border Name="mask" Background="White"/>
+            <!-- Main content container -->
+            <StackPanel>
+                <Rectangle Fill="Gray" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="{Binding Width}"/>
+
+                <TextBlock TextAlignment="Center" FontWeight="Bold" Text="{Binding ClassName}" Padding="2" Background="AliceBlue"/>
+
+                <!-- List of attributes -->
+                <ListView x:Name="FieldBox" VerticalAlignment="Top" ItemsSource="{Binding Fields}" IsEnabled="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!-- List of methods -->
+                <ListView x:Name="MethodBox" VerticalAlignment="Top" ItemsSource="{Binding Methods}" IsEnabled="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Border>
 </UserControl>

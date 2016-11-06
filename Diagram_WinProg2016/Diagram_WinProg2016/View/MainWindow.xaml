@@ -5,17 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Diagram_WinProg2016.ViewModel"
         xmlns:Model="clr-namespace:Diagram_WinProg2016.Model"
+        xmlns:View="clr-namespace:Diagram_WinProg2016.View"
         xmlns:local="clr-namespace:Diagram_WinProg2016"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="Diagram App" Height="450" Width="720
         ">
-
     <Window.Resources>
-        <DataTemplate DataType="{x:Type vm:MainViewModel}">
-            <Canvas>
-                <local:ClassUserControl/>
-            </Canvas>
+        <!-- Dette DataTemplate fortæller vinduet hvordan Node klassen skal vises grafisk. Denne grafiske beskrivelse er samlet i NodeUserControl. -->
+        <DataTemplate DataType="{x:Type Model:Class}">
+            <View:ClassUserControl/>
         </DataTemplate>
     </Window.Resources>
    
@@ -26,7 +25,8 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_Open Diagram" Command="{Binding OpenDiagram}"/>
                 <MenuItem Header="_Save Diagram"/>
-                <MenuItem Header="_Save as PNG" Command="{Binding SaveAsPngCommand}" InputGestureText="Ctrl+I" CommandParameter="{Binding ElementName=stack}" />
+                <MenuItem Header="_Save as PNG" Command="{Binding SaveAsPngCommand}" InputGestureText="Ctrl+I"  />
+                <!--CommandParameter="{Binding ElementName=stack}-->
 
                 <MenuItem Header="_Export to PDF"/>
                 <MenuItem Header ="_Exit"/>
@@ -40,13 +40,12 @@
             </MenuItem>
             <MenuItem Header="_Insert">
                 <MenuItem Header="_New Class" Command="{Binding AddClassCommand}"/>
-                <MenuItem Header="_New Class" x:Name="insertclass2" Click="insertclass_Click"/>
                 <MenuItem Header="_New Arrow"/>
             </MenuItem>
         </Menu>
         
         <Grid x:Name="MainGrid">
-            <ItemsControl ItemsSource="{Binding Class}" Name="class" />
+            <ItemsControl ItemsSource="{Binding Classes}" Name="class" />
         </Grid>
         
     </DockPanel>
