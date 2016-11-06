@@ -24,7 +24,8 @@ namespace Diagram_WinProg2016
         public MainWindow()
         {
             InitializeComponent();
-        }
+			DataContext = new ViewModel.MainViewModel();
+		}
 
         private void insertclass_Click(object sender, RoutedEventArgs e)
         {

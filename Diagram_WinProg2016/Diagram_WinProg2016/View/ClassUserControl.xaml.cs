@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Diagram_WinProg2016
 {
-    /// <summary>
-    /// Interaction logic for ClassUserControl.xaml
-    /// </summary>
-    public partial class ClassUserControl : UserControl
+	/// <summary>
+	/// Interaction logic for ClassUserControl.xaml
+	/// </summary>
+	public partial class ClassUserControl : UserControl
     {
         protected bool isDragging;
         private Point clickPosition;
@@ -26,10 +16,11 @@ namespace Diagram_WinProg2016
         public ClassUserControl()
         {
             InitializeComponent();
+			DataContext = new ViewModel.ClassViewModel();
 
-            this.MouseLeftButtonDown += new MouseButtonEventHandler(Control_MouseLeftButtonDown);
-            this.MouseLeftButtonUp += new MouseButtonEventHandler(Control_MouseLeftButtonUp);
-            this.MouseMove += new MouseEventHandler(Control_MouseMove);
+			MouseLeftButtonDown += new MouseButtonEventHandler(Control_MouseLeftButtonDown);
+			MouseLeftButtonUp += new MouseButtonEventHandler(Control_MouseLeftButtonUp);
+			MouseMove += new MouseEventHandler(Control_MouseMove);
         }
 
         private void Control_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

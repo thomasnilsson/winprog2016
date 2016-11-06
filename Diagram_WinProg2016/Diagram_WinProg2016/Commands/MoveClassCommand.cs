@@ -16,12 +16,12 @@ namespace Diagram_WinProg2016.Command
     {
         private Class classBox;
         //private ObservableCollection<Edge> edges;
-        private int x;
-        private int y;
-        private int newX;
-        private int newY;
+        private double x;
+        private double y;
+        private double newX;
+        private double newY;
 
-        public MoveClassBoxCommand(Class _classBox, int _newX, int _newY, int _x, int _y) { 
+        public MoveClassBoxCommand(Class _classBox, double _newX, double _newY, double _x, double _y) { 
             classBox = _classBox;
            // edges = _edges;
             newX = _newX; 
