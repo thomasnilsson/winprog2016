@@ -1,55 +1,55 @@
 using GalaSoft.MvvmLight;
 using Diagram_WinProg2016.Command;
+using Diagram_WinProg2016.Model;
 using GalaSoft.MvvmLight.Command;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Diagnostics;
-using System.ComponentModel;
-using Diagram_WinProg2016.Model;
+using System.Windows.Shapes;
 
 namespace Diagram_WinProg2016.ViewModel
 {
-	public class MainViewModel : ViewModelBase, INotifyPropertyChanged
-	{
-		public event PropertyChangedEventHandler propertyChanged;
+    public class MainViewModel : ViewModelBase
+    {
+        public ObservableCollection<Class> Classes{ get; set; }
 
-		private Diagram diagram;
+        public ICommand AddClassCommand { get; private set; }
 
-		public ObservableCollection<Class> Classes { get { return diagram.Classes; } set { diagram.Classes = value; OnPropertyChanged("Classes"); } }
-		public ObservableCollection<Connector> Connectors { get { return diagram.Connectors; } set { diagram.Connectors = value; OnPropertyChanged("Connectors"); } }
-
-		public ICommand AddClassCommand { get; private set; }
         public ICommand SaveAsPngCommand { get; private set; }
+
+
         public ICommand OpenDiagram { get; private set; }
+
+        public ObservableCollection<Class> ClassBoxes { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         public ObservableCollection<Class> SelectedClassBox { get; set; }
-		public ObservableCollection<Class> ClassBoxes { get; set; }
-
-
-		//bool for when edge is being added
-		private bool isAddingEdge;
+        // Er der ved at blive tilfojet en kant?
+        private bool isAddingEdge;
 
         //Punkter når der flyttes rundt. 
         private Point moveClassBoxPoint;// Gemmer det første punkt som punktet har under en flytning.
         private Point offsetPosition; //Bruges så klassen bliver flyttet flot rundt
-        private double oldPosX; // bruges naar moveClassCommand kaldes
-        private double oldPosY;// bruges naar moveClassCommand kaldes
+        private int oldPosX; // bruges naar moveClassCommand kaldes
+        private int oldPosY;// bruges naar moveClassCommand kaldes
 
         public MainViewModel()
         {
-			diagram = new Diagram();
             Classes = new ObservableCollection<Class>();
             AddClassCommand = new RelayCommand(AddClassBox);
             OpenDiagram = new RelayCommand(OpenNewDiagram);
             isAddingEdge = false;
             SaveAsPngCommand = new RelayCommand<StackPanel>(saveScreen);
-            Classes.Add(new Model.Class(Classes.Count));
+            Classes.Add(new Class(Classes.Count));
             Trace.WriteLine("Classes: " + Classes.Count);
         }
         public void AddClassBox()
@@ -62,17 +62,17 @@ namespace Diagram_WinProg2016.ViewModel
             new SaveAsPngCommand(input);
         }
 
-		//////////////////Mouse actions//////////////////
-
-		public void OpenNewDiagram()
+        //////////////////Mouse actions//////////////////////////////////
+       
+       public void OpenNewDiagram()
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.FileName = "Document"; // Default file name
             dlg.DefaultExt = ".png"; // Default file extension
             dlg.Filter = "PNG documents (.png)|*.png"; // Filter files by extension 
 
-			// Show open file dialog box
-			bool? result = dlg.ShowDialog();
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
 
            
             if (result == true)
@@ -96,7 +96,7 @@ namespace Diagram_WinProg2016.ViewModel
                 //}
                 e.MouseDevice.Target.CaptureMouse();
                 FrameworkElement movingClass = (FrameworkElement)e.MouseDevice.Target;
-				Class movingClassBox = (Class)movingClass.DataContext;
+                Class movingClassBox = (Class)movingClass.DataContext;
                 Canvas canvas = FindParentOfType<Canvas>(movingClass);
                 offsetPosition = Mouse.GetPosition(canvas);
                 oldPosX = movingClassBox.X;
@@ -122,7 +122,7 @@ namespace Diagram_WinProg2016.ViewModel
             if (Mouse.Captured != null && !isAddingEdge)
             {
                 FrameworkElement movingClass = (FrameworkElement)e.MouseDevice.Target;
-				Class movingClassBox = (Class)movingClass.DataContext;
+                Class movingClassBox = (Class)movingClass.DataContext;
 
                 Canvas canvas = FindParentOfType<Canvas>(movingClass);
                 Point mousePosition = Mouse.GetPosition(canvas);
@@ -148,7 +148,7 @@ namespace Diagram_WinProg2016.ViewModel
             {
                 Canvas canvas = FindParentOfType<Canvas>(movingClass);
                 Point mousePosition = Mouse.GetPosition(canvas);
-                undoRedoController.AddAndExecute(new MoveClassBoxCommand(movingClassBox, movingClassBox.X, movingClassBox.Y, oldPosX, oldPosY));
+                undoRedoController.AddAndExecute(new MoveClassBoxCommand(movingClassBox, movingClassBox.X, movingClassBox.Y, (int)oldPosX, (int)oldPosY));
                 // Nulstil værdier.
                 moveClassBoxPoint = new Point();
                 // Musen frigøres.
@@ -162,10 +162,5 @@ namespace Diagram_WinProg2016.ViewModel
             dynamic parent = VisualTreeHelper.GetParent(o);
             return parent.GetType().IsAssignableFrom(typeof(T)) ? parent : FindParentOfType<T>(parent);
         }
-
-		protected void OnPropertyChanged(string name)
-		{
-			propertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-		}
-	}
+    }
 }

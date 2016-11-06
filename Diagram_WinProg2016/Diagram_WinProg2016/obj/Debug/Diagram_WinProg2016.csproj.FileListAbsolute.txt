@@ -143,23 +143,3 @@ C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\w
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\System.Windows.Interactivity.xml
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.g.cs
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.dll
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.dll
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.dll
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.dll
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.dll
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\System.Windows.Interactivity.dll
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.pdb
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.pdb
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.xml
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.xml
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.xml
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.xml
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\System.Windows.Interactivity.xml
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
-C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml

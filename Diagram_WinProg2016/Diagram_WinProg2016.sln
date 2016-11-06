@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diagram_WinProg2016", "Diagram_WinProg2016\Diagram_WinProg2016.csproj", "{F66045FC-222A-4ECF-AA80-37F3BC63E34A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diagram_WinProg2016.Model", "..\..\..\..\..\..\Documents\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016.Model\Diagram_WinProg2016.Model.csproj", "{C1FEAA6D-9A8A-408F-AB8A-D94FC08C8EB3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{F66045FC-222A-4ECF-AA80-37F3BC63E34A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F66045FC-222A-4ECF-AA80-37F3BC63E34A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F66045FC-222A-4ECF-AA80-37F3BC63E34A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1FEAA6D-9A8A-408F-AB8A-D94FC08C8EB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1FEAA6D-9A8A-408F-AB8A-D94FC08C8EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1FEAA6D-9A8A-408F-AB8A-D94FC08C8EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1FEAA6D-9A8A-408F-AB8A-D94FC08C8EB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

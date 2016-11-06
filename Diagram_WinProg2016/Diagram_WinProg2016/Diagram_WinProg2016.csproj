@@ -79,8 +79,6 @@
     <Compile Include="Commands\IUndoRedoCommand.cs" />
     <Compile Include="Commands\MoveClassCommand.cs" />
     <Compile Include="Commands\UndoRedoController.cs" />
-    <Compile Include="ViewModel\ClassViewModel.cs" />
-    <Compile Include="ViewModel\ConnectorViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="View\Arrows.xaml">
       <SubType>Designer</SubType>
@@ -114,6 +112,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Class.cs" />
+    <Compile Include="Model\IElement.cs" />
+    <Compile Include="Model\NotifyBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -141,12 +142,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\Documents\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016.Model\Diagram_WinProg2016.Model.csproj">
-      <Project>{c1feaa6d-9a8a-408f-ab8a-d94fc08c8eb3}</Project>
-      <Name>Diagram_WinProg2016.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
