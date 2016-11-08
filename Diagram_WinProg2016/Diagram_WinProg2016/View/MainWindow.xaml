@@ -8,7 +8,6 @@
         xmlns:View="clr-namespace:Diagram_WinProg2016.View"
         xmlns:local="clr-namespace:Diagram_WinProg2016"
         mc:Ignorable="d"
-        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="Diagram App" Height="450" Width="720
         ">
     <Window.Resources>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Diagnostics;
 using System.Windows.Shapes;
+using Diagram_WinProg2016.ViewModel;
 
 namespace Diagram_WinProg2016
 {
@@ -23,6 +24,7 @@ namespace Diagram_WinProg2016
     {
         public MainWindow()
         {
+			DataContext = new MainViewModel();
             InitializeComponent();
         }
     }
