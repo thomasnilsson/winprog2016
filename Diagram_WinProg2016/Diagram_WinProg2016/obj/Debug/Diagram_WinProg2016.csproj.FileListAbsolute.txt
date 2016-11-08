@@ -143,38 +143,40 @@ C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\w
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\System.Windows.Interactivity.xml
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe.config
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.exe
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.pdb
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.pdb
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.dll
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.dll
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.dll
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.dll
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\System.Windows.Interactivity.dll
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.pdb
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.xml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.xml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.xml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.xml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\System.Windows.Interactivity.xml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csprojResolveAssemblyReference.cache
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\ClassUserControl.baml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.g.cs
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\ClassUserControl.g.cs
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.g.cs
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.g.cs
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.cache
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.lref
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.baml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.dll
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.pdb
+C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.baml
+C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.g.cs
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe.config
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.exe
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.pdb
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csprojResolveAssemblyReference.cache
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\ClassUserControl.baml
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.baml
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.g.cs
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\ClassUserControl.g.cs
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.g.cs
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.g.cs
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.g.cs
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.cache
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.lref
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.baml
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.pdb
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
+C:\Users\Thomas\Desktop\Kopi af win 16\8 nov 1001\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache

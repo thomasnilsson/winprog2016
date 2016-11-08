@@ -53,8 +53,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Interactivity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Expression.Blend.Sdk3.1.0.1340.1\lib\net35\System.Windows.Interactivity.dll</HintPath>
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
@@ -79,9 +80,10 @@
     <Compile Include="Commands\IUndoRedoCommand.cs" />
     <Compile Include="Commands\MoveClassCommand.cs" />
     <Compile Include="Commands\UndoRedoController.cs" />
-    <Compile Include="ViewModel\ClassViewModel.cs" />
-    <Compile Include="ViewModel\ConnectorViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\RibbonUserControl.xaml.cs">
+      <DependentUpon>RibbonUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\Arrows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,7 +96,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Commands\SavePngCommand.cs" />
+    <Compile Include="Commands\SaveAsPngCommand.cs" />
     <Compile Include="Commands\Open.cs" />
     <Compile Include="Commands\Save.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -112,8 +114,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\RibbonUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Class.cs" />
+    <Compile Include="Model\IElement.cs" />
+    <Compile Include="Model\NotifyBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -131,6 +140,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Images\Thumbs.db" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -142,10 +152,35 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Diagram_WinProg2016.Model\Diagram_WinProg2016.Model.csproj">
-      <Project>{c1feaa6d-9a8a-408f-ab8a-d94fc08c8eb3}</Project>
-      <Name>Diagram_WinProg2016.Model</Name>
-    </ProjectReference>
+    <Resource Include="Images\add.png" />
+    <Resource Include="Images\aggregation.png" />
+    <Resource Include="Images\assosiation.png" />
+    <Resource Include="Images\class.png" />
+    <Resource Include="Images\composition.png" />
+    <Resource Include="Images\copy.png" />
+    <Resource Include="Images\cut.png" />
+    <Resource Include="Images\cut_small.png" />
+    <Resource Include="Images\delete.png" />
+    <Resource Include="Images\dependency.png" />
+    <Resource Include="Images\directedassosiation.png" />
+    <Resource Include="Images\edit_class.png" />
+    <Resource Include="Images\expand.png" />
+    <Resource Include="Images\export.png" />
+    <Resource Include="Images\generalization.png" />
+    <Resource Include="Images\help.png" />
+    <Resource Include="Images\logo4.ico" />
+    <Resource Include="Images\logo4.png" />
+    <Resource Include="Images\open.png" />
+    <Resource Include="Images\paste.png" />
+    <Resource Include="Images\quit.png" />
+    <Resource Include="Images\redo.png" />
+    <Resource Include="Images\save.png" />
+    <Resource Include="Images\save_small.png" />
+    <Resource Include="Images\settings.png" />
+    <Resource Include="Images\undo.png" />
+    <Resource Include="Images\zoom.png" />
+    <Resource Include="Images\zoom_in.png" />
+    <Resource Include="Images\zoom_out.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
