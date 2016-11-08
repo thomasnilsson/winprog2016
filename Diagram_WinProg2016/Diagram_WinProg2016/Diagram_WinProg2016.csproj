@@ -79,6 +79,8 @@
     <Compile Include="Commands\IUndoRedoCommand.cs" />
     <Compile Include="Commands\MoveClassCommand.cs" />
     <Compile Include="Commands\UndoRedoController.cs" />
+    <Compile Include="ViewModel\ClassViewModel.cs" />
+    <Compile Include="ViewModel\ConnectorViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="View\Arrows.xaml">
       <SubType>Designer</SubType>
