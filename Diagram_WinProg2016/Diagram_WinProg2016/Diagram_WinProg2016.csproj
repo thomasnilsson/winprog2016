@@ -94,7 +94,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Commands\SaveAsPngCommand.cs" />
+    <Compile Include="Commands\SavePngCommand.cs" />
     <Compile Include="Commands\Open.cs" />
     <Compile Include="Commands\Save.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
