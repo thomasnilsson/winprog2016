@@ -1,19 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace Diagram_WinProg2016.Model
 {
 	public class Connector : INotifyPropertyChanged, IConnector
 	{
+		private int id;
+		private Class startClass;
+		public Class endClass;
+
 		public int ID { get { return ID; } set { ID = value; NotifyPropertyChanged(); } }
-		public Class startClass { get { return startClass; } set { startClass = value; NotifyPropertyChanged(); } }
-		public Class endClass { get { return endClass; } set { endClass = value; NotifyPropertyChanged(); } }
+		public Class StartClass { get { return startClass; } set { startClass = value; NotifyPropertyChanged(); } }
+		public Class EndClass { get { return endClass; } set { endClass = value; NotifyPropertyChanged(); } }
+
+		public Connector () {
+			StartClass = null;
+			EndClass = null;
+		}
+
+		public Connector (Class startClass, Class endClass) {
+			StartClass = startClass;
+			EndClass = endClass;
+		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

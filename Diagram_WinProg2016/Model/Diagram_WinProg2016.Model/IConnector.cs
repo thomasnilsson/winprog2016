@@ -8,8 +8,8 @@ namespace Diagram_WinProg2016.Model
 {
 	interface IConnector
 	{
-		Class startClass { get; set; }
-		Class endClass { get; set; }
-		int ID { get; }
+		Class StartClass { get; set; }
+		Class EndClass { get; set; }
+		int ID { get; set; }
 	}
 }

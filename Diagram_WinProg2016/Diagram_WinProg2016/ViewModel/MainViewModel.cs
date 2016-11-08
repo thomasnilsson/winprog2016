@@ -3,22 +3,17 @@ using Diagram_WinProg2016.Command;
 using Diagram_WinProg2016.Model;
 using GalaSoft.MvvmLight.Command;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Diagnostics;
-using System.Windows.Shapes;
 
 namespace Diagram_WinProg2016.ViewModel
 {
-    public class MainViewModel : ViewModelBase
+	public class MainViewModel : ViewModelBase
     {
         public ObservableCollection<Class> Classes{ get; set; }
 

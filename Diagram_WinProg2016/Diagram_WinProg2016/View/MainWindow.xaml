@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Diagram_WinProg2016.ViewModel"
-        xmlns:Model="clr-namespace:Diagram_WinProg2016.Model"
+        xmlns:Model="clr-namespace:Diagram_WinProg2016.Model;assembly=Diagram_WinProg2016.Model"
         xmlns:View="clr-namespace:Diagram_WinProg2016.View"
         xmlns:local="clr-namespace:Diagram_WinProg2016"
         mc:Ignorable="d"

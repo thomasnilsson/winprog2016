@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Diagram_WinProg2016.Model;
+using System.ComponentModel;
 
 namespace Diagram_WinProg2016.ViewModel
 {
 	class ConnectorViewModel
 	{
-		private Class startClass;
-		private Class endClass;
+		private Connector connectorObj;
 
-		public ClassViewModel StartClass { get; set; }
+		protected ConnectorViewModel(Connector connectorObj)
+		{
+			this.connectorObj = connectorObj;
+		}
 
-		public ClassViewModel EndClass { get; set; }
 	}
 }

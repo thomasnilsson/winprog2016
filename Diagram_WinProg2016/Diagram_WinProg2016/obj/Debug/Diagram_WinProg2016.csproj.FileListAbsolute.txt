@@ -171,9 +171,10 @@ C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\D
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.cache
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.lref
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.baml
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache
+C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.dll
+C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.pdb
