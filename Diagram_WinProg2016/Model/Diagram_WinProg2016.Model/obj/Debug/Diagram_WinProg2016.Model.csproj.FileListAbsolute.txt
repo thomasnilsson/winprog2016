@@ -3,3 +3,8 @@ C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016.Model\obj\Debug\Diagram_WinProg2016.Model.csprojResolveAssemblyReference.cache
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016.Model\obj\Debug\Diagram_WinProg2016.Model.dll
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016.Model\obj\Debug\Diagram_WinProg2016.Model.pdb
+C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016.Model\bin\Debug\Diagram_WinProg2016.Model.dll
+C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016.Model\bin\Debug\Diagram_WinProg2016.Model.pdb
+C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016.Model\obj\Debug\Diagram_WinProg2016.Model.csprojResolveAssemblyReference.cache
+C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016.Model\obj\Debug\Diagram_WinProg2016.Model.dll
+C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Model\Diagram_WinProg2016.Model\obj\Debug\Diagram_WinProg2016.Model.pdb

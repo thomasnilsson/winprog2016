@@ -3,19 +3,27 @@ using Diagram_WinProg2016.Command;
 using Diagram_WinProg2016.Model;
 using GalaSoft.MvvmLight.Command;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Diagnostics;
+using System.Windows.Shapes;
 
 namespace Diagram_WinProg2016.ViewModel
 {
-	public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         public ObservableCollection<Class> Classes{ get; set; }
+        public ICommand MouseDownClassBoxCommand { get; private set; }
+        public ICommand MouseMoveClassBoxCommand { get; private set; }
+        public ICommand MouseUpClassBoxCommand { get; private set; }
 
         public ICommand AddClassCommand { get; private set; }
 
@@ -46,6 +54,10 @@ namespace Diagram_WinProg2016.ViewModel
             SaveAsPngCommand = new RelayCommand<StackPanel>(saveScreen);
             Classes.Add(new Class(Classes.Count));
             Trace.WriteLine("Classes: " + Classes.Count);
+
+            MouseDownClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClassBox);
+            MouseMoveClassBoxCommand = new RelayCommand<MouseEventArgs>(MouseMoveClassBox);
+            MouseUpClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpClassBox);
         }
         public void AddClassBox()
         {
@@ -54,7 +66,7 @@ namespace Diagram_WinProg2016.ViewModel
         }
         public void saveScreen(StackPanel input)
         {
-            new SavePngCommand(input);
+            new SaveAsPngCommand(input);
         }
 
         //////////////////Mouse actions//////////////////////////////////
@@ -97,17 +109,17 @@ namespace Diagram_WinProg2016.ViewModel
                 oldPosX = movingClassBox.X;
                 oldPosY = movingClassBox.Y;
 
-                if (SelectedClassBox.Count == 0)
-                {
-                    SelectedClassBox.Add(movingClassBox);
-                }
-                else
-                {
-                    SelectedClassBox.ElementAt(0).IsSelected = false;
-                    SelectedClassBox.Clear();
-                    SelectedClassBox.Add(movingClassBox);
-                }
-                movingClassBox.IsSelected = true;
+                //if (SelectedClassBox.Count == 0)
+                //{
+                //    SelectedClassBox.Add(movingClassBox);
+                //}
+                //else
+                //{
+                //    SelectedClassBox.ElementAt(0).IsSelected = false;
+                //    SelectedClassBox.Clear();
+                //    SelectedClassBox.Add(movingClassBox);
+                //}
+                //movingClassBox.IsSelected = true;
             }
         }
         // Action for Mouse move trigger
@@ -152,10 +164,12 @@ namespace Diagram_WinProg2016.ViewModel
             else
                 e.MouseDevice.Target.ReleaseMouseCapture();
         }
-        private static T FindParentOfType<T>(DependencyObject o)
+        private static T FindParentOfType<T>(DependencyObject o) where T: DependencyObject
         {
-            dynamic parent = VisualTreeHelper.GetParent(o);
-            return parent.GetType().IsAssignableFrom(typeof(T)) ? parent : FindParentOfType<T>(parent);
+
+            DependencyObject parent = VisualTreeHelper.GetParent(o);
+            if (parent == null) return null;
+            return parent.GetType().IsAssignableFrom(typeof(T)) ? (T)parent : FindParentOfType<T>(parent);
         }
     }
 }

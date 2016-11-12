@@ -8,6 +8,7 @@
         xmlns:View="clr-namespace:Diagram_WinProg2016.View"
         xmlns:local="clr-namespace:Diagram_WinProg2016"
         mc:Ignorable="d"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="Diagram App" Height="450" Width="720
         ">
     <Window.Resources>
@@ -44,7 +45,20 @@
         </Menu>
         
         <Grid x:Name="MainGrid">
-            <ItemsControl ItemsSource="{Binding Classes}" Name="class" />
+            <ItemsControl ItemsSource="{Binding Classes}" Name="class">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                    <Canvas/>
+                        
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                        <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>
         </Grid>
         
     </DockPanel>
