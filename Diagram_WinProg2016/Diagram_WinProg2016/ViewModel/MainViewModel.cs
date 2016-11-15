@@ -66,7 +66,7 @@ namespace Diagram_WinProg2016.ViewModel
         }
         public void saveScreen(StackPanel input)
         {
-            new SaveAsPngCommand(input);
+            new SavePngCommand(input);
         }
 
         //////////////////Mouse actions//////////////////////////////////
