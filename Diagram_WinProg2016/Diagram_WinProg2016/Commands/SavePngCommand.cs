@@ -11,13 +11,13 @@ using System.Windows.Media.Imaging;
 
 namespace Diagram_WinProg2016.Command
 {
-    class SaveAsPngCommand
+    class SavePngCommand
     {
         private Grid screen;
-        public SaveAsPngCommand(StackPanel input)
+        public SavePngCommand(StackPanel input)
         {
             // get Grid
-            screen = (Grid)input.Children[1];
+            screen = input.Children[1] as Grid;
 
             // Create a render bitmap and push the surface to it
             RenderTargetBitmap renderBitmap = new RenderTargetBitmap((int)input.ActualWidth, (int)input.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);

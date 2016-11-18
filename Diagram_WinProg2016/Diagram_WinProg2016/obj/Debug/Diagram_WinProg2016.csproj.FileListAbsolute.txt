@@ -199,3 +199,9 @@ C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows
 C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
 C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.dll
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.pdb
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.baml
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.g.cs
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
