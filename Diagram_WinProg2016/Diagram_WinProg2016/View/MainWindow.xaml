@@ -17,16 +17,18 @@
             <View:ClassUserControl/>
         </DataTemplate>
     </Window.Resources>
-   
-    
+
+
     <DockPanel>
-        
+        <!--<View:RibbonUserControl DockPanel.Dock="Top" Focusable="True" x:Name="QContol"/>-->
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_Open Diagram" Command="{Binding OpenDiagram}"/>
                 <MenuItem Header="_Save Diagram"/>
                 <MenuItem Header="_Save as PNG" Command="{Binding SaveAsPngCommand}" InputGestureText="Ctrl+I"  />
                 <!--CommandParameter="{Binding ElementName=stack}-->
+
+                <MenuItem Header="_Export to PDF"/>
                 <MenuItem Header ="_Exit"/>
             </MenuItem>
             <MenuItem Header="_Edit">
@@ -41,13 +43,13 @@
                 <MenuItem Header="_New Arrow"/>
             </MenuItem>
         </Menu>
-        
+
         <Grid x:Name="MainGrid">
             <ItemsControl ItemsSource="{Binding Classes}" Name="class">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                    <Canvas/>
-                        
+                        <Canvas/>
+
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemContainerStyle>
@@ -58,6 +60,6 @@
                 </ItemsControl.ItemContainerStyle>
             </ItemsControl>
         </Grid>
-        
+
     </DockPanel>
 </Window>

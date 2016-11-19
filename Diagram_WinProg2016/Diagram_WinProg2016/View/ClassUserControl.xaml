@@ -6,54 +6,61 @@
              mc:Ignorable="d" 
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
-             
-             d:DesignHeight="100" d:DesignWidth="100">
+             >
 
-    <Border Name="borderBox" BorderThickness="1" Background="White" BorderBrush="Black" Width="{Binding Width}" Height="{Binding Height}">
+    <Border Name="borderBox" Background="White" BorderBrush="Black" Width="200">
         <!--Her bliver de tre events MouseDown, MouseMove og MouseUp bundet til de tilsvarende kommandoer på MainViewModel.-->
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="MouseDown">
-                <cmd:EventToCommand Command="{Binding DataContext.MouseDownClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-            </i:EventTrigger>
-            <i:EventTrigger EventName="MouseMove">
-                <cmd:EventToCommand Command="{Binding DataContext.MouseMoveClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-            </i:EventTrigger>
-            <i:EventTrigger EventName="MouseUp">
-                <cmd:EventToCommand Command="{Binding DataContext.MouseUpClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
-        <!-- ClassBox layout -->
 
-        <Grid x:Name ="ClassBox" Width="{Binding Width}" Height="{Binding Height}">
+        <!-- ClassBox layout -->
+        <Grid x:Name ="ClassBox">
             <!-- ClassBox information -->
             <Border Name="mask" Background="White"/>
-            <!-- Main content container -->
+            <!-- Hovedinholdet er iden for denne border -->
             <StackPanel>
-                <Rectangle Fill="Gray" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="{Binding Width}"/>
+                <!--top-fanen som bruges til muserinteraktioner når elementet flyttes-->
+                <Rectangle Fill="CornflowerBlue" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="200">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <cmd:EventToCommand Command="{Binding DataContext.MouseDownClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseMove">
+                            <cmd:EventToCommand Command="{Binding DataContext.MouseMoveClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseUp">
+                            <cmd:EventToCommand Command="{Binding DataContext.MouseUpClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Rectangle>
 
-                <TextBlock TextAlignment="Center" FontWeight="Bold" Text="{Binding ClassName}" Padding="2" Background="AliceBlue"/>
+                <!--Name containeren -->
+                <TextBox
+                Name="NameContainer"
+                FontWeight="Bold"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                TextAlignment="Center"
+                Text="{Binding ClassName}"
+                >
+                </TextBox>
 
-                <!-- List of attributes -->
-                <ListView x:Name="FieldBox" VerticalAlignment="Top" ItemsSource="{Binding Fields}" IsEnabled="False">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding Name}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <!-- Field containeren -->
+                <TextBox
+                Name="FieldContainer"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                Text="{Binding FieldString}"
+                >
+                </TextBox>
 
-                <!-- List of methods -->
-                <ListView x:Name="MethodBox" VerticalAlignment="Top" ItemsSource="{Binding Methods}" IsEnabled="False">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding Name}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <!-- Metode containeren -->
+                <TextBox
+                Name="MethodContainer"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                Text="{Binding MethodString}"
+                >
+                </TextBox>
+
             </StackPanel>
         </Grid>
     </Border>
