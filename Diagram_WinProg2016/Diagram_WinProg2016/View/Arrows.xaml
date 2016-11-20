@@ -8,27 +8,9 @@
              xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
              >
     <Grid>
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="mouseClickArrow">
-                <!--<cmd:EventToCommand Command="{Binding ArrowMouseBinder}"/>-->
-            </i:EventTrigger>
-
-        </i:Interaction.Triggers>
-
-
-        <Polyline Points="{Binding Points}" StrokeThickness="3">
-            <Polyline.Style>
-                <Style TargetType="{x:Type Polyline}">
-                    <Setter Property="Stroke" Value="{Binding SelectedColor}" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Stroke" Value="Blue">
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Polyline.Style>
-        </Polyline>
-
+        <Path Stroke="{Binding ArrowColor}" StrokeThickness="2" Data="{Binding Path}" StrokeDashArray="{Binding ArrowDashArray}" />
+        <Path Stroke="Transparent" StrokeThickness="10" Data="{Binding Path}"/>
+        <Polyline Points="{Binding Arrow}" Fill="{Binding ColorFill}" Stroke="{Binding SelectedColor}" StrokeThickness="1"/>    
+    
     </Grid>
 </UserControl>
