@@ -23,5 +23,10 @@ namespace Diagram_WinProg2016.View
         {
             InitializeComponent();
         }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

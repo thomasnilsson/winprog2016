@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diagram_WinProg2016.Command
+namespace Diagram_WinProg2016.Commands
 {
     //
     // Class used to move the x- and y-coordinates of a ClassBox

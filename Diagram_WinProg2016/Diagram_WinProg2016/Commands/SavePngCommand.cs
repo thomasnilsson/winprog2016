@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Diagram_WinProg2016.Command
+namespace Diagram_WinProg2016.Commands
 {
     class SavePngCommand
     {

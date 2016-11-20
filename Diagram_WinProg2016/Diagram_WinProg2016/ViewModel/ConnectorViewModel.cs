@@ -4,14 +4,10 @@ using System.ComponentModel;
 
 namespace Diagram_WinProg2016.ViewModel
 {
-	class ConnectorViewModel
-	{
-		private Connector connectorObj;
-
-		protected ConnectorViewModel(Connector connectorObj)
-		{
-			this.connectorObj = connectorObj;
-		}
+	public class ConnectorViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private EConnector startNode;
 
 	}
 }
