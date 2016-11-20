@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Diagram_WinProg2016.Command
+namespace Diagram_WinProg2016.Commands
 {
     /* 
         Denne klasse holder styr paa kommandoer der kan undo/redoes. 
