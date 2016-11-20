@@ -1,5 +1,5 @@
 using GalaSoft.MvvmLight;
-using Diagram_WinProg2016.Command;
+using Diagram_WinProg2016.Commands;
 using Diagram_WinProg2016.Model;
 using GalaSoft.MvvmLight.Command;
 using System;
