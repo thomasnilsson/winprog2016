@@ -14,25 +14,25 @@ namespace Diagram_WinProg2016.Commands
     public class AddArrowCommand : IUndoRedoCommand
 
     {
-        private IObservableCollection<ConnectorViewModel> arrows;
-        private ConnectorViewModel addArrow;
+        private ObservableCollection<ConnectorViewModel> arrows;
+        private ConnectorViewModel _addArrow;
 
-        public AddArrowCommand(IObservableCollection<ConnectorViewModel> _arrows, ConnectorViewModel newArrows)
+        public AddArrowCommand(ObservableCollection<ConnectorViewModel> _arrows, ConnectorViewModel newArrows)
         {
             arrows = _arrows;
-            _arrows = newArrows;
+            _addArrow = newArrows;
 
         }
 
 
         void IUndoRedoCommand.Execute()
         {
-            arrows.Add(_arrows);
+            arrows.Add(_addArrow);
         }
 
         void IUndoRedoCommand.UnExecute()
         {
-            arrows.Remove(_arrows);
+            arrows.Remove(_addArrow);
         }
     }
 
