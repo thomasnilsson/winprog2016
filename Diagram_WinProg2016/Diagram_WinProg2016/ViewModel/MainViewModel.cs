@@ -29,6 +29,7 @@ namespace Diagram_WinProg2016.ViewModel
 
         public ICommand SaveAsPngCommand { get; private set; }
 
+        public ICommand ArrowsCommand { get; private set; }
 
         public ICommand OpenDiagram { get; private set; }
 
@@ -36,6 +37,9 @@ namespace Diagram_WinProg2016.ViewModel
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         public ObservableCollection<Class> SelectedClassBox { get; set; }
+
+
+
         // Er der ved at blive tilfojet en kant?
         private bool isAddingEdge;
 

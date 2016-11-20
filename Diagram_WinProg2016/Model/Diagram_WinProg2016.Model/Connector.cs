@@ -11,6 +11,7 @@ namespace Diagram_WinProg2016.Model
 		private Class startClass;
 		public Class endClass;
 
+
 		public int ID { get { return ID; } set { ID = value; NotifyPropertyChanged(); } }
 		public Class StartClass { get { return startClass; } set { startClass = value; NotifyPropertyChanged(); } }
 		public Class EndClass { get { return endClass; } set { endClass = value; NotifyPropertyChanged(); } }
