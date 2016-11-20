@@ -16,7 +16,7 @@ namespace Diagram_WinProg2016.Command
         private Canvas screen;
         public SavePngCommand(Canvas input)
         {
-            // get Grid
+            // get canvas from input where everything is located
             screen = input;
 
             // Create a render bitmap and push the surface to it
