@@ -25,7 +25,7 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_Open Diagram" Command="{Binding OpenDiagram}"/>
                 <MenuItem Header="_Save Diagram" Command="{Binding SaveCommand}"/>
-                <MenuItem Header="_Save as PNG" Command="{Binding SaveAsPngCommand}" InputGestureText="Ctrl+I"  />
+                <MenuItem Header="_Save as PNG" Command="{Binding SavePngCommand}" CommandParameter="{Binding ElementName=MainCanvas}"  />
                 <!--CommandParameter="{Binding ElementName=stack}-->
 
                 <MenuItem Header="_Export to PDF"/>
@@ -44,7 +44,7 @@
             </MenuItem>
         </Menu>
 
-        <Grid x:Name="MainGrid">
+        <Canvas x:Name="MainCanvas">
             <ItemsControl ItemsSource="{Binding Classes}" Name="class">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -59,7 +59,7 @@
                     </Style>
                 </ItemsControl.ItemContainerStyle>
             </ItemsControl>
-        </Grid>
+        </Canvas>
 
     </DockPanel>
 </Window>

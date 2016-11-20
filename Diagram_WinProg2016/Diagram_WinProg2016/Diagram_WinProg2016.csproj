@@ -100,7 +100,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Commands\Open.cs" />
-    <Compile Include="Commands\Save.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

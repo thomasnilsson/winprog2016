@@ -19,6 +19,8 @@ using System.Windows.Shapes;
 using System.Xml.Serialization;
 using Microsoft.Win32;
 using System.Threading;
+using System.Windows.Media.Imaging;
+using System.Windows.Controls.Primitives;
 
 namespace Diagram_WinProg2016.ViewModel
 {
@@ -36,7 +38,7 @@ namespace Diagram_WinProg2016.ViewModel
         public ICommand AddClassCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
 
-        public ICommand SaveAsPngCommand { get; private set; }
+        public ICommand SavePngCommand { get; private set; }
 
 
         public ICommand OpenDiagram { get; private set; }
@@ -45,6 +47,8 @@ namespace Diagram_WinProg2016.ViewModel
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         public ObservableCollection<Class> SelectedClassBox { get; set; }
+        public object ExportToImage { get; private set; }
+
         // Er der ved at blive tilfojet en kant?
         private bool isAddingEdge;
 
@@ -60,7 +64,7 @@ namespace Diagram_WinProg2016.ViewModel
             AddClassCommand = new RelayCommand(AddClassBox);
             OpenDiagram = new RelayCommand(OpenNewDiagram);
             SaveCommand = new RelayCommand(Save);
-            SaveAsPngCommand = new RelayCommand<StackPanel>(saveScreen);
+            SavePngCommand = new RelayCommand<Canvas>(saveScreen);
 
             isAddingEdge = false;
             
@@ -71,6 +75,8 @@ namespace Diagram_WinProg2016.ViewModel
             MouseMoveClassBoxCommand = new RelayCommand<MouseEventArgs>(MouseMoveClassBox);
             MouseUpClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpClassBox);
         }
+
+        //SAVE AS DIAGRAM
 
         public class SaveLoadCollection
         {
@@ -107,10 +113,8 @@ namespace Diagram_WinProg2016.ViewModel
                 {
                     Classes.Add(tempClass);
                     System.Console.WriteLine(tempClass.ID);
-                }
-                
+                }         
                 undoRedoController.Reset();
-
             }
         }
 
@@ -136,6 +140,7 @@ namespace Diagram_WinProg2016.ViewModel
                 FileName = "classdiagram",
                 Filter = " XML (*.xml)|*.xml| All files (*.*)|*.*"
             };
+
             if (dialog.ShowDialog() != true)
                 return;
 
@@ -143,18 +148,62 @@ namespace Diagram_WinProg2016.ViewModel
             saveThread = new Thread(() => SerializeObjectToXML(path));
             saveThread.Start();
         }
+
+        //SAVE AS PNG IMAGE
+        public void saveScreen(Canvas screen)
+        {
+           new SavePngCommand(screen);
+        }
+
+        private void CreateSaveBitmap(Canvas canvas, string filename)
+        {
+            RenderTargetBitmap renderBitmap = new RenderTargetBitmap(
+             (int)canvas.Width, (int)canvas.Height,
+             96d, 96d, PixelFormats.Pbgra32);
+            // needed otherwise the image output is black
+            canvas.Measure(new Size((int)canvas.Width, (int)canvas.Height));
+            canvas.Arrange(new Rect(new Size((int)canvas.Width, (int)canvas.Height)));
+
+            renderBitmap.Render(canvas);
+
+            //JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            PngBitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+
+            using (FileStream file = File.Create(filename))
+            {
+                encoder.Save(file);
+            }
+        }
+        public static T FindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            //get parent item
+            DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+
+            //we've reached the end of the tree
+            if (parentObject == null) return null;
+
+            //check if the parent matches the type we're looking for
+            T parent = parentObject as T;
+            if (parent != null)
+            {
+                return parent;
+            }
+            else
+            {
+                return FindParent<T>(parentObject);
+            }
+        }
+
+
+
+        //ADD NEW CLASS
         public void AddClassBox()
         {
             Trace.WriteLine(Classes[Classes.Count - 1].ClassName);
             Trace.WriteLine(Classes[Classes.Count - 1].FieldString);
             Trace.WriteLine(Classes[Classes.Count - 1].MethodString);
             undoRedoController.AddAndExecute(new AddClassCommand(Classes));
-            
-
-        }
-        public void saveScreen(StackPanel input)
-        {
-            new SavePngCommand(input);
         }
 
         //////////////////Mouse actions//////////////////////////////////

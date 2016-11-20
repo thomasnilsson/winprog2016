@@ -13,18 +13,18 @@ namespace Diagram_WinProg2016.Command
 {
     class SavePngCommand
     {
-        private Grid screen;
-        public SavePngCommand(StackPanel input)
+        private Canvas screen;
+        public SavePngCommand(Canvas input)
         {
             // get Grid
-            screen = input.Children[1] as Grid;
+            screen = input;
 
             // Create a render bitmap and push the surface to it
             RenderTargetBitmap renderBitmap = new RenderTargetBitmap((int)input.ActualWidth, (int)input.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);
             renderBitmap.Render(screen);
 
             // Configure save file dialog box
-            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog(); //initialize dialoge
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog(); //initialize dialog
             dlg.FileName = "ScreenPrint"; // Default file name
             dlg.DefaultExt = ".png"; // Deafault file extension
 
