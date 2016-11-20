@@ -67,5 +67,11 @@ namespace Diagram_WinProg2016.Command
             undoStack.Push(command);
             command.Execute();
         }
+
+        public void Reset()
+        {
+            undoStack.Clear();
+            redoStack.Clear();
+        }
     }
 }

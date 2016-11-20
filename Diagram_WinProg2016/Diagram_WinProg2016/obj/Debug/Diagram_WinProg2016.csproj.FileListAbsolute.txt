@@ -208,9 +208,3 @@ C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.pdb
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.baml
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.g.cs
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.dll
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.pdb
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.baml
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.g.cs
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
