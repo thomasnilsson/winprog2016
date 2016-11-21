@@ -38,22 +38,19 @@ namespace Diagram_WinProg2016.ViewModel
         public ICommand MouseUpClassBoxCommand { get; private set; }
 
         public ICommand AddClassCommand { get; private set; }
-<<<<<<< HEAD
+
 		public ICommand DeleteSelectedClassesCommand { get; private set; }
         public ICommand CutSelectedClassesCommand { get; private set; }
 		public ICommand CopySelectedClassesCommand { get; private set; }
 		public ICommand PasteSelectedClassesCommand { get; private set; }
-=======
+
         public ICommand SaveCommand { get; private set; }
 
         public ICommand ArrowsCommand { get; private set; }
 
         public ICommand SavePngCommand { get; private set; }
 
->>>>>>> origin/master
-
-		public ICommand SaveCommand { get; private set; }
-		public ICommand SavePngCommand { get; private set; }
+        
         public ICommand OpenDiagram { get; private set; }
 
         public ObservableCollection<Class> ClassBoxes { get; set; }
@@ -76,7 +73,7 @@ namespace Diagram_WinProg2016.ViewModel
         public MainViewModel()
         {
             Classes = new ObservableCollection<Class>();
-<<<<<<< HEAD
+
 			CopiedClasses = new ObservableCollection<Class>();
 
             AddClassCommand = new RelayCommand(AddClassBox);
@@ -85,11 +82,9 @@ namespace Diagram_WinProg2016.ViewModel
 			CopySelectedClassesCommand = new RelayCommand(CopySelectedClasses);
 			PasteSelectedClassesCommand = new RelayCommand(PasteSelectedClasses);
 
-=======
+
             Arrows = new ObservableCollection<ConnectorViewModel>();
-            AddClassCommand = new RelayCommand(AddClassBox);
             ArrowsCommand = new RelayCommand(AddArrow);
->>>>>>> origin/master
             OpenDiagram = new RelayCommand(OpenNewDiagram);
             SaveCommand = new RelayCommand(Save);
             SavePngCommand = new RelayCommand<Canvas>(saveScreen);
