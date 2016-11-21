@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,7 @@ namespace Diagram_WinProg2016.Commands
         // Part of singleton pattern.
         private static UndoRedoController controller = new UndoRedoController();
 
-        // Undo stack.
         private readonly Stack<IUndoRedoCommand> undoStack = new Stack<IUndoRedoCommand>();
-        // Redo stack.
         private readonly Stack<IUndoRedoCommand> redoStack = new Stack<IUndoRedoCommand>();
 
         // Part of singleton pattern.
@@ -33,7 +32,8 @@ namespace Diagram_WinProg2016.Commands
 
         // Bruges til at tilføje commander.
         public void AddAndExecute(IUndoRedoCommand command){
-            undoStack.Push(command);
+			Trace.Write("Command was pushed to undostack: " + command.ToString() + "\n");
+			undoStack.Push(command);
             redoStack.Clear();
             command.Execute();
         }

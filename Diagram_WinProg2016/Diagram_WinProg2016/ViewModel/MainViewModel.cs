@@ -38,11 +38,13 @@ namespace Diagram_WinProg2016.ViewModel
         public ICommand MouseUpClassBoxCommand { get; private set; }
 
         public ICommand AddClassCommand { get; private set; }
-
 		public ICommand DeleteSelectedClassesCommand { get; private set; }
         public ICommand CutSelectedClassesCommand { get; private set; }
 		public ICommand CopySelectedClassesCommand { get; private set; }
 		public ICommand PasteSelectedClassesCommand { get; private set; }
+
+		public ICommand UndoCommand { get; set; }
+		public ICommand RedoCommand { get; set; }
 
         public ICommand SaveCommand { get; private set; }
 
@@ -81,6 +83,9 @@ namespace Diagram_WinProg2016.ViewModel
 			CutSelectedClassesCommand = new RelayCommand(CutSelectedClasses);
 			CopySelectedClassesCommand = new RelayCommand(CopySelectedClasses);
 			PasteSelectedClassesCommand = new RelayCommand(PasteSelectedClasses);
+
+			UndoCommand = new RelayCommand(Undo);
+			RedoCommand = new RelayCommand(Redo);
 
 
             Arrows = new ObservableCollection<ConnectorViewModel>();
@@ -249,6 +254,13 @@ namespace Diagram_WinProg2016.ViewModel
 			undoRedoController.AddAndExecute(new PasteSelectedClassesCommand(Classes, CopiedClasses));
 		}
 
+		public void Undo() {
+			undoRedoController.Undo();
+		}
+
+		public void Redo() {
+			undoRedoController.Redo();
+		}
 		public void OpenNewDiagram()
 		{
 			Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();

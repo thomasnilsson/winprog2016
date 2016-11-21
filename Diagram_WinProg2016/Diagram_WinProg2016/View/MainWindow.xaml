@@ -32,8 +32,8 @@
                 <MenuItem Header ="_Exit"/>
             </MenuItem>
             <MenuItem Header="_Edit">
-				<MenuItem Header="_Undo"/>
-				<MenuItem Header="_Redo"/>
+				<MenuItem Header="_Undo" Command="{Binding UndoCommand}"/>
+				<MenuItem Header="_Redo" Command="{Binding RedoCommand}"/>
 				<MenuItem Header="_Cut" Command="{Binding CutSelectedClassesCommand}"/>
 				<MenuItem Header="_Copy" Command="{Binding CopySelectedClassesCommand}"/>
 				<MenuItem Header="_Paste"  Command="{Binding PasteSelectedClassesCommand}"/>
