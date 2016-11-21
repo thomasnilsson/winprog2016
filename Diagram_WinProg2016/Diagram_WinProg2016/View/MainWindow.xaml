@@ -40,12 +40,14 @@
             </MenuItem>
             <MenuItem Header="_Insert">
                 <MenuItem Header="_New Class" Command="{Binding AddClassCommand}"/>
-                <MenuItem Header="_New Arrow"/>
+                <MenuItem Header="_New Arrow" Command="{Binding ArrowsCommand}"/>
             </MenuItem>
         </Menu>
 
         <Canvas x:Name="MainCanvas">
+            <ItemsControl ItemsSource="{Binding Arrows}" Name="connector"/>
             <ItemsControl ItemsSource="{Binding Classes}" Name="class">
+                
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas/>
@@ -58,7 +60,9 @@
                         <Setter Property="Canvas.Top" Value="{Binding Y}"/>
                     </Style>
                 </ItemsControl.ItemContainerStyle>
+
             </ItemsControl>
+
         </Canvas>
 
     </DockPanel>

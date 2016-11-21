@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
+using System.Runtime.Remoting.Messaging ;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -38,6 +38,8 @@ namespace Diagram_WinProg2016.ViewModel
         public ICommand AddClassCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
 
+        public ICommand ArrowsCommand { get; private set; }
+
         public ICommand SavePngCommand { get; private set; }
 
 
@@ -45,12 +47,14 @@ namespace Diagram_WinProg2016.ViewModel
 
         public ObservableCollection<Class> ClassBoxes { get; set; }
 
+        public ObservableCollection<ConnectorViewModel> Arrows { get; set; }
+
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         public ObservableCollection<Class> SelectedClassBox { get; set; }
         public object ExportToImage { get; private set; }
 
         // Er der ved at blive tilfojet en kant?
-        private bool isAddingEdge;
+        private bool isAddingEdge = false;
 
         //Punkter når der flyttes rundt. 
         private Point moveClassBoxPoint;// Gemmer det første punkt som punktet har under en flytning.
@@ -61,10 +65,13 @@ namespace Diagram_WinProg2016.ViewModel
         public MainViewModel()
         {
             Classes = new ObservableCollection<Class>();
+            Arrows = new ObservableCollection<ConnectorViewModel>();
             AddClassCommand = new RelayCommand(AddClassBox);
+            ArrowsCommand = new RelayCommand(AddArrow);
             OpenDiagram = new RelayCommand(OpenNewDiagram);
             SaveCommand = new RelayCommand(Save);
             SavePngCommand = new RelayCommand<Canvas>(saveScreen);
+            
 
             isAddingEdge = false;
             
@@ -194,8 +201,11 @@ namespace Diagram_WinProg2016.ViewModel
                 return FindParent<T>(parentObject);
             }
         }
+        //Add new arrow
+        public void AddArrow()
+        {
 
-
+        }
 
         //ADD NEW CLASS
         public void AddClassBox()
