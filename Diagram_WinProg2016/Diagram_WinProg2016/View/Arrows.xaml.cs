@@ -17,7 +17,7 @@ namespace Diagram_WinProg2016.View
     /// <summary>
     /// Interaction logic for Arrows.xaml
     /// </summary>
-    public partial class Arrows : Window
+    public partial class Arrows : UserControl
     {
         public Arrows()
         {
