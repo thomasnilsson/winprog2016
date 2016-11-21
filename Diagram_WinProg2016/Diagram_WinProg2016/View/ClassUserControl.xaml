@@ -8,32 +8,37 @@
              xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
              >
 
-    <Border Name="borderBox" Background="White" BorderBrush="Black" Width="200">
-        <!--Her bliver de tre events MouseDown, MouseMove og MouseUp bundet til de tilsvarende kommandoer på MainViewModel.-->
+	<Border Name="borderBox" Background="White" BorderBrush="Black" Width="200">
+		<!--Her bliver de tre events MouseDown, MouseMove og MouseUp bundet til de tilsvarende kommandoer på MainViewModel.-->
 
-        <!-- ClassBox layout -->
-        <Grid x:Name ="ClassBox">
-            <!-- ClassBox information -->
-            <Border Name="mask" Background="White"/>
-            <!-- Hovedinholdet er iden for denne border -->
-            <StackPanel>
-                <!--top-fanen som bruges til muserinteraktioner når elementet flyttes-->
-                <Rectangle Fill="CornflowerBlue" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="200">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDown">
-                            <cmd:EventToCommand Command="{Binding DataContext.MouseDownClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="MouseMove">
-                            <cmd:EventToCommand Command="{Binding DataContext.MouseMoveClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="MouseUp">
-                            <cmd:EventToCommand Command="{Binding DataContext.MouseUpClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Rectangle>
+		<!-- ClassBox layout -->
+		<Grid x:Name ="ClassBox">
+			<!-- ClassBox information -->
+			<Border Name="mask" Background="White"/>
 
-                <!--Name containeren -->
-                <TextBox
+			<!-- Hovedinholdet er iden for denne border -->
+			<StackPanel>
+				<Grid>
+
+					<!--top-fanen som bruges til muserinteraktioner når elementet flyttes-->
+					<Rectangle Fill="CornflowerBlue" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="200">
+						<i:Interaction.Triggers>
+							<i:EventTrigger EventName="MouseDown">
+								<cmd:EventToCommand Command="{Binding DataContext.MouseDownClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+							</i:EventTrigger>
+							<i:EventTrigger EventName="MouseMove">
+								<cmd:EventToCommand Command="{Binding DataContext.MouseMoveClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+							</i:EventTrigger>
+							<i:EventTrigger EventName="MouseUp">
+								<cmd:EventToCommand Command="{Binding DataContext.MouseUpClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+							</i:EventTrigger>
+						</i:Interaction.Triggers>
+					</Rectangle>
+					<ToggleButton  x:Name="SelectedButton" IsChecked="{Binding IsSelected, Mode=TwoWay}" HorizontalAlignment = "Center" Margin="0,0,180,0" Width="20" Content="" >
+					</ToggleButton>
+				</Grid>
+				<!--Name containeren -->
+				<TextBox
                 Name="NameContainer"
                 FontWeight="Bold"
                 AcceptsReturn="True"
@@ -41,27 +46,27 @@
                 TextAlignment="Center"
                 Text="{Binding ClassName}"
                 >
-                </TextBox>
+				</TextBox>
 
-                <!-- Field containeren -->
-                <TextBox
+				<!-- Field containeren -->
+				<TextBox
                 Name="FieldContainer"
                 AcceptsReturn="True"
                 TextWrapping="Wrap"
                 Text="{Binding FieldString}"
                 >
-                </TextBox>
+				</TextBox>
 
-                <!-- Metode containeren -->
-                <TextBox
+				<!-- Metode containeren -->
+				<TextBox
                 Name="MethodContainer"
                 AcceptsReturn="True"
                 TextWrapping="Wrap"
                 Text="{Binding MethodString}"
                 >
-                </TextBox>
+				</TextBox>
 
-            </StackPanel>
-        </Grid>
-    </Border>
+			</StackPanel>
+		</Grid>
+	</Border>
 </UserControl>

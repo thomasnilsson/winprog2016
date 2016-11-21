@@ -30,23 +30,27 @@ namespace Diagram_WinProg2016.ViewModel
         private Thread saveThread;
         //classes som er databindet
         public ObservableCollection<Class> Classes{ get; set; }
-        //commands
-        public ICommand MouseDownClassBoxCommand { get; private set; }
+		public ObservableCollection<Class> CopiedClasses { get; set; }
+
+		//commands
+		public ICommand MouseDownClassBoxCommand { get; private set; }
         public ICommand MouseMoveClassBoxCommand { get; private set; }
         public ICommand MouseUpClassBoxCommand { get; private set; }
 
         public ICommand AddClassCommand { get; private set; }
-        public ICommand SaveCommand { get; private set; }
+		public ICommand DeleteSelectedClassesCommand { get; private set; }
+        public ICommand CutSelectedClassesCommand { get; private set; }
+		public ICommand CopySelectedClassesCommand { get; private set; }
+		public ICommand PasteSelectedClassesCommand { get; private set; }
 
-        public ICommand SavePngCommand { get; private set; }
-
-
+		public ICommand SaveCommand { get; private set; }
+		public ICommand SavePngCommand { get; private set; }
         public ICommand OpenDiagram { get; private set; }
 
         public ObservableCollection<Class> ClassBoxes { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
-        public ObservableCollection<Class> SelectedClassBox { get; set; }
+        //public ObservableCollection<Class> SelectedClassBox { get; set; }
         public object ExportToImage { get; private set; }
 
         // Er der ved at blive tilfojet en kant?
@@ -61,7 +65,14 @@ namespace Diagram_WinProg2016.ViewModel
         public MainViewModel()
         {
             Classes = new ObservableCollection<Class>();
+			CopiedClasses = new ObservableCollection<Class>();
+
             AddClassCommand = new RelayCommand(AddClassBox);
+			DeleteSelectedClassesCommand = new RelayCommand(DeleteSelectedClasses);
+			CutSelectedClassesCommand = new RelayCommand(CutSelectedClasses);
+			CopySelectedClassesCommand = new RelayCommand(CopySelectedClasses);
+			PasteSelectedClassesCommand = new RelayCommand(PasteSelectedClasses);
+
             OpenDiagram = new RelayCommand(OpenNewDiagram);
             SaveCommand = new RelayCommand(Save);
             SavePngCommand = new RelayCommand<Canvas>(saveScreen);
@@ -69,7 +80,6 @@ namespace Diagram_WinProg2016.ViewModel
             isAddingEdge = false;
             
             Classes.Add(new Class(Classes.Count));
-            Trace.WriteLine("Classes: " + Classes.Count);
 
             MouseDownClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClassBox);
             MouseMoveClassBoxCommand = new RelayCommand<MouseEventArgs>(MouseMoveClassBox);
@@ -200,36 +210,55 @@ namespace Diagram_WinProg2016.ViewModel
         //ADD NEW CLASS
         public void AddClassBox()
         {
-            Trace.WriteLine(Classes[Classes.Count - 1].ClassName);
-            Trace.WriteLine(Classes[Classes.Count - 1].FieldString);
-            Trace.WriteLine(Classes[Classes.Count - 1].MethodString);
             undoRedoController.AddAndExecute(new AddClassCommand(Classes));
         }
 
-        //////////////////Mouse actions//////////////////////////////////
-       
-       public void OpenNewDiagram()
-        {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.FileName = "Document"; // Default file name
-            dlg.DefaultExt = ".png"; // Default file extension
-            dlg.Filter = "PNG documents (.png)|*.png"; // Filter files by extension 
+		public void DeleteSelectedClasses()
+		{
+			undoRedoController.AddAndExecute(new DeleteSelectedClassesCommand(Classes));
+		}
 
-            // Show open file dialog box
-            Nullable<bool> result = dlg.ShowDialog();
+		public void CopySelectedClasses()
+		{
+			undoRedoController.AddAndExecute(new CopySelectedClassesCommand(Classes, CopiedClasses));
+		}
 
-           
-            if (result == true)
-            {//Needs to clear the diagram if one is open
-                string name = dlg.FileName;
-                new Open();
-            }
-        }
+		public void CutSelectedClasses()
+		{
+			undoRedoController.AddAndExecute(new CutSelectedClassesCommand(Classes, CopiedClasses));
+		}
+
+		public void PasteSelectedClasses()
+		{
+			undoRedoController.AddAndExecute(new PasteSelectedClassesCommand(Classes, CopiedClasses));
+		}
+
+		public void OpenNewDiagram()
+		{
+			Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+			dlg.FileName = "Document"; // Default file name
+			dlg.DefaultExt = ".png"; // Default file extension
+			dlg.Filter = "PNG documents (.png)|*.png"; // Filter files by extension 
+
+			// Show open file dialog box
+			Nullable<bool> result = dlg.ShowDialog();
 
 
-        // Action for Mouse down trigger on ClassBox
-        // Hvis der ikke er ved at blive tilføjet en kant så fanges musen når en musetast trykkes ned. Dette bruges til at flytte punkter.
-        public void MouseDownClassBox(MouseButtonEventArgs e)
+			if (result == true)
+			{//Needs to clear the diagram if one is open
+				string name = dlg.FileName;
+				new Open();
+			}
+		}
+
+		//////////////////Mouse actions//////////////////////////////////
+
+
+
+
+		// Action for Mouse down trigger on ClassBox
+		// Hvis der ikke er ved at blive tilføjet en kant så fanges musen når en musetast trykkes ned. Dette bruges til at flytte punkter.
+		public void MouseDownClassBox(MouseButtonEventArgs e)
         {
             if (!isAddingEdge)
             {

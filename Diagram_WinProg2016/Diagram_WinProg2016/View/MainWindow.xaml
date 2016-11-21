@@ -32,11 +32,12 @@
                 <MenuItem Header ="_Exit"/>
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Undo"/>
-                <MenuItem Header="_Redo"/>
-                <MenuItem Header="_Copy"/>
-                <MenuItem Header="_Paste"/>
-                <MenuItem Header="_Delete"/>
+				<MenuItem Header="_Undo"/>
+				<MenuItem Header="_Redo"/>
+				<MenuItem Header="_Cut" Command="{Binding CutSelectedClassesCommand}"/>
+				<MenuItem Header="_Copy" Command="{Binding CopySelectedClassesCommand}"/>
+				<MenuItem Header="_Paste"  Command="{Binding PasteSelectedClassesCommand}"/>
+                <MenuItem Header="_Delete" Command="{Binding DeleteSelectedClassesCommand}"/>
             </MenuItem>
             <MenuItem Header="_Insert">
                 <MenuItem Header="_New Class" Command="{Binding AddClassCommand}"/>
