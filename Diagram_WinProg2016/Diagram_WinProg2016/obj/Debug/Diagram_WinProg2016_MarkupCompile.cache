@@ -4,28 +4,16 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
 C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\
-=======
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\
->>>>>>> origin/master
 Diagram_WinProg2016
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
 C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\View\App.xaml
 41063715946
 
 23925310578
 71-114815229
-=======
-C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\View\App.xaml
-41063715946
-
-19-910874231
-71-1998090447
->>>>>>> origin/master
 View\Arrows.xaml;View\ClassUserControl.xaml;View\MainWindow.xaml;View\RibbonUserControl.xaml;
 
 False

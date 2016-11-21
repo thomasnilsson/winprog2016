@@ -10,7 +10,6 @@ namespace Diagram_WinProg2016.Commands
 		private ObservableCollection<Class> copyBoxes;
 
 		public CopySelectedClassesCommand(ObservableCollection<Class> classBoxes, ObservableCollection<Class> copyBoxes) {
-			Trace.Write("Creating CopySelectedClassesCommand\n");
 			this.classBoxes = classBoxes;
 			this.copyBoxes = copyBoxes;
 			this.copyBoxes.Clear();
@@ -24,17 +23,8 @@ namespace Diagram_WinProg2016.Commands
 				{
 					Class copyClass = new Class(classItem);
 					copyBoxes.Add(copyClass);
-
+					classItem.IsSelected = false;
 				}
-			}
-			Trace.Write("Executing CopySelectedClassesCommand\n");
-			foreach (Class classItem in classBoxes)
-			{
-				Trace.Write("classBoxes contained item: " + classItem.ToString() + "\n");
-			}
-			foreach (Class classItem in copyBoxes)
-			{
-				Trace.Write("copyBoxes contained item: " + classItem.ToString() + "\n");
 			}
 		}
 

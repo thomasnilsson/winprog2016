@@ -16,7 +16,6 @@ namespace Diagram_WinProg2016.Commands
 		private ObservableCollection<Class> removeBoxes;
 
 		public CutSelectedClassesCommand(ObservableCollection<Class> classBoxes, ObservableCollection<Class> copyBoxes) {
-			Trace.Write("Creating CutSelectedClassesCommand\n");
 			this.classBoxes = classBoxes;
 			this.copyBoxes = copyBoxes;
 			removeBoxes = new ObservableCollection<Class>();
@@ -24,25 +23,17 @@ namespace Diagram_WinProg2016.Commands
 		}
 
 		public void Execute() {
-			Trace.Write("Executing CutSelectedClassesCommand\n");
 			foreach (Class classItem in classBoxes)
 			{
 				if(classItem.IsSelected) {
 					removeBoxes.Add(classItem);
 					Class copyClass = new Class(classItem);
 					copyBoxes.Add(classItem);
+					classItem.IsSelected = false;
 				}
 			}
 			foreach(Class classItem in removeBoxes) {
 				classBoxes.Remove(classItem);
-			}
-			foreach (Class classItem in classBoxes)
-			{
-				Trace.Write("classBoxes contained item: " + classItem.ToString() + "\n");
-			}
-			foreach (Class classItem in copyBoxes)
-			{
-				Trace.Write("copyBoxes contained item: " + classItem.ToString() + "\n");
 			}
 		}
 

@@ -8,9 +8,7 @@
 
     <Grid>
         <Path Stroke="DarkBlue" StrokeThickness="2" Data="{Binding databinderArrow}" StrokeDashArray="{Binding StrokeDashArrayBinder}"   />
-        <Path Stroke="Transparent" StrokeThickness="13" Data="{Binding databinderArrow}"/>
-        
-
-    </Grid>
+		<Path Stroke="Transparent" StrokeThickness="13" Data="{Binding databinderArrow}"/>
+	</Grid>
         
 </UserControl>
