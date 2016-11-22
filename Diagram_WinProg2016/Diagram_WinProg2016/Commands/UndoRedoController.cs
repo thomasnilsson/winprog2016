@@ -47,10 +47,12 @@ namespace Diagram_WinProg2016.Commands
         // Udfører undo hvis det kan lade sig gøre.
         public void Undo()
         {
-            if (undoStack.Count() <= 0) throw new InvalidOperationException();
+            if (undoStack.Count() > 0)
+	    {
             IUndoRedoCommand command = undoStack.Pop();
             redoStack.Push(command);
             command.UnExecute();
+	    }
         }
 
         // Sørger for at redo kun kan kaldes når der er kommandoer i redo stacken.
@@ -62,10 +64,12 @@ namespace Diagram_WinProg2016.Commands
         // Udfører redo hvis det kan lade sig gøre.
         public void Redo()
         {
-            if (redoStack.Count() <= 0) throw new InvalidOperationException();
+            if (redoStack.Count() > 0)
+	    {
             IUndoRedoCommand command = redoStack.Pop();
             undoStack.Push(command);
             command.Execute();
+	    }
         }
 
         public void Reset()
