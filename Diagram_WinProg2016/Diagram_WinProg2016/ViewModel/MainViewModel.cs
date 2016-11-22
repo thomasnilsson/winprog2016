@@ -93,15 +93,13 @@ namespace Diagram_WinProg2016.ViewModel
             OpenDiagram = new RelayCommand(OpenNewDiagram);
             SaveCommand = new RelayCommand(Save);
             SavePngCommand = new RelayCommand<Canvas>(saveScreen);
-            
 
-            isAddingEdge = false;
-            
-            Classes.Add(new Class(Classes.Count));
+			MouseDownClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClassBox);
+			MouseMoveClassBoxCommand = new RelayCommand<MouseEventArgs>(MouseMoveClassBox);
+			MouseUpClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpClassBox);
 
-            MouseDownClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClassBox);
-            MouseMoveClassBoxCommand = new RelayCommand<MouseEventArgs>(MouseMoveClassBox);
-            MouseUpClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpClassBox);
+			isAddingEdge = false;
+
         }
 
         //SAVE AS DIAGRAM

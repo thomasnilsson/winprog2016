@@ -11,41 +11,66 @@
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="Diagram App" Height="450" Width="720
         ">
-    <Window.Resources>
-        <!-- Dette DataTemplate fortæller vinduet hvordan Node klassen skal vises grafisk. Denne grafiske beskrivelse er samlet i NodeUserControl. -->
-        <DataTemplate DataType="{x:Type Model:Class}">
-            <View:ClassUserControl/>
-        </DataTemplate>
-    </Window.Resources>
+	<Window.Resources>
+		<!-- Dette DataTemplate fortæller vinduet hvordan Node klassen skal vises grafisk. Denne grafiske beskrivelse er samlet i NodeUserControl. -->
+		<DataTemplate DataType="{x:Type Model:Class}">
+			<View:ClassUserControl/>
+		</DataTemplate>
+	</Window.Resources>
+	<Window.InputBindings>
+		<KeyBinding Modifiers="Control"
+					Key="N"
+					Command="{Binding AddClassCommand}"/>
+		<KeyBinding Modifiers="Control"
+                    Key="Z"
+                    Command="{Binding UndoCommand}"/>
+		<KeyBinding Modifiers="Control"
+					Key="Y"
+					Command="{Binding RedoCommand}"/>
+		<KeyBinding Modifiers="Control+Shift"
+					Key="Z"
+					Command="{Binding RedoCommand}"/>
+		<KeyBinding Modifiers="Control"
+					Key="C"
+					Command="{Binding CopySelectedClassesCommand}"/>
+		<KeyBinding Modifiers="Control"
+					Key="X"
+					Command="{Binding CutSelectedClassesCommand}"/>
+		<KeyBinding Modifiers="Control"
+					Key="V"
+					Command="{Binding PasteSelectedClassesCommand}"/>
+		<KeyBinding Key="Delete"
+					Command="{Binding DeleteSelectedClassesCommand}"/>
+	</Window.InputBindings>
 
 
-    <DockPanel>
-        <!--<View:RibbonUserControl DockPanel.Dock="Top" Focusable="True" x:Name="QContol"/>-->
-        <Menu DockPanel.Dock="Top">
+	<DockPanel>
+		<View:RibbonUserControl DockPanel.Dock="Top" Focusable="True" x:Name="QContol"/>
+		<!--<Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_Open Diagram" Command="{Binding OpenDiagram}"/>
                 <MenuItem Header="_Save Diagram" Command="{Binding SaveCommand}"/>
                 <MenuItem Header="_Save as PNG" Command="{Binding SavePngCommand}" CommandParameter="{Binding ElementName=MainCanvas}"  />
-                <!--CommandParameter="{Binding ElementName=stack}-->
+                CommandParameter="{Binding ElementName=stack}
 
-                <MenuItem Header="_Export to PDF"/>
-                <MenuItem Header ="_Exit"/>
-            </MenuItem>
-            <MenuItem Header="_Edit">
-				<MenuItem Header="_Undo" Command="{Binding UndoCommand}"/>
-				<MenuItem Header="_Redo" Command="{Binding RedoCommand}"/>
-				<MenuItem Header="_Cut" Command="{Binding CutSelectedClassesCommand}"/>
-				<MenuItem Header="_Copy" Command="{Binding CopySelectedClassesCommand}"/>
-				<MenuItem Header="_Paste"  Command="{Binding PasteSelectedClassesCommand}"/>
-                <MenuItem Header="_Delete" Command="{Binding DeleteSelectedClassesCommand}"/>
-            </MenuItem>
-            <MenuItem Header="_Insert">
-                <MenuItem Header="_New Class" Command="{Binding AddClassCommand}"/>
-                <MenuItem Header="_New Arrow" Command="{Binding ArrowsCommand}"/>
-            </MenuItem>
-        </Menu>
+		<MenuItem Header="_Export to PDF"/>
+		<MenuItem Header ="_Exit"/>
+		</MenuItem>
+		<MenuItem Header="_Edit">
+			<MenuItem Header="_Undo" Command="{Binding UndoCommand}"/>
+			<MenuItem Header="_Redo" Command="{Binding RedoCommand}"/>
+			<MenuItem Header="_Cut" Command="{Binding CutSelectedClassesCommand}"/>
+			<MenuItem Header="_Copy" Command="{Binding CopySelectedClassesCommand}"/>
+			<MenuItem Header="_Paste"  Command="{Binding PasteSelectedClassesCommand}"/>
+			<MenuItem Header="_Delete" Command="{Binding DeleteSelectedClassesCommand}"/>
+		</MenuItem>
+		<MenuItem Header="_Insert">
+			<MenuItem Header="_New Class" Command="{Binding AddClassCommand}"/>
+			<MenuItem Header="_New Arrow" Command="{Binding ArrowsCommand}"/>
+		</MenuItem>
+		</Menu>-->
 
-        <Canvas x:Name="MainCanvas">
+		<Canvas x:Name="MainCanvas">
             <ItemsControl ItemsSource="{Binding Arrows}" Name="connector"/>
             <ItemsControl ItemsSource="{Binding Classes}" Name="class">
                 
