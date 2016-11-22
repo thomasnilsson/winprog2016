@@ -20,7 +20,7 @@ namespace Diagram_WinProg2016.Commands
 
         public AddClassCommand(ObservableCollection<Class> classBoxes) { 
             this.classBoxes = classBoxes;
-            classBox = new Class(this.classBoxes.Count + 1);
+            classBox = new Class();
         }
 
         public void Execute()

@@ -21,8 +21,14 @@ namespace Diagram_WinProg2016.Commands
 			{
 				if (classItem.IsSelected)
 				{
-					Class copyClass = new Class(classItem);
-					copyBoxes.Add(copyClass);
+					Class copyClass = new Class();
+                    copyClass.X = classItem.X;
+                    copyClass.Y = classItem.Y;
+                    copyClass.ClassName = classItem.ClassName;
+                    copyClass.FieldString = classItem.FieldString;
+                    copyClass.MethodString = classItem.MethodString;
+
+                    copyBoxes.Add(copyClass);
 					classItem.IsSelected = false;
 				}
 			}

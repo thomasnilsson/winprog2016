@@ -138,7 +138,7 @@ namespace Diagram_WinProg2016.ViewModel
                 foreach (Class tempClass in Load.tempClasses)
                 {
                     Classes.Add(tempClass);
-                    System.Console.WriteLine(tempClass.ID);
+                    System.Console.WriteLine();
                 }         
                 undoRedoController.Reset();
             }
