@@ -47,6 +47,7 @@ namespace Diagram_WinProg2016.ViewModel
 		public ICommand RedoCommand { get; set; }
 
         public ICommand SaveCommand { get; private set; }
+        public ICommand LoadCommand { get; private set; }
 
         public ICommand ArrowsCommand { get; private set; }
 
@@ -92,6 +93,7 @@ namespace Diagram_WinProg2016.ViewModel
             ArrowsCommand = new RelayCommand(AddArrow);
             OpenDiagram = new RelayCommand(OpenNewDiagram);
             SaveCommand = new RelayCommand(Save);
+            LoadCommand = new RelayCommand(Load);
             SavePngCommand = new RelayCommand<Canvas>(saveScreen);
 
 			MouseDownClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClassBox);
