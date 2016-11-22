@@ -14,9 +14,10 @@
             <!-- Quick Access Toolbar - located at the upper-left corner -->
             <Ribbon.QuickAccessToolBar>
                 <RibbonQuickAccessToolBar Margin="0 2px 0 0">
-                    <RibbonButton x:Name ="Save" SmallImageSource="..\Images\save_small.png" Command="{Binding SaveCommand}" ToolTipTitle="CTRL+S" />
-                    
-                </RibbonQuickAccessToolBar>
+					<!--<RibbonButton x:Name ="New"  SmallImageSource="..\Images\add.png" ="{Binding NewCommand}" ToolTipTitle="Control + L" />
+					<RibbonButton x:Name ="Load"  SmallImageSource="..\Images\open.png" Command="{Binding OpenCommand}" ToolTipTitle="Control + L" />-->
+					<RibbonButton x:Name ="Save" SmallImageSource="..\Images\save_small.png" Command="{Binding SaveCommand}" ToolTipTitle="Control + S" />
+				</RibbonQuickAccessToolBar>
             </Ribbon.QuickAccessToolBar>
             <!-- Application Menu, located at the left-hand side (down arrow) -->
             <Ribbon.ApplicationMenu>
