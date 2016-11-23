@@ -36,6 +36,8 @@ namespace Diagram_WinProg2016.ViewModel
 		public ICommand MouseDownClassBoxCommand { get; private set; }
         public ICommand MouseMoveClassBoxCommand { get; private set; }
         public ICommand MouseUpClassBoxCommand { get; private set; }
+	public ICommand MouseDownEdgeCommand { get; private set; }
+        public ICommand MouseUpEdgeCommand { get; private set; }
 
         public ICommand AddClassCommand { get; private set; }
 		public ICommand DeleteSelectedClassesCommand { get; private set; }
@@ -58,18 +60,20 @@ namespace Diagram_WinProg2016.ViewModel
 
         public ObservableCollection<Class> ClassBoxes { get; set; }
 
-        public ObservableCollection<ConnectorViewModel> Arrows { get; set; }
+	public ObservableCollection<Connector> Arrows { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         //public ObservableCollection<Class> SelectedClassBox { get; set; }
         public object ExportToImage { get; private set; }
 
+	public Connector selectedArrow;
         // Er der ved at blive tilfojet en kant?
         private bool isAddingEdge = false;
 
         //Punkter når der flyttes rundt. 
         private Point moveClassBoxPoint;// Gemmer det første punkt som punktet har under en flytning.
         private Point offsetPosition; //Bruges så klassen bliver flyttet flot rundt
+	private Class addingEdgeFromA;
         private int oldPosX; // bruges naar moveClassCommand kaldes
         private int oldPosY;// bruges naar moveClassCommand kaldes
 
@@ -87,11 +91,10 @@ namespace Diagram_WinProg2016.ViewModel
 
 			UndoCommand = new RelayCommand(Undo);
 			RedoCommand = new RelayCommand(Redo);
-
-
-            Arrows = new ObservableCollection<ConnectorViewModel>();
-            ArrowsCommand = new RelayCommand(AddArrow);
-            OpenDiagram = new RelayCommand(OpenNewDiagram);
+     
+			Arrows = new ObservableCollection<Connector>();
+		        ArrowsCommand = new RelayCommand(AddArrow);
+	    OpenDiagram = new RelayCommand(OpenNewDiagram);
             SaveCommand = new RelayCommand(Save);
             LoadCommand = new RelayCommand(Load);
             SavePngCommand = new RelayCommand<Canvas>(saveScreen);
@@ -223,8 +226,11 @@ namespace Diagram_WinProg2016.ViewModel
             }
         }
         //Add new arrow
-        public void AddArrow()
+         public void AddArrow()
         {
+            isAddingEdge = true;
+            
+
 
         }
 
@@ -283,6 +289,30 @@ namespace Diagram_WinProg2016.ViewModel
 
 
 
+ public void MouseDownEdge(MouseButtonEventArgs e)
+        {
+            if (!isAddingEdge)
+            {
+                if (ClassBoxes.Count == 1)
+                {
+                    ClassBoxes.ElementAt(0).IsSelected = false;
+                    ClassBoxes.Clear();
+                }
+                e.MouseDevice.Target.CaptureMouse();
+                FrameworkElement edgeElement = (FrameworkElement)e.MouseDevice.Target;
+                Connector edge = (Connector)edgeElement.DataContext;
+                edge.IsSelected = true;
+                if (selectedArrow != null)
+                {
+                    selectedArrow.IsSelected = false;
+                }
+                selectedArrow = edge;
+            }
+        }
+        public void MouseUpEdge(MouseButtonEventArgs e)
+        {
+            e.MouseDevice.Target.ReleaseMouseCapture();
+        }
 
 		// Action for Mouse down trigger on ClassBox
 		// Hvis der ikke er ved at blive tilføjet en kant så fanges musen når en musetast trykkes ned. Dette bruges til at flytte punkter.
