@@ -7,7 +7,8 @@ namespace Diagram_WinProg2016.ViewModel
 	public class ConnectorViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private EConnector startNode;
+        private Connector startNode;
+
 
 	}
 }

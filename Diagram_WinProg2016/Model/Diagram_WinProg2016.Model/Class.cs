@@ -10,9 +10,15 @@
         public int X { get { return x; } set { x = value; ; NotifyPropertyChanged(); } }
         public int Y { get { return y; } set { y = value; ; NotifyPropertyChanged(); } }
         public string ClassName { get { return className; } set { className = value; ; NotifyPropertyChanged(); } }
+        private int width, height;
+        public int Width { get { return width; } set { width = value; NotifyPropertyChanged(); } }
+        public int Height { get { return height; } set { height = value; NotifyPropertyChanged(); } }
         public string MethodString { get { return methodstring; } set { methodstring = value; ; NotifyPropertyChanged(); } }
         public string FieldString { get { return fieldstring; } set { fieldstring = value; ; NotifyPropertyChanged(); } }
 		public bool IsSelected { get { return isSelected; } set { isSelected = value; NotifyPropertyChanged(); } }
+
+        public int centeroffX { get { return X + Width / 2; } set { X = value - Width / 2; NotifyPropertyChanged(); } }
+        public int centeroffY { get { return Y + Height / 2; } set { X = value - Height / 2; NotifyPropertyChanged(); } }
 
 		//Default Constructor
 		public Class(int ID)

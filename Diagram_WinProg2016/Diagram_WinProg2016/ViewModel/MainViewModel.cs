@@ -32,8 +32,10 @@ namespace Diagram_WinProg2016.ViewModel
         public ObservableCollection<Class> Classes{ get; set; }
 		public ObservableCollection<Class> CopiedClasses { get; set; }
 
-		//commands
-		public ICommand MouseDownClassBoxCommand { get; private set; }
+        //commands
+        public ICommand MouseDownEdgeCommand { get; private set; }
+        public ICommand MouseUpEdgeCommand { get; private set; }
+        public ICommand MouseDownClassBoxCommand { get; private set; }
         public ICommand MouseMoveClassBoxCommand { get; private set; }
         public ICommand MouseUpClassBoxCommand { get; private set; }
 
@@ -55,7 +57,7 @@ namespace Diagram_WinProg2016.ViewModel
 
         public ObservableCollection<Class> ClassBoxes { get; set; }
 
-        public ObservableCollection<ConnectorViewModel> Arrows { get; set; }
+        public ObservableCollection<Connector> Arrows { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         //public ObservableCollection<Class> SelectedClassBox { get; set; }
@@ -63,17 +65,19 @@ namespace Diagram_WinProg2016.ViewModel
 
         // Er der ved at blive tilfojet en kant?
         private bool isAddingEdge = false;
+        public Connector selectedArrow;
 
         //Punkter når der flyttes rundt. 
         private Point moveClassBoxPoint;// Gemmer det første punkt som punktet har under en flytning.
         private Point offsetPosition; //Bruges så klassen bliver flyttet flot rundt
+        private Class addingEdgeFromA;  
         private int oldPosX; // bruges naar moveClassCommand kaldes
         private int oldPosY;// bruges naar moveClassCommand kaldes
 
         public MainViewModel()
         {
             Classes = new ObservableCollection<Class>();
-
+            isAddingEdge = false;
 			CopiedClasses = new ObservableCollection<Class>();
 
             AddClassCommand = new RelayCommand(AddClassBox);
@@ -83,17 +87,17 @@ namespace Diagram_WinProg2016.ViewModel
 			PasteSelectedClassesCommand = new RelayCommand(PasteSelectedClasses);
 
 
-            Arrows = new ObservableCollection<ConnectorViewModel>();
+            Arrows = new ObservableCollection<Connector>();
             ArrowsCommand = new RelayCommand(AddArrow);
             OpenDiagram = new RelayCommand(OpenNewDiagram);
             SaveCommand = new RelayCommand(Save);
             SavePngCommand = new RelayCommand<Canvas>(saveScreen);
-            
-
-            isAddingEdge = false;
+           
             
             Classes.Add(new Class(Classes.Count));
 
+            MouseDownEdgeCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownEdge);
+            MouseUpEdgeCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpEdge);
             MouseDownClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClassBox);
             MouseMoveClassBoxCommand = new RelayCommand<MouseEventArgs>(MouseMoveClassBox);
             MouseUpClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpClassBox);
@@ -220,6 +224,9 @@ namespace Diagram_WinProg2016.ViewModel
         //Add new arrow
         public void AddArrow()
         {
+            isAddingEdge = true;
+            
+
 
         }
 
@@ -267,14 +274,37 @@ namespace Diagram_WinProg2016.ViewModel
 			}
 		}
 
-		//////////////////Mouse actions//////////////////////////////////
+        //////////////////Mouse actions//////////////////////////////////
+
+        public void MouseDownEdge(MouseButtonEventArgs e)
+        {
+            if (!isAddingEdge)
+            {
+                if (ClassBoxes.Count == 1)
+                {
+                    ClassBoxes.ElementAt(0).IsSelected = false;
+                    ClassBoxes.Clear();
+                }
+                e.MouseDevice.Target.CaptureMouse();
+                FrameworkElement edgeElement = (FrameworkElement)e.MouseDevice.Target;
+                Connector edge = (Connector)edgeElement.DataContext;
+                edge.IsSelected = true;
+                if (selectedArrow != null)
+                {
+                    selectedArrow.IsSelected = false;
+                }
+                selectedArrow = edge;
+            }
+        }
+        public void MouseUpEdge(MouseButtonEventArgs e)
+        {
+            e.MouseDevice.Target.ReleaseMouseCapture();
+        }
 
 
-
-
-		// Action for Mouse down trigger on ClassBox
-		// Hvis der ikke er ved at blive tilføjet en kant så fanges musen når en musetast trykkes ned. Dette bruges til at flytte punkter.
-		public void MouseDownClassBox(MouseButtonEventArgs e)
+        // Action for Mouse down trigger on ClassBox
+        // Hvis der ikke er ved at blive tilføjet en kant så fanges musen når en musetast trykkes ned. Dette bruges til at flytte punkter.
+        public void MouseDownClassBox(MouseButtonEventArgs e)
         {
             if (!isAddingEdge)
             {
@@ -333,7 +363,16 @@ namespace Diagram_WinProg2016.ViewModel
             FrameworkElement movingClass = (FrameworkElement)e.MouseDevice.Target;
             Class movingClassBox = (Class)movingClass.DataContext;
 
-            if (moveClassBoxPoint != default(Point))
+            if (isAddingEdge)
+            {
+                if (addingEdgeFromA == null)
+                {
+                    addingEdgeFromA = movingClassBox;
+                    addingEdgeFromA.IsSelected = true;
+                }
+            }
+            
+           if (moveClassBoxPoint != default(Point))
             {
                 Canvas canvas = FindParentOfType<Canvas>(movingClass);
                 Point mousePosition = Mouse.GetPosition(canvas);
