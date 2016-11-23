@@ -1,4 +1,4 @@
-﻿using Diagram_WinProg2016.Commands;
+using Diagram_WinProg2016.Commands;
 using Diagram_WinProg2016.Model;
 using Diagram_WinProg2016.ViewModel;
 using System.Collections.ObjectModel;
@@ -11,28 +11,23 @@ using System.Threading.Tasks;
 
 namespace Diagram_WinProg2016.Commands
 {
-    public class AddArrowCommand : IUndoRedoCommand
-
+    public class AddArrowsCommand : IUndoRedoCommand
     {
-        private ObservableCollection<ConnectorViewModel> arrows;
-        private ConnectorViewModel _addArrow;
+        private ObservableCollection<Connector> arrows;
+        private Connector addingTheArrow;
+        public AddArrowsCommand(ObservableCollection<Connector> _addArrow, Class _startClass, Class _endClass) { arrows = _addArrow; addingTheArrow = new Connector(_startClass, _endClass); }
 
-        public AddArrowCommand(ObservableCollection<ConnectorViewModel> _arrows, ConnectorViewModel newArrows)
-        {
-            arrows = _arrows;
-            _addArrow = newArrows;
-
-        }
+        //undoRedoController.AddAndExecute(new ArrowsCommand(Edges, addingEdgeFromA, (Class)movingClass.DataContext));
 
 
         void IUndoRedoCommand.Execute()
         {
-            arrows.Add(_addArrow);
+            arrows.Add(addingTheArrow);
         }
 
         void IUndoRedoCommand.UnExecute()
         {
-            arrows.Remove(_addArrow);
+            arrows.Remove(addingTheArrow);
         }
     }
 
