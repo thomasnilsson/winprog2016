@@ -1,14 +1,36 @@
 <UserControl x:Class="Diagram_WinProg2016.View.Arrows"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="100">
-
-    <Grid>
-        <Path Stroke="DarkBlue" StrokeThickness="2" Data="{Binding databinderArrow}" StrokeDashArray="{Binding StrokeDashArrayBinder}"   />
-		<Path Stroke="Transparent" StrokeThickness="13" Data="{Binding databinderArrow}"/>
-	</Grid>
-        
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+             d:DesignHeight="100" d:DesignWidth="100" >
+    <!-- App wide Resources -->
+    <Canvas>
+        <!-- Mouse triggers -->
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseDown">
+                <cmd:EventToCommand Command="{Binding DataContext.MouseDownEdgeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="MouseUp">
+                <cmd:EventToCommand Command="{Binding DataContext.MouseUpEdgeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <!-- Edge design and data binding -->
+        <Polyline Points="{Binding Points}" StrokeThickness="3">
+            <Polyline.Style>
+                <Style TargetType="{x:Type Polyline}">
+                    <Setter Property="Stroke" Value="{Binding SelectedColor}" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Stroke" Value="DarkBlue">
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Polyline.Style>
+        </Polyline>
+    </Canvas>
 </UserControl>
