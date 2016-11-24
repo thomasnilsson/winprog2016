@@ -32,11 +32,12 @@ namespace Diagram_WinProg2016.ViewModel
         public ObservableCollection<Class> Classes{ get; set; }
 		public ObservableCollection<Class> CopiedClasses { get; set; }
 
-		//commands
-		public ICommand MouseDownClassBoxCommand { get; private set; }
+        private EdgeType type = EdgeType.NOR;
+        //commands
+        public ICommand MouseDownClassBoxCommand { get; private set; }
         public ICommand MouseMoveClassBoxCommand { get; private set; }
         public ICommand MouseUpClassBoxCommand { get; private set; }
-	public ICommand MouseDownEdgeCommand { get; private set; }
+	    public ICommand MouseDownEdgeCommand { get; private set; }
         public ICommand MouseUpEdgeCommand { get; private set; }
 
         public ICommand AddClassCommand { get; private set; }
@@ -51,7 +52,12 @@ namespace Diagram_WinProg2016.ViewModel
         public ICommand SaveCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
 
-        public ICommand ArrowsCommand { get; private set; }
+        public ICommand AddAGGCommand { get; private set; }
+        public ICommand AddASSCommand { get; private set; }
+        public ICommand AddCOMCommand { get; private set; }
+        public ICommand AddDEPCommand { get; private set; }
+        public ICommand AddGENCommand { get; private set; }
+        public ICommand AddNORCommand { get; private set; }
 
         public ICommand SavePngCommand { get; private set; }
 
@@ -60,15 +66,25 @@ namespace Diagram_WinProg2016.ViewModel
 
         public ObservableCollection<Class> ClassBoxes { get; set; }
 
-	public ObservableCollection<Connector> Arrows { get; set; }
+	public ObservableCollection<Edge> Arrows { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         //public ObservableCollection<Class> SelectedClassBox { get; set; }
         public object ExportToImage { get; private set; }
+        private NodeViewModel focusedClass = null;
+        public NodeViewModel FocusedClass { get { return focusedClass; } private set { if (focusedClass != null) { FocusedClass.Selected = false; } focusedClass = value; if (focusedClass == null) { IsFocused = false; } else { IsFocused = true; FocusedClass.Selected = true; FocusedEdge = null; }; } }
 
-	public Connector selectedArrow;
+
+        private bool edgeIsFocused = false;
+        public bool EdgeIsFocused { get { return edgeIsFocused; } set { edgeIsFocused = value; RaisePropertyChanged(() => EdgeIsFocused); RaisePropertyChanged(() => DeleteActive); } }
+        private EdgeViewModel focusedEdge = null;
+        public EdgeViewModel FocusedEdge { get { return focusedEdge; } private set { if (focusedEdge != null) { FocusedEdge.Selected = false; } focusedEdge = value; if (focusedEdge == null) { EdgeIsFocused = false; } else { EdgeIsFocused = true; FocusedEdge.Selected = true; FocusedClass = null; }; } }
+
+        public ObservableCollection<EdgeViewModel> Edges { get; set; }
+        public Edge selectedArrow;
         // Er der ved at blive tilfojet en kant?
         private bool isAddingEdge = false;
+        private NodeViewModel startEdge;
 
         //Punkter når der flyttes rundt. 
         private Point moveClassBoxPoint;// Gemmer det første punkt som punktet har under en flytning.
@@ -92,9 +108,9 @@ namespace Diagram_WinProg2016.ViewModel
 			UndoCommand = new RelayCommand(Undo);
 			RedoCommand = new RelayCommand(Redo);
      
-			Arrows = new ObservableCollection<Connector>();
-		        ArrowsCommand = new RelayCommand(AddArrow);
-	    OpenDiagram = new RelayCommand(OpenNewDiagram);
+			
+            Edges = new ObservableCollection<EdgeViewModel>();
+            OpenDiagram = new RelayCommand(OpenNewDiagram);
             SaveCommand = new RelayCommand(Save);
             LoadCommand = new RelayCommand(Load);
             SavePngCommand = new RelayCommand<Canvas>(saveScreen);
@@ -226,12 +242,49 @@ namespace Diagram_WinProg2016.ViewModel
             }
         }
         //Add new arrow
-         public void AddArrow()
+
+
+        public void AddEdge()
         {
+            StatusBar = "Adding edge, press at the start node";
             isAddingEdge = true;
-            
+            FocusedClass = null;
+            FocusedEdge = null;
+        }
+        public void AddAGG()
+        {
+            type = EdgeType.AGG;
+            AddEdge();
+        }
 
+        public void AddASS()
+        {
+            type = EdgeType.ASS;
+            AddEdge();
+        }
 
+        public void AddCOM()
+        {
+            type = EdgeType.COM;
+            AddEdge();
+        }
+
+        public void AddDEP()
+        {
+            type = EdgeType.DEP;
+            AddEdge();
+        }
+
+        public void AddGEN()
+        {
+            type = EdgeType.GEN;
+            AddEdge();
+        }
+
+        public void AddNOR()
+        {
+            type = EdgeType.NOR;
+            AddEdge();
         }
 
         //ADD NEW CLASS
@@ -300,7 +353,7 @@ namespace Diagram_WinProg2016.ViewModel
                 }
                 e.MouseDevice.Target.CaptureMouse();
                 FrameworkElement edgeElement = (FrameworkElement)e.MouseDevice.Target;
-                Connector edge = (Connector)edgeElement.DataContext;
+                Edge edge = (Edge)edgeElement.DataContext;
                 edge.IsSelected = true;
                 if (selectedArrow != null)
                 {

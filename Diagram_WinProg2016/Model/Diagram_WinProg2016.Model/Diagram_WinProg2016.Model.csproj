@@ -41,10 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connector.cs" />
+    <Compile Include="Edge.cs" />
     <Compile Include="Class.cs" />
     <Compile Include="EConnector.cs" />
     <Compile Include="Diagram.cs" />
+    <Compile Include="EdgeType.cs" />
     <Compile Include="IClass.cs" />
     <Compile Include="IConnector.cs" />
     <Compile Include="NotifyBase.cs" />

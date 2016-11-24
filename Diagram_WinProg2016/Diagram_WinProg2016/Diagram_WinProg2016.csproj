@@ -87,11 +87,12 @@
     <Compile Include="Commands\UndoRedoController.cs" />
     <Compile Include="Commands\PasteSelectedClassesCommand.cs" />
     <Compile Include="ViewModel\ClassViewModel.cs" />
+    <Compile Include="ViewModel\EdgeViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\RibbonUserControl.xaml.cs">
       <DependentUpon>RibbonUserControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Arrows.xaml">
+    <Page Include="View\EdgeUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,8 +110,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Arrows.xaml.cs">
-      <DependentUpon>Arrows.xaml</DependentUpon>
+    <Compile Include="View\EdgeUserControl.xaml.cs">
+      <DependentUpon>EdgeUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ClassUserControl.xaml.cs">
       <DependentUpon>ClassUserControl.xaml</DependentUpon>
