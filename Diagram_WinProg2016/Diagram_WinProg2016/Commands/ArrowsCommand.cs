@@ -11,27 +11,26 @@ using System.Threading.Tasks;
 
 namespace Diagram_WinProg2016.Commands
 {
-    public class AddArrowsCommand : IUndoRedoCommand
+    class AddEdgeCommand : IUndoRedoCommand
     {
-        private ObservableCollection<Connector> arrows;
-        private Connector addingTheArrow;
-        public AddArrowsCommand(ObservableCollection<Connector> _addArrow, Class _startClass, Class _endClass) { arrows = _addArrow; addingTheArrow = new Connector(_startClass, _endClass); }
 
-        //undoRedoController.AddAndExecute(new ArrowsCommand(Edges, addingEdgeFromA, (Class)movingClass.DataContext));
+        private ObservableCollection<EdgeViewModel> edges;
+        private EdgeViewModel _edge;
 
-
-        void IUndoRedoCommand.Execute()
+        public AddEdgeCommand(ObservableCollection<EdgeViewModel> _edges, EdgeViewModel newEdge)
         {
-            arrows.Add(addingTheArrow);
+            edges = _edges;
+            _edge = newEdge;
         }
 
-        void IUndoRedoCommand.UnExecute()
+        public void Execute()
         {
-            arrows.Remove(addingTheArrow);
+            edges.Add(_edge);
         }
-    }
 
-    internal interface IObservableCollection<T>
-    {
+        public void UnExecute()
+        {
+            edges.Remove(_edge);
+        }
     }
 }

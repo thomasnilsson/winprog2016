@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace Diagram_WinProg2016.Model
 {
-	public class Diagram
-	{
-		public List<Class> classes { get; set; }
-		public List<Edge> connectors { get; set; }
-	}
+    public enum EdgeType
+    { AGG, ASS, COM, DEP, GEN, NOR }
 }
