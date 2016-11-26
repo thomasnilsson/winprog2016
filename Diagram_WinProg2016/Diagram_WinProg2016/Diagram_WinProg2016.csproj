@@ -83,7 +83,6 @@
     <Compile Include="Commands\DeleteSelectedClassesCommand.cs" />
     <Compile Include="Commands\IUndoRedoCommand.cs" />
     <Compile Include="Commands\MoveClassCommand.cs" />
-    <Compile Include="Commands\SavePngCommand.cs" />
     <Compile Include="Commands\UndoRedoController.cs" />
     <Compile Include="Commands\PasteSelectedClassesCommand.cs" />
     <Compile Include="ViewModel\ClassViewModel.cs" />

@@ -18,9 +18,8 @@
 
 			<!-- Hovedinholdet er iden for denne border -->
 			<StackPanel>
-				<Grid>
-
-					<!--top-fanen som bruges til muserinteraktioner når elementet flyttes-->
+                <Grid>
+                    <!--top-fanen som bruges til muserinteraktioner når elementet flyttes-->
 					<Rectangle Fill="CornflowerBlue" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="200">
 						<i:Interaction.Triggers>
 							<i:EventTrigger EventName="MouseDown">

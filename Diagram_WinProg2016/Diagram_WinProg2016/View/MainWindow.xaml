@@ -10,6 +10,7 @@
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="Class Diagrammer"
+        WindowState="Maximized"
         >
     <Window.Resources>
         <DataTemplate DataType="{x:Type Model:Class}">
@@ -96,26 +97,25 @@
             </Ribbon>
         </Grid>
 
-        <Canvas x:Name="MainCanvas" Background="LightSlateGray">
+        <Grid Background="#242424"> <!--this sets the back ground color, this won't be included when exported to PNG however.-->
+        <Canvas x:Name="MainCanvas" DockPanel.Dock="Bottom" Height="Auto">
             <ItemsControl ItemsSource="{Binding Arrows}" Name="connector"/>
-            <ItemsControl ItemsSource="{Binding Classes}" Name="class">
-                
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Canvas/>
+                <ItemsControl ItemsSource="{Binding Classes}" Name="class">
 
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemContainerStyle>
-                    <Style TargetType="ContentPresenter">
-                        <Setter Property="Canvas.Left" Value="{Binding X}"/>
-                        <Setter Property="Canvas.Top" Value="{Binding Y}"/>
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                            <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
 
-            </ItemsControl>
-
-        </Canvas>
-
+                </ItemsControl>
+            </Canvas>
+        </Grid>
     </DockPanel>
 </Window>
