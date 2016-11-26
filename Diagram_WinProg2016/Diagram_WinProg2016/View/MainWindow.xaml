@@ -9,7 +9,7 @@
         xmlns:local="clr-namespace:Diagram_WinProg2016"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
-        Title="Diagram App" Height="450" Width="720
+        Title="Diagram App" Height="720" Width="1366
         ">
 	<Window.Resources>
 		<!-- Dette DataTemplate fortæller vinduet hvordan Node klassen skal vises grafisk. Denne grafiske beskrivelse er samlet i NodeUserControl. -->
@@ -45,8 +45,53 @@
 
 
 	<DockPanel>
-		<View:RibbonUserControl DockPanel.Dock="Top" Focusable="True" x:Name="QContol"/>
-		<!--<Menu DockPanel.Dock="Top">
+		<!--<View:RibbonUserControl DockPanel.Dock="Top" Focusable="True" x:Name="QContol"/>-->
+        <Grid DockPanel.Dock="Top" Focusable="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Ribbon x:Name="RibbonWin"  SelectedIndex="0">
+                <!-- Quick Access Toolbar - located at the upper-left corner -->
+                <Ribbon.QuickAccessToolBar>
+                    <RibbonQuickAccessToolBar Margin="0 2px 0 0">
+                        <!--<RibbonButton x:Name ="New"  SmallImageSource="..\Images\add.png" ="{Binding NewCommand}" ToolTipTitle="Control + L" />
+					<RibbonButton x:Name ="Load"  SmallImageSource="..\Images\open.png" Command="{Binding OpenCommand}" ToolTipTitle="Control + L" />-->
+                        <RibbonButton x:Name ="Save" SmallImageSource="..\Images\save_small.png" Command="{Binding SaveCommand}" ToolTipTitle="Control + S" />
+                    </RibbonQuickAccessToolBar>
+                </Ribbon.QuickAccessToolBar>
+                <!-- Application Menu, located at the left-hand side (down arrow) -->
+                <Ribbon.ApplicationMenu>
+                    <RibbonApplicationMenu KeyTip="F">
+                        <RibbonApplicationMenuItem Header="Open" ImageSource="..\Images\open.png" Command="{Binding LoadCommand}" />
+                        <RibbonApplicationMenuItem Header="Save" ImageSource="..\Images\save.png" Command="{Binding SaveCommand}" />
+                        <RibbonApplicationMenuItem Header="Export" ImageSource="..\Images\export.png" Command="{Binding SavePngCommand}" CommandParameter="{Binding ElementName=MainCanvas}" />
+                        <!--<RibbonApplicationMenuItem Header="Exit" ImageSource="..\Images\quit.png" Command ="{Binding ExitCommand}"/>-->
+                    </RibbonApplicationMenu>
+                </Ribbon.ApplicationMenu>
+                <!-- Ribbon Tab #1: Home -->
+                <RibbonTab Header="Home" KeyTip="H" >
+                    <!-- Home  group-->
+                    <RibbonGroup x:Name="ClipboardGroup" Header="Clipboard">
+                        <RibbonButton LargeImageSource="..\Images\copy.png" Label="Copy" KeyTip="C" Command="{Binding CopySelectedClassesCommand}" IsEnabled="{Binding CanCopy}" ToolTipTitle="Control + C" />
+                        <RibbonButton LargeImageSource="..\Images\cut.png" Label="Cut" KeyTip="X" Command="{Binding CutSelectedClassesCommand}" IsEnabled="{Binding CanCut}" ToolTipTitle="Control + X" />
+                        <RibbonButton LargeImageSource="..\Images\paste.png" Label="Paste" KeyTip="V" Command="{Binding PasteSelectedClassesCommand}" IsEnabled="{Binding CanPaste}" ToolTipTitle="Control +V" />
+                    </RibbonGroup>
+                    <RibbonGroup x:Name="EditGroup" Header="Edit">
+                        <RibbonButton LargeImageSource="..\Images\delete.png" Label="Delete" KeyTip="D" Command="{Binding DeleteSelectedClassesCommand}" IsEnabled="{Binding CanDelete}" ToolTipTitle="Del"/>
+                        <RibbonButton LargeImageSource="..\Images\undo.png" Label="Undo" KeyTip="Z" Command="{Binding UndoCommand}" IsEnabled="{Binding CanUndo}" ToolTipTitle="Control + Z"  />
+                        <RibbonButton LargeImageSource="..\Images\redo.png" Label="Redo" KeyTip="Y" Command="{Binding RedoCommand}"  IsEnabled="{Binding CanRedo}" ToolTipTitle="Control + Y / Control + Shift + Z" />
+                    </RibbonGroup>
+                    <RibbonGroup x:Name="ClassGroup" Header="Classes">
+                        <RibbonButton LargeImageSource="../Images/class.png" Label="Class" Command="{Binding AddClassCommand}" ToolTipTitle="Control + N" />
+                    </RibbonGroup>
+                    <RibbonGroup x:Name="ArrowGroup" Header="Arrows">
+                        <RibbonButton SmallImageSource="../Images/assosiation.png" Label="New Arrow" Command="{Binding AddArrowCommand}"/>
+                    </RibbonGroup>
+                </RibbonTab>
+            </Ribbon>
+        </Grid>
+        <!--<Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_Open Diagram" Command="{Binding OpenDiagram}"/>
                 <MenuItem Header="_Save Diagram" Command="{Binding SaveCommand}"/>

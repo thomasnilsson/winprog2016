@@ -71,20 +71,20 @@ namespace Diagram_WinProg2016.ViewModel
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         //public ObservableCollection<Class> SelectedClassBox { get; set; }
         public object ExportToImage { get; private set; }
-        private NodeViewModel focusedClass = null;
-        public NodeViewModel FocusedClass { get { return focusedClass; } private set { if (focusedClass != null) { FocusedClass.Selected = false; } focusedClass = value; if (focusedClass == null) { IsFocused = false; } else { IsFocused = true; FocusedClass.Selected = true; FocusedEdge = null; }; } }
+        private Class focusedClass = null;
+        //public Class FocusedClass { get { return focusedClass; } private set { if (focusedClass != null) { FocusedClass.IsSelected = false; } focusedClass = value; if (focusedClass == null) { IsFocused = false; } else { IsFocused = true; FocusedClass.Selected = true; FocusedEdge = null; }; } }
 
 
         private bool edgeIsFocused = false;
-        public bool EdgeIsFocused { get { return edgeIsFocused; } set { edgeIsFocused = value; RaisePropertyChanged(() => EdgeIsFocused); RaisePropertyChanged(() => DeleteActive); } }
-        private EdgeViewModel focusedEdge = null;
-        public EdgeViewModel FocusedEdge { get { return focusedEdge; } private set { if (focusedEdge != null) { FocusedEdge.Selected = false; } focusedEdge = value; if (focusedEdge == null) { EdgeIsFocused = false; } else { EdgeIsFocused = true; FocusedEdge.Selected = true; FocusedClass = null; }; } }
+        //public bool EdgeIsFocused { get { return edgeIsFocused; } set { edgeIsFocused = value; RaisePropertyChanged(() => EdgeIsFocused); RaisePropertyChanged(() => DeleteActive); } }
+        private Edge focusedEdge = null;
+        //public Edge FocusedEdge { get { return focusedEdge; } private set { if (focusedEdge != null) { FocusedEdge.Selected = false; } focusedEdge = value; if (focusedEdge == null) { EdgeIsFocused = false; } else { EdgeIsFocused = true; FocusedEdge.Selected = true; FocusedClass = null; }; } }
 
-        public ObservableCollection<EdgeViewModel> Edges { get; set; }
+        public ObservableCollection<Edge> Edges { get; set; }
         public Edge selectedArrow;
         // Er der ved at blive tilfojet en kant?
         private bool isAddingEdge = false;
-        private NodeViewModel startEdge;
+        private Class startEdge;
 
         //Punkter når der flyttes rundt. 
         private Point moveClassBoxPoint;// Gemmer det første punkt som punktet har under en flytning.
@@ -109,7 +109,7 @@ namespace Diagram_WinProg2016.ViewModel
 			RedoCommand = new RelayCommand(Redo);
      
 			
-            Edges = new ObservableCollection<EdgeViewModel>();
+            Edges = new ObservableCollection<Edge>();
             OpenDiagram = new RelayCommand(OpenNewDiagram);
             SaveCommand = new RelayCommand(Save);
             LoadCommand = new RelayCommand(Load);
@@ -246,10 +246,10 @@ namespace Diagram_WinProg2016.ViewModel
 
         public void AddEdge()
         {
-            StatusBar = "Adding edge, press at the start node";
+            //StatusBar = "Adding edge, press at the start node";
             isAddingEdge = true;
-            FocusedClass = null;
-            FocusedEdge = null;
+            //FocusedClass = null;
+            //FocusedEdge = null;
         }
         public void AddAGG()
         {
@@ -353,13 +353,13 @@ namespace Diagram_WinProg2016.ViewModel
                 }
                 e.MouseDevice.Target.CaptureMouse();
                 FrameworkElement edgeElement = (FrameworkElement)e.MouseDevice.Target;
-                Edge edge = (Edge)edgeElement.DataContext;
-                edge.IsSelected = true;
-                if (selectedArrow != null)
-                {
-                    selectedArrow.IsSelected = false;
-                }
-                selectedArrow = edge;
+                //Edge edge = (Edge)edgeElement.DataContext;
+                //edge.IsSelected = true;
+                //if (selectedArrow != null)
+                //{
+                //    selectedArrow.IsSelected = false;
+                //}
+                //selectedArrow = edge;
             }
         }
         public void MouseUpEdge(MouseButtonEventArgs e)

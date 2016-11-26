@@ -107,8 +107,6 @@ C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.g.cs
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml
-C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.g.cs
-C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml
 C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.exe.config
 C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.exe
 C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.pdb
@@ -214,3 +212,5 @@ C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.g.cs
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
+C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\EdgeUserControl.baml
+C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\EdgeUserControl.g.cs
