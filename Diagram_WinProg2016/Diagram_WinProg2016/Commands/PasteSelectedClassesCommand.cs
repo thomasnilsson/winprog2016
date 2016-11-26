@@ -23,8 +23,8 @@ namespace Diagram_WinProg2016.Commands
 			foreach (Class classItem in copyBoxes)
 			{
                 Class newClass = new Class();
-                newClass.X = classItem.X;
-                newClass.Y = classItem.Y;
+                newClass.X = classItem.X + 20;
+                newClass.Y = classItem.Y + 20;
                 newClass.ClassName = classItem.ClassName;
                 newClass.FieldString = classItem.FieldString;
                 newClass.MethodString = classItem.MethodString;
