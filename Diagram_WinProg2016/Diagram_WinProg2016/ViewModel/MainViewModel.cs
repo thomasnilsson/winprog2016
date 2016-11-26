@@ -4,50 +4,47 @@ using Diagram_WinProg2016.Model;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.IO;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.Remoting.Messaging ;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Diagnostics;
-using System.Windows.Shapes;
 using System.Xml.Serialization;
 using Microsoft.Win32;
 using System.Threading;
 using System.Windows.Media.Imaging;
-using System.Windows.Controls.Primitives;
 
 namespace Diagram_WinProg2016.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+
+        #region FIELDS
         //bruges til save
         private Thread saveThread;
+        private SolidColorBrush theme;
         //classes som er databindet
-        public ObservableCollection<Class> Classes{ get; set; }
-		public ObservableCollection<Class> CopiedClasses { get; set; }
+        public ObservableCollection<Class> Classes { get; set; }
+        public ObservableCollection<Class> CopiedClasses { get; set; }
 
         private EdgeType type = EdgeType.NOR;
         //commands
+
         public ICommand MouseDownClassBoxCommand { get; private set; }
         public ICommand MouseMoveClassBoxCommand { get; private set; }
         public ICommand MouseUpClassBoxCommand { get; private set; }
-	    public ICommand MouseDownEdgeCommand { get; private set; }
+        public ICommand MouseDownEdgeCommand { get; private set; }
         public ICommand MouseUpEdgeCommand { get; private set; }
 
         public ICommand AddClassCommand { get; private set; }
-		public ICommand DeleteSelectedClassesCommand { get; private set; }
+        public ICommand DeleteSelectedClassesCommand { get; private set; }
         public ICommand CutSelectedClassesCommand { get; private set; }
-		public ICommand CopySelectedClassesCommand { get; private set; }
-		public ICommand PasteSelectedClassesCommand { get; private set; }
+        public ICommand CopySelectedClassesCommand { get; private set; }
+        public ICommand PasteSelectedClassesCommand { get; private set; }
 
-		public ICommand UndoCommand { get; set; }
-		public ICommand RedoCommand { get; set; }
+        public ICommand UndoCommand { get; set; }
+        public ICommand RedoCommand { get; set; }
 
         public ICommand SaveCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
@@ -61,12 +58,12 @@ namespace Diagram_WinProg2016.ViewModel
 
         public ICommand SavePngCommand { get; private set; }
 
-        
+
         public ICommand OpenDiagram { get; private set; }
 
         public ObservableCollection<Class> ClassBoxes { get; set; }
 
-	public ObservableCollection<Edge> Arrows { get; set; }
+        public ObservableCollection<Edge> Arrows { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         //public ObservableCollection<Class> SelectedClassBox { get; set; }
@@ -89,161 +86,128 @@ namespace Diagram_WinProg2016.ViewModel
         //Punkter når der flyttes rundt. 
         private Point moveClassBoxPoint;// Gemmer det første punkt som punktet har under en flytning.
         private Point offsetPosition; //Bruges så klassen bliver flyttet flot rundt
-	private Class addingEdgeFromA;
+        private Class addingEdgeFromA;
         private int oldPosX; // bruges naar moveClassCommand kaldes
         private int oldPosY;// bruges naar moveClassCommand kaldes
 
+        #endregion
+
+        #region CONSTRUCTOR
+       
         public MainViewModel()
         {
             Classes = new ObservableCollection<Class>();
 
-			CopiedClasses = new ObservableCollection<Class>();
+            CopiedClasses = new ObservableCollection<Class>();
 
             AddClassCommand = new RelayCommand(AddClassBox);
-			DeleteSelectedClassesCommand = new RelayCommand(DeleteSelectedClasses);
-			CutSelectedClassesCommand = new RelayCommand(CutSelectedClasses);
-			CopySelectedClassesCommand = new RelayCommand(CopySelectedClasses);
-			PasteSelectedClassesCommand = new RelayCommand(PasteSelectedClasses);
+            DeleteSelectedClassesCommand = new RelayCommand(DeleteSelectedClasses);
+            CutSelectedClassesCommand = new RelayCommand(CutSelectedClasses);
+            CopySelectedClassesCommand = new RelayCommand(CopySelectedClasses);
+            PasteSelectedClassesCommand = new RelayCommand(PasteSelectedClasses);
 
-			UndoCommand = new RelayCommand(Undo);
-			RedoCommand = new RelayCommand(Redo);
-     
-			
+            UndoCommand = new RelayCommand(Undo);
+            RedoCommand = new RelayCommand(Redo);
+
+
             Edges = new ObservableCollection<Edge>();
             OpenDiagram = new RelayCommand(OpenNewDiagram);
-            SaveCommand = new RelayCommand(Save);
-            LoadCommand = new RelayCommand(Load);
-            SavePngCommand = new RelayCommand<Canvas>(saveScreen);
+            SaveCommand = new RelayCommand(SaveXML);
+            LoadCommand = new RelayCommand(LoadXML);
+            SavePngCommand = new RelayCommand<Canvas>(SavePNG);
 
-			MouseDownClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClassBox);
-			MouseMoveClassBoxCommand = new RelayCommand<MouseEventArgs>(MouseMoveClassBox);
-			MouseUpClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpClassBox);
+            MouseDownClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClassBox);
+            MouseMoveClassBoxCommand = new RelayCommand<MouseEventArgs>(MouseMoveClassBox);
+            MouseUpClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpClassBox);
 
-			isAddingEdge = false;
+            isAddingEdge = false;
 
         }
 
-        //SAVE AS DIAGRAM
+        #endregion
 
-        public class SaveLoadCollection
+        #region SAVE/LOAD
+        //SAVE DIAGRAM AS XML http://www.wpf-tutorial.com/dialogs/the-savefiledialog/
+
+        private void SaveXML()
         {
-            public ObservableCollection<Class> tempClasses = new ObservableCollection<Class>();
-            //public ObservableCollection<EdgeViewModel> tempEdges = new ObservableCollection<EdgeViewModel>();
-            public SaveLoadCollection(ObservableCollection<Class> classes)
-            {
-                tempClasses = classes;
-            }
-            public SaveLoadCollection() { }
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.FileName = "Class Diagram";
+            dialog.Filter = "XML file (*.xml)|*.xml| All files (*.*) | *.*";
 
+            if (dialog.ShowDialog() == true)
+            {
+                string path = dialog.FileName;
+                saveThread = new Thread(() => SerializeObjectToXML(path));
+                saveThread.Start();
+            }
         }
 
+        //SAVE XML DIAGRAm
+        private void LoadXML()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "XML file (*.xml)|*.xml| All files (*.*) | *.*";
+            if (dialog.ShowDialog() == true)
+            {
+                string path = dialog.FileName;
+                DeSerializeXMLToObject(path);
+            }
+        }
+
+
+
+        //SAVE AS PNG IMAGE
+        //from http://stackoverflow.com/questions/34821089/extract-image-from-wpf-image-control-and-save-it-to-a-png-file-on-my-local-pcc
+        public void SavePNG(Canvas screen)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.FileName = "Class Diagram Printout";
+            dialog.Filter = "PNG file (*.png)|*.png| All files (*.*) | *.*";
+            if (dialog.ShowDialog() == true)
+            {
+
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                RenderTargetBitmap renderBitmap = new RenderTargetBitmap((int)screen.ActualWidth, (int)screen.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);
+                renderBitmap.Render(screen);
+
+                encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+                FileStream stream = new FileStream(dialog.FileName, FileMode.Create);
+                encoder.Save(stream);
+            }
+        }
+
+        //serialization used when saving as XML
         public void SerializeObjectToXML(string filepath)
         {
-            SaveLoadCollection serializetype = new SaveLoadCollection(Classes);
-            XmlSerializer serializer = new XmlSerializer(typeof(SaveLoadCollection));
+            ObservableCollection<Class> serializetype = Classes;
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Class>));
             using (StreamWriter wr = new StreamWriter(filepath))
             {
                 serializer.Serialize(wr, serializetype);
             }
 
         }
-
+        //de-serialization used when loading from XMl
         private void DeSerializeXMLToObject(string filepath)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(SaveLoadCollection));
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Class>));
             using (StreamReader wr = new StreamReader(filepath))
             {
-                SaveLoadCollection Load = (SaveLoadCollection)serializer.Deserialize(wr);
+                ObservableCollection<Class> LoadedClasses = (ObservableCollection<Class>)serializer.Deserialize(wr);
                 Classes.Clear();
-                //ClassIndex = Load.tempNodes.Count + 1;
-                foreach (Class tempClass in Load.tempClasses)
+                foreach (Class classItem in LoadedClasses)
                 {
-                    Classes.Add(tempClass);
+                    Classes.Add(classItem);
                     System.Console.WriteLine();
-                }         
+                }
                 undoRedoController.Reset();
             }
         }
+        #endregion
 
-        private void Load()
-        {
-            OpenFileDialog dialog = new OpenFileDialog()
-            {
-                Title = "Load diagram",
-                Filter = "XML (*.xml)|*.xml"
-            };
-            if (dialog.ShowDialog() != true)
-                return;
-
-            string path = dialog.FileName;
-            DeSerializeXMLToObject(path);
-        }
-
-        private void Save()
-        {
-            SaveFileDialog dialog = new SaveFileDialog()
-            {
-                Title = "Save diagram",
-                FileName = "classdiagram",
-                Filter = " XML (*.xml)|*.xml| All files (*.*)|*.*"
-            };
-
-            if (dialog.ShowDialog() != true)
-                return;
-
-            string path = dialog.FileName;
-            saveThread = new Thread(() => SerializeObjectToXML(path));
-            saveThread.Start();
-        }
-
-        //SAVE AS PNG IMAGE
-        public void saveScreen(Canvas screen)
-        {
-           new SavePngCommand(screen);
-        }
-
-        private void CreateSaveBitmap(Canvas canvas, string filename)
-        {
-            RenderTargetBitmap renderBitmap = new RenderTargetBitmap(
-             (int)canvas.Width, (int)canvas.Height,
-             96d, 96d, PixelFormats.Pbgra32);
-            // needed otherwise the image output is black
-            canvas.Measure(new Size((int)canvas.Width, (int)canvas.Height));
-            canvas.Arrange(new Rect(new Size((int)canvas.Width, (int)canvas.Height)));
-
-            renderBitmap.Render(canvas);
-
-            //JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-            PngBitmapEncoder encoder = new PngBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-
-            using (FileStream file = File.Create(filename))
-            {
-                encoder.Save(file);
-            }
-        }
-        public static T FindParent<T>(DependencyObject child) where T : DependencyObject
-        {
-            //get parent item
-            DependencyObject parentObject = VisualTreeHelper.GetParent(child);
-
-            //we've reached the end of the tree
-            if (parentObject == null) return null;
-
-            //check if the parent matches the type we're looking for
-            T parent = parentObject as T;
-            if (parent != null)
-            {
-                return parent;
-            }
-            else
-            {
-                return FindParent<T>(parentObject);
-            }
-        }
-        //Add new arrow
-
-
+        #region CONNECTORS
+        
         public void AddEdge()
         {
             //StatusBar = "Adding edge, press at the start node";
@@ -286,63 +250,67 @@ namespace Diagram_WinProg2016.ViewModel
             type = EdgeType.NOR;
             AddEdge();
         }
+        #endregion
 
-        //ADD NEW CLASS
+        #region COMMANDS
+        
         public void AddClassBox()
         {
             undoRedoController.AddAndExecute(new AddClassCommand(Classes));
         }
 
-		public void DeleteSelectedClasses()
-		{
-			undoRedoController.AddAndExecute(new DeleteSelectedClassesCommand(Classes));
-		}
+        public void DeleteSelectedClasses()
+        {
+            undoRedoController.AddAndExecute(new DeleteSelectedClassesCommand(Classes));
+        }
 
-		public void CopySelectedClasses()
-		{
-			undoRedoController.AddAndExecute(new CopySelectedClassesCommand(Classes, CopiedClasses));
-		}
+        public void CopySelectedClasses()
+        {
+            undoRedoController.AddAndExecute(new CopySelectedClassesCommand(Classes, CopiedClasses));
+        }
 
-		public void CutSelectedClasses()
-		{
-			undoRedoController.AddAndExecute(new CutSelectedClassesCommand(Classes, CopiedClasses));
-		}
+        public void CutSelectedClasses()
+        {
+            undoRedoController.AddAndExecute(new CutSelectedClassesCommand(Classes, CopiedClasses));
+        }
 
-		public void PasteSelectedClasses()
-		{
-			undoRedoController.AddAndExecute(new PasteSelectedClassesCommand(Classes, CopiedClasses));
-		}
+        public void PasteSelectedClasses()
+        {
+            undoRedoController.AddAndExecute(new PasteSelectedClassesCommand(Classes, CopiedClasses));
+        }
 
-		public void Undo() {
-			undoRedoController.Undo();
-		}
+        public void Undo()
+        {
+            undoRedoController.Undo();
+        }
 
-		public void Redo() {
-			undoRedoController.Redo();
-		}
-		public void OpenNewDiagram()
-		{
-			Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-			dlg.FileName = "Document"; // Default file name
-			dlg.DefaultExt = ".png"; // Default file extension
-			dlg.Filter = "PNG documents (.png)|*.png"; // Filter files by extension 
+        public void Redo()
+        {
+            undoRedoController.Redo();
+        }
+        public void OpenNewDiagram()
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.FileName = "Document"; // Default file name
+            dlg.DefaultExt = ".png"; // Default file extension
+            dlg.Filter = "PNG documents (.png)|*.png"; // Filter files by extension 
 
-			// Show open file dialog box
-			Nullable<bool> result = dlg.ShowDialog();
-
-
-			if (result == true)
-			{//Needs to clear the diagram if one is open
-				string name = dlg.FileName;
-				new Open();
-			}
-		}
-
-		//////////////////Mouse actions//////////////////////////////////
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
 
 
+            if (result == true)
+            {//Needs to clear the diagram if one is open
+                string name = dlg.FileName;
+                new Open();
+            }
+        }
+        #endregion
 
- public void MouseDownEdge(MouseButtonEventArgs e)
+        #region MOUSE ACTIONS
+
+
+        public void MouseDownEdge(MouseButtonEventArgs e)
         {
             if (!isAddingEdge)
             {
@@ -367,9 +335,9 @@ namespace Diagram_WinProg2016.ViewModel
             e.MouseDevice.Target.ReleaseMouseCapture();
         }
 
-		// Action for Mouse down trigger on ClassBox
-		// Hvis der ikke er ved at blive tilføjet en kant så fanges musen når en musetast trykkes ned. Dette bruges til at flytte punkter.
-		public void MouseDownClassBox(MouseButtonEventArgs e)
+        // Action for Mouse down trigger on ClassBox
+        // Hvis der ikke er ved at blive tilføjet en kant så fanges musen når en musetast trykkes ned. Dette bruges til at flytte punkter.
+        public void MouseDownClassBox(MouseButtonEventArgs e)
         {
             if (!isAddingEdge)
             {
@@ -441,7 +409,7 @@ namespace Diagram_WinProg2016.ViewModel
             else
                 e.MouseDevice.Target.ReleaseMouseCapture();
         }
-        private static T FindParentOfType<T>(DependencyObject o) where T: DependencyObject
+        private static T FindParentOfType<T>(DependencyObject o) where T : DependencyObject
         {
 
             DependencyObject parent = VisualTreeHelper.GetParent(o);
@@ -449,4 +417,5 @@ namespace Diagram_WinProg2016.ViewModel
             return parent.GetType().IsAssignableFrom(typeof(T)) ? (T)parent : FindParentOfType<T>(parent);
         }
     }
+    #endregion
 }

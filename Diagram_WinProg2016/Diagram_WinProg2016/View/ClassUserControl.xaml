@@ -8,13 +8,13 @@
              xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
              >
 
-	<Border Name="borderBox" Background="White" BorderBrush="Black" Width="200">
+	<Border Background="White" Width="200">
 		<!--Her bliver de tre events MouseDown, MouseMove og MouseUp bundet til de tilsvarende kommandoer på MainViewModel.-->
 
 		<!-- ClassBox layout -->
 		<Grid x:Name ="ClassBox">
 			<!-- ClassBox information -->
-			<Border Name="mask" Background="White"/>
+			<Border Background="White"/>
 
 			<!-- Hovedinholdet er iden for denne border -->
 			<StackPanel>
