@@ -18,7 +18,8 @@ namespace Diagram_WinProg2016.Commands
         private ObservableCollection<Class> classBoxes;
         private Class classBox;
 
-        public AddClassCommand(ObservableCollection<Class> classBoxes) { 
+        public AddClassCommand(ObservableCollection<Class> classBoxes)
+        {
             this.classBoxes = classBoxes;
             classBox = new Class();
         }

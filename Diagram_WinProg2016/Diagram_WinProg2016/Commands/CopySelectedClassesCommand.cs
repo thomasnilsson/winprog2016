@@ -4,24 +4,26 @@ using System.Diagnostics;
 
 namespace Diagram_WinProg2016.Commands
 {
-	class CopySelectedClassesCommand : IUndoRedoCommand
-	{
-		private ObservableCollection<Class> classBoxes;
-		private ObservableCollection<Class> copyBoxes;
+    class CopySelectedClassesCommand : IUndoRedoCommand
+    {
+        private ObservableCollection<Class> classBoxes;
+        private ObservableCollection<Class> copyBoxes;
 
-		public CopySelectedClassesCommand(ObservableCollection<Class> classBoxes, ObservableCollection<Class> copyBoxes) {
-			this.classBoxes = classBoxes;
-			this.copyBoxes = copyBoxes;
-			this.copyBoxes.Clear();
-		}
+        public CopySelectedClassesCommand(ObservableCollection<Class> classBoxes, ObservableCollection<Class> copyBoxes)
+        {
+            this.classBoxes = classBoxes;
+            this.copyBoxes = copyBoxes;
+            this.copyBoxes.Clear();
+        }
 
-		public void Execute() {
-			
-			foreach (Class classItem in classBoxes)
-			{
-				if (classItem.IsSelected)
-				{
-					Class copyClass = new Class();
+        public void Execute()
+        {
+
+            foreach (Class classItem in classBoxes)
+            {
+                if (classItem.IsSelected)
+                {
+                    Class copyClass = new Class();
                     copyClass.X = classItem.X;
                     copyClass.Y = classItem.Y;
                     copyClass.ClassName = classItem.ClassName;
@@ -29,13 +31,14 @@ namespace Diagram_WinProg2016.Commands
                     copyClass.MethodString = classItem.MethodString;
 
                     copyBoxes.Add(copyClass);
-					classItem.IsSelected = false;
-				}
-			}
-		}
+                    classItem.IsSelected = false;
+                }
+            }
+        }
 
-		public void UnExecute() {
-			
-		}
-	}
+        public void UnExecute()
+        {
+
+        }
+    }
 }

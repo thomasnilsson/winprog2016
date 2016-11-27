@@ -16,11 +16,18 @@
         <DataTemplate DataType="{x:Type Model:Class}">
 			<View:ClassUserControl/>
 		</DataTemplate>
+        <DataTemplate DataType="{x:Type Model:Edge}">
+            <View:EdgeUserControl/>
+        </DataTemplate>
 	</Window.Resources>
+
     <Window.InputBindings>
         <KeyBinding Modifiers="Control"
 					Key="N"
 					Command="{Binding AddClassCommand}"/>
+        <KeyBinding Modifiers="Control"
+					Key="E"
+					Command="{Binding AddEdgeCommand}"/>
         <KeyBinding Modifiers="Control"
                     Key="Z"
                     Command="{Binding UndoCommand}"/>
@@ -90,24 +97,28 @@
                         <RibbonButton LargeImageSource="../Images/class.png" Label="Insert Class" Command="{Binding AddClassCommand}" ToolTipTitle="CTRL + N" />
                     </RibbonGroup>
                     <RibbonGroup x:Name="ArrowGroup" Header="Arrows">
-                        <RibbonButton LargeImageSource="../Images/arrow.png" Label="Insert Connector" Command="{Binding AddArrowCommand}"/>
+                        <RibbonButton LargeImageSource="../Images/arrow.png" Label="Insert Connector" Command="{Binding AddEdgeCommand}" ToolTipTitle="CTRL + E"/>
                     </RibbonGroup>
-
+                    <RibbonGroup x:Name="Auxilliary" Header="Auxiliary">
+                        <RibbonButton LargeImageSource="../Images/question.png" Label="Help" Command="{Binding HelpCommand}"/>
+                    </RibbonGroup>
                 </RibbonTab>
             </Ribbon>
         </Grid>
 
         <Grid Background="#242424"> <!--this sets the back ground color, this won't be included when exported to PNG however.-->
-        <Canvas x:Name="MainCanvas" DockPanel.Dock="Bottom" Height="Auto">
-            <ItemsControl ItemsSource="{Binding Arrows}" Name="connector"/>
+
+            <Canvas x:Name="MainCanvas" DockPanel.Dock="Bottom" Height="Auto" ClipToBounds="True">
+                <ItemsControl ItemsSource="{Binding Edges}" Name="edges"/>
                 <ItemsControl ItemsSource="{Binding Classes}" Name="class">
 
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
+                            
                             <Canvas/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemContainerStyle >
                         <Style TargetType="ContentPresenter">
                             <Setter Property="Canvas.Left" Value="{Binding X}"/>
                             <Setter Property="Canvas.Top" Value="{Binding Y}"/>

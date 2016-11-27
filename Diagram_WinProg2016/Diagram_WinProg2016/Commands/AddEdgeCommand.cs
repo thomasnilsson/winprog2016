@@ -7,30 +7,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Diagnostics;
 
 namespace Diagram_WinProg2016.Commands
 {
-    class AddEdgeCommand : IUndoRedoCommand
+    public class AddEdgeCommand : IUndoRedoCommand
     {
+        private ObservableCollection<Edge> edges;
+        private Edge edge;
 
-        private ObservableCollection<EdgeViewModel> edges;
-        private EdgeViewModel _edge;
-
-        public AddEdgeCommand(ObservableCollection<EdgeViewModel> _edges, EdgeViewModel newEdge)
+        public AddEdgeCommand(ObservableCollection<Edge> _edges, Class _endA, Class _endB)
         {
             edges = _edges;
-            _edge = newEdge;
+            edge = new Edge(_endA, _endB);
+            
         }
 
         public void Execute()
         {
-            edges.Add(_edge);
+            edges.Add(edge);
         }
 
         public void UnExecute()
         {
-            edges.Remove(_edge);
+            edges.Remove(edge);
         }
     }
 }

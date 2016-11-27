@@ -21,8 +21,8 @@
                 <Grid>
                     <!--top-fanen som bruges til muserinteraktioner når elementet flyttes-->
 					<Rectangle Fill="CornflowerBlue" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="200">
-						<i:Interaction.Triggers>
-							<i:EventTrigger EventName="MouseDown">
+                        <i:Interaction.Triggers> <!--All events are from https://msdn.microsoft.com/en-us/library/system.windows.controls.grid_events(v=vs.110).aspx-->
+                            <i:EventTrigger EventName="MouseDown">
 								<cmd:EventToCommand Command="{Binding DataContext.MouseDownClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
 							</i:EventTrigger>
 							<i:EventTrigger EventName="MouseMove">
@@ -31,9 +31,12 @@
 							<i:EventTrigger EventName="MouseUp">
 								<cmd:EventToCommand Command="{Binding DataContext.MouseUpClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
 							</i:EventTrigger>
-						</i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseRightButtonDown">
+                                <cmd:EventToCommand Command="{Binding DataContext.RightClickClassCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
 					</Rectangle>
-					<ToggleButton  x:Name="SelectedButton" IsChecked="{Binding IsSelected, Mode=TwoWay}" HorizontalAlignment = "Center" Margin="0,0,180,0" Width="20" Content="" >
+                    <ToggleButton  x:Name="SelectedButton" IsChecked="{Binding IsSelected, Mode=TwoWay}" HorizontalAlignment = "Center" Margin="0,0,180,0" Width="20" Content="" ClipToBounds="True" >
 					</ToggleButton>
 				</Grid>
 				<!--Name containeren -->
