@@ -124,7 +124,14 @@ namespace Diagram_WinProg2016.ViewModel
             string message1 = "To create a new class box press 'Class'. To create additional fields and methods user the ENTER button inside the text boxes.";
             string message2 = "To create a new relation between classes press 'Insert Connector' and press on two classes in succession.";
             string message3 = "If you regret pressing 'Insert Connector', simply right click on any class box.";
-            MessageBox.Show(message1 + "\n \n" + message2 + "\n\n" + message3);
+            string message4 = "Shortcuts: ";
+            string message5 = "Insert class: CTRL + N";
+            string message6 = "Add edge: CTRL + E";
+            string message7 = "Copy: CTRL + C \n"+"Paste: CTRL + V \n"+"Cut: CTRL + X";
+            string message8 = "Select or deselect all: CTRL + A";
+            
+            MessageBox.Show(message1 + "\n \n" + message2 + "\n\n" + message3 + "\n\n" + message4 + "\n" + message5
+                + "\n" + message6 + "\n" + message7 + "\n" + message8 );
         }
 
         #endregion
