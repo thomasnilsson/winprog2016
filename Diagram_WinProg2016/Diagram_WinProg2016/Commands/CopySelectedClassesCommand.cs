@@ -8,9 +8,11 @@ namespace Diagram_WinProg2016.Commands
     {
         private ObservableCollection<Class> classBoxes;
         private ObservableCollection<Class> copyBoxes;
+		private ObservableCollection<Class> undoCollection;
 
-        public CopySelectedClassesCommand(ObservableCollection<Class> classBoxes, ObservableCollection<Class> copyBoxes)
+		public CopySelectedClassesCommand(ObservableCollection<Class> classBoxes, ObservableCollection<Class> copyBoxes)
         {
+			this.undoCollection = new ObservableCollection<Class>();
             this.classBoxes = classBoxes;
             this.copyBoxes = copyBoxes;
             this.copyBoxes.Clear();

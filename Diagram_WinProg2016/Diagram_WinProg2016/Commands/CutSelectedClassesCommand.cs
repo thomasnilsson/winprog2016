@@ -49,7 +49,10 @@ namespace Diagram_WinProg2016.Commands
 
         public void UnExecute()
         {
-            //
-        }
+			foreach (Class classItem in removeBoxes)
+			{
+				classBoxes.Add(classItem);
+			}
+		}
     }
 }

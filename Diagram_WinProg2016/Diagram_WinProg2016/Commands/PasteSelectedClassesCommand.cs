@@ -13,9 +13,11 @@ namespace Diagram_WinProg2016.Commands
     {
         private ObservableCollection<Class> classBoxes;
         private ObservableCollection<Class> copyBoxes;
+		private ObservableCollection<Class> undoCollection;
 
         public PasteSelectedClassesCommand(ObservableCollection<Class> classBoxes, ObservableCollection<Class> copyBoxes)
         {
+			undoCollection = new ObservableCollection<Class>();
             this.classBoxes = classBoxes;
             this.copyBoxes = copyBoxes;
         }
@@ -31,13 +33,17 @@ namespace Diagram_WinProg2016.Commands
                 newClass.FieldString = classItem.FieldString;
                 newClass.MethodString = classItem.MethodString;
                 classBoxes.Add(newClass);
+				undoCollection.Add(newClass);
 
             }
         }
 
         public void UnExecute()
         {
-
+			foreach (Class classItem in undoCollection)
+			{
+				classBoxes.Remove(classItem);
+			}
         }
     }
 }
