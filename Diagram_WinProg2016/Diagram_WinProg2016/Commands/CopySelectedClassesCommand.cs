@@ -21,7 +21,7 @@ namespace Diagram_WinProg2016.Commands
 			{
 				if (classItem.IsSelected)
 				{
-					Class copyClass = new Class();
+					Class copyClass = new Class(classBoxes.Count + 1);
                     copyClass.X = classItem.X;
                     copyClass.Y = classItem.Y;
                     copyClass.ClassName = classItem.ClassName;

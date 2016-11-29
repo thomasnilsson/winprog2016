@@ -77,16 +77,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AddClassCommand.cs" />
-    <Compile Include="Commands\ArrowsCommand.cs" />
+    <Compile Include="Commands\AddEdgeCommand.cs" />
+    <Compile Include="Commands\ChangeArrowCommand.cs" />
     <Compile Include="Commands\CutSelectedClassesCommand.cs" />
     <Compile Include="Commands\CopySelectedClassesCommand.cs" />
     <Compile Include="Commands\DeleteSelectedClassesCommand.cs" />
     <Compile Include="Commands\IUndoRedoCommand.cs" />
     <Compile Include="Commands\MoveClassCommand.cs" />
+    <Compile Include="Commands\RemoveEdgesCommand.cs" />
     <Compile Include="Commands\UndoRedoController.cs" />
     <Compile Include="Commands\PasteSelectedClassesCommand.cs" />
     <Compile Include="ViewModel\ClassViewModel.cs" />
-    <Compile Include="ViewModel\EdgeViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\RibbonUserControl.xaml.cs">
       <DependentUpon>RibbonUserControl.xaml</DependentUpon>
