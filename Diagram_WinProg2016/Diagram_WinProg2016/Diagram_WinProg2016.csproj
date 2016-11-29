@@ -79,6 +79,8 @@
     <Compile Include="Commands\AddClassCommand.cs" />
     <Compile Include="Commands\AddEdgeCommand.cs" />
     <Compile Include="Commands\ChangeArrowCommand.cs" />
+    <Compile Include="Commands\DeselectAllCommand.cs" />
+    <Compile Include="Commands\SelectAllCommand.cs" />
     <Compile Include="Commands\CutSelectedClassesCommand.cs" />
     <Compile Include="Commands\CopySelectedClassesCommand.cs" />
     <Compile Include="Commands\DeleteSelectedClassesCommand.cs" />
@@ -177,6 +179,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\selectall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\deselectall.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

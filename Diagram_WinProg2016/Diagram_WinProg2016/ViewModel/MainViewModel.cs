@@ -45,8 +45,11 @@ namespace Diagram_WinProg2016.ViewModel
         public ICommand CutSelectedClassesCommand { get; private set; }
         public ICommand CopySelectedClassesCommand { get; private set; }
         public ICommand PasteSelectedClassesCommand { get; private set; }
+		public ICommand SelectAllCommand { get; private set; }
+		public ICommand DeselectAllCommand { get; private set; }
 
-        public ICommand UndoCommand { get; set; }
+
+		public ICommand UndoCommand { get; set; }
         public ICommand RedoCommand { get; set; }
 
         public ICommand SaveCommand { get; private set; }
@@ -95,6 +98,8 @@ namespace Diagram_WinProg2016.ViewModel
             CutSelectedClassesCommand = new RelayCommand(CutSelectedClasses);
             CopySelectedClassesCommand = new RelayCommand(CopySelectedClasses);
             PasteSelectedClassesCommand = new RelayCommand(PasteSelectedClasses);
+			SelectAllCommand = new RelayCommand(SelectAll);
+			DeselectAllCommand = new RelayCommand(DeselectAll);
             UndoCommand = new RelayCommand(Undo);
             RedoCommand = new RelayCommand(Redo);
 
@@ -281,7 +286,12 @@ namespace Diagram_WinProg2016.ViewModel
         {
             undoRedoController.AddAndExecute(new PasteSelectedClassesCommand(Classes, CopiedClasses));
         }
-
+		public void SelectAll() {
+			undoRedoController.AddAndExecute(new SelectAllCommand(Classes));
+		}
+		public void DeselectAll() {
+			undoRedoController.AddAndExecute(new DeselectAllCommand(Classes));
+		}
         
         // Add Edge
         public void ToggleEdge()
