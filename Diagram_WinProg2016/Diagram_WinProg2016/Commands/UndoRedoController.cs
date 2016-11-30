@@ -23,7 +23,8 @@ namespace Diagram_WinProg2016.Commands
 
         private readonly Stack<IUndoRedoCommand> undoStack = new Stack<IUndoRedoCommand>();
         private readonly Stack<IUndoRedoCommand> redoStack = new Stack<IUndoRedoCommand>();
-
+		private LinkedList<IUndoRedoCommand> undoList = new LinkedList<IUndoRedoCommand>();
+		private LinkedList<IUndoRedoCommand> redoList = new LinkedList<IUndoRedoCommand>();
         // Part of singleton pattern.
         private UndoRedoController() { }
 
@@ -32,7 +33,12 @@ namespace Diagram_WinProg2016.Commands
 
         // Bruges til at tilføje commander.
         public void AddAndExecute(IUndoRedoCommand command){
-			Trace.Write("Command was pushed to undostack: " + command.ToString() + "\n");
+			if(undoList.Count > 10) {
+				undoList.RemoveLast();
+			}
+			undoList.AddFirst(command);
+			redoList.Clear();
+			//Trace.Write("Command was pushed to undostack: " + command.ToString() + "\n");
 			undoStack.Push(command);
             redoStack.Clear();
             command.Execute();

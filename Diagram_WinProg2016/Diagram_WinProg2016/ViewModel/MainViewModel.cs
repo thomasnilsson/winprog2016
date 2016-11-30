@@ -57,13 +57,10 @@ namespace Diagram_WinProg2016.ViewModel
 
         public ICommand SavePngCommand { get; private set; }
 
-
-
-
         public ICommand AddEdgeCommand { get; private set; }
         public ICommand ReverseEdgeCommand { get; private set; }
 
-        public ObservableCollection<Class> ClassBoxes { get; set; }
+		public ObservableCollection<Class> ClassBoxes { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         public object ExportToImage { get; private set; }
@@ -118,7 +115,7 @@ namespace Diagram_WinProg2016.ViewModel
             MouseUpEdgeCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpEdge);
         }
 
-        private void ShowHelpBox()
+		private void ShowHelpBox()
         {
             //shows a message box the user, with instructions.
             string message1 = "To create a new class box press 'Class'. To create additional fields and methods user the ENTER button inside the text boxes.";
@@ -500,7 +497,13 @@ namespace Diagram_WinProg2016.ViewModel
             if (parent == null) return null;
             return parent.GetType().IsAssignableFrom(typeof(T)) ? (T)parent : FindParentOfType<T>(parent);
         }
-    }
+
+		private void Classes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+	}
 
 
     #endregion

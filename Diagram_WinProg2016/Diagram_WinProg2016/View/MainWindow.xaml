@@ -87,16 +87,16 @@
                 <!-- A tab is needed, otherwise the contents will get messed up -->
                 <RibbonTab Header="Tools">
                     <RibbonGroup x:Name="ClipboardGroup" Header="Clipboard">
-                        <RibbonButton LargeImageSource="..\Images\copy.png" Label="Copy" Command="{Binding CopySelectedClassesCommand}" IsEnabled="{Binding CanCopy}" ToolTipTitle="CTRL + C" />
-                        <RibbonButton LargeImageSource="..\Images\cut.png" Label="Cut" Command="{Binding CutSelectedClassesCommand}" IsEnabled="{Binding CanCut}" ToolTipTitle="CTRL + X" />
-                        <RibbonButton LargeImageSource="..\Images\paste.png" Label="Paste" Command="{Binding PasteSelectedClassesCommand}" IsEnabled="{Binding CanPaste}" ToolTipTitle="CTRL + V" />
+                        <RibbonButton LargeImageSource="..\Images\copy.png" Label="Copy" Command="{Binding CopySelectedClassesCommand}" ToolTipTitle="CTRL + C" />
+                        <RibbonButton LargeImageSource="..\Images\cut.png" Label="Cut" Command="{Binding CutSelectedClassesCommand}" ToolTipTitle="CTRL + X" />
+                        <RibbonButton LargeImageSource="..\Images\paste.png" Label="Paste" Command="{Binding PasteSelectedClassesCommand}" ToolTipTitle="CTRL + V" />
                     </RibbonGroup>
                     <RibbonGroup x:Name="EditGroup" Header="Edit">
                         <RibbonButton LargeImageSource="..\Images\delete.png" Label="Delete" Command="{Binding DeleteSelectedClassesCommand}" IsEnabled="{Binding CanDelete}" ToolTipTitle="Del"/>
-                        <RibbonButton LargeImageSource="..\Images\undo.png" Label="Undo"  Command="{Binding UndoCommand}" IsEnabled="{Binding CanUndo}" ToolTipTitle="CTRL + Z"  />
-						<RibbonButton LargeImageSource="..\Images\redo.png" Label="Redo" Command="{Binding RedoCommand}"  IsEnabled="{Binding CanRedo}" ToolTipTitle="CTRL + Y" />
-						<RibbonButton LargeImageSource="..\Images\selectall.png" Label="Select All" Command="{Binding SelectAllCommand}"  IsEnabled="{Binding CanSelectAll}" ToolTipTitle="CTRL + A" />
-						<RibbonButton LargeImageSource="..\Images\deselectall.png" Label="Deselect All" Command="{Binding DeselectAllCommand}"  IsEnabled="{Binding CanSelectAll}" ToolTipTitle="CTRL + A" />
+                        <RibbonButton LargeImageSource="..\Images\undo.png" Label="Undo"  Command="{Binding UndoCommand}" ToolTipTitle="CTRL + Z"  />
+						<RibbonButton LargeImageSource="..\Images\redo.png" Label="Redo" Command="{Binding RedoCommand}" ToolTipTitle="CTRL + Y" />
+						<RibbonButton LargeImageSource="..\Images\selectall.png" Label="Select All" Command="{Binding SelectAllCommand}" ToolTipTitle="CTRL + A" />
+						<RibbonButton LargeImageSource="..\Images\deselectall.png" Label="Deselect All" Command="{Binding DeselectAllCommand}" ToolTipTitle="CTRL + A" />
 					</RibbonGroup>
                     <RibbonGroup x:Name="ClassGroup" Header="Classes">
                         <RibbonButton LargeImageSource="../Images/class.png" Label="Insert Class" Command="{Binding AddClassCommand}" ToolTipTitle="CTRL + N" />

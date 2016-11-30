@@ -156,17 +156,14 @@ C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\D
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Microsoft.Practices.ServiceLocation.xml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\System.Windows.Interactivity.xml
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csprojResolveAssemblyReference.cache
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\ClassUserControl.baml
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.g.cs
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\ClassUserControl.g.cs
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.g.cs
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.g.cs
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.cache
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016_MarkupCompile.lref
-C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\Arrows.baml
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\MainWindow.baml
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.g.resources
 C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.Properties.Resources.resources
@@ -288,3 +285,6 @@ C:\Users\Thomas\Desktop\Maria 27 nov\winprog2016\Diagram_WinProg2016\Diagram_Win
 C:\Users\Thomas\Desktop\Maria 27 nov\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\Diagram_WinProg2016.csproj.GenerateResource.Cache
 C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\EdgeUserControl.baml
 C:\Users\mathi\OneDrive\Bachelor i Softwareteknologi\5. Semester\02350 - Windows Programming using C#\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\EdgeUserControl.g.cs
+C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\EdgeUserControl.baml
+C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\EdgeUserControl.g.cs
+C:\Users\Mathias\Documents\Projekt\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
