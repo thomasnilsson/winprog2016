@@ -63,7 +63,12 @@
     </Window.InputBindings>
 
     <DockPanel>
-		<!--<View:RibbonUserControl DockPanel.Dock="Top" Focusable="True" x:Name="QContol"/>-->
+        <StatusBar Height="25" DockPanel.Dock="Bottom" Background="Orange">
+            <StatusBarItem Margin="40,0,-40,0">
+                <TextBlock Text="Ready"></TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <!--<View:RibbonUserControl DockPanel.Dock="Top" Focusable="True" x:Name="QContol"/>-->
         <Grid DockPanel.Dock="Top" Focusable="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

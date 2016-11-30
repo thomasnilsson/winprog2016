@@ -197,8 +197,6 @@ C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\w
 C:\Users\Johanne Sal\Documents\Visual Studio 2015\Projects\Windows Programming\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\App.baml
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.dll
 C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.pdb
-C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.baml
-C:\Users\Thomas\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.g.cs
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.dll
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\bin\Debug\Diagram_WinProg2016.Model.pdb
 C:\Users\maria\Documents\GitHub\winprog2016\Diagram_WinProg2016\Diagram_WinProg2016\obj\Debug\View\RibbonUserControl.baml
