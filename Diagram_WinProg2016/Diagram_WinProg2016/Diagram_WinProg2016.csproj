@@ -89,7 +89,6 @@
     <Compile Include="Commands\RemoveEdgesCommand.cs" />
     <Compile Include="Commands\UndoRedoController.cs" />
     <Compile Include="Commands\PasteSelectedClassesCommand.cs" />
-    <Compile Include="ViewModel\ClassViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\RibbonUserControl.xaml.cs">
       <DependentUpon>RibbonUserControl.xaml</DependentUpon>
