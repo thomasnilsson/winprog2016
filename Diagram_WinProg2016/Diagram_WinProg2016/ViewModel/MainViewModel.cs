@@ -324,20 +324,11 @@ namespace Diagram_WinProg2016.ViewModel
         
         public void MouseDownEdge(MouseButtonEventArgs e)
         {
-            //if (!isAddingEdge)
-            //{
-            //    if (ClassBoxes.Count == 1)
-            //    {
-            //        ClassBoxes.ElementAt(0).IsSelected = false;
-            //        ClassBoxes.Clear();
-            //    }
-            //    e.MouseDevice.Target.CaptureMouse();
-            //    FrameworkElement edgeElement = (FrameworkElement)e.MouseDevice.Target;
-            //}
+          
         }
         public void MouseUpEdge(MouseButtonEventArgs e)
         {
-            //e.MouseDevice.Target.ReleaseMouseCapture();
+           
         }
 
         public void MouseDownClassBox(MouseButtonEventArgs e)
@@ -349,11 +340,6 @@ namespace Diagram_WinProg2016.ViewModel
 
             if (!isAddingEdge)
             {
-                //if (selectedEdge != null)
-                //{
-                //    selectedEdge.IsSelected = false;
-                //    selectedEdge = null;
-                //}
                 
                 offsetPosition = Mouse.GetPosition(canvas);
                 oldPosX = movingClass.X;

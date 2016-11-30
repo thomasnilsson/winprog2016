@@ -9,15 +9,7 @@
              d:DesignHeight="100" d:DesignWidth="100" >
     <!-- App wide Resources -->
     <Canvas>
-        <!-- Mouse triggers -->
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="MouseDown">
-                <cmd:EventToCommand Command="{Binding DataContext.MouseDownClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-            </i:EventTrigger>
-            <i:EventTrigger EventName="MouseUp">
-                <cmd:EventToCommand Command="{Binding DataContext.MouseUpClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
+        
         <!-- Edge design and data binding -->
         <Polyline Points="{Binding Points}" StrokeThickness="2">
             <Polyline.Style>
