@@ -273,7 +273,7 @@ namespace Diagram_WinProg2016.ViewModel
 
         public void DeleteSelectedClasses()
         {
-            undoRedoController.AddAndExecute(new DeleteSelectedClassesCommand(Classes));
+            undoRedoController.AddAndExecute(new DeleteSelectedClassesCommand(Classes, Edges));
         }
 
         public void CopySelectedClasses()

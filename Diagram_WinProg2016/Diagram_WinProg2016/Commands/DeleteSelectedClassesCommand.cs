@@ -10,33 +10,60 @@ namespace Diagram_WinProg2016.Commands
 {
 	class DeleteSelectedClassesCommand : IUndoRedoCommand
 	{
-		private ObservableCollection<Class> classBoxes;
-		private ObservableCollection<Class> removeBoxes;
+		private ObservableCollection<Class> classes;
+		private ObservableCollection<Class> classesToRemove;
+        private ObservableCollection<Edge> edges;
+        private ObservableCollection<Edge> edgesToRemove;
 
-		public DeleteSelectedClassesCommand(ObservableCollection<Class> classBoxes)
+        public DeleteSelectedClassesCommand(ObservableCollection<Class> _classes, ObservableCollection<Edge> _edges)
 		{
-			this.classBoxes = classBoxes;
-			removeBoxes = new ObservableCollection<Class>();
-			foreach (Class classItem in classBoxes)
+			classes = _classes;
+			classesToRemove = new ObservableCollection<Class>();
+            edges = _edges;
+            edgesToRemove = new ObservableCollection<Edge>();
+
+			foreach (Class classItem in classes)
 			{
-				if (classItem.IsSelected) removeBoxes.Add(classItem);
+                if (classItem.IsSelected)
+                {
+                    classesToRemove.Add(classItem);
+                    foreach (Edge edgeItem in edges)
+                    {
+                        if (classItem.Equals(edgeItem.EndA) || classItem.Equals(edgeItem.EndB))
+                        {
+                            edgesToRemove.Add(edgeItem);
+                        }
+                    }
+                }
 			}
+
+            
 		}
 
 		public void Execute()
 		{
-			foreach (Class removeBox in removeBoxes)
+			foreach (Class classToRemove in classesToRemove)
 			{
-				classBoxes.Remove(removeBox);
+				classes.Remove(classToRemove);
 			}
+
+            foreach (Edge edgeToRemove in edgesToRemove)
+            {
+                edges.Remove(edgeToRemove);
+            }
 		}
 
 		public void UnExecute()
 		{
-			foreach (Class removeBox in removeBoxes)
+			foreach (Class removedClass in classesToRemove)
 			{
-				classBoxes.Add(removeBox);
+				classes.Add(removedClass);
 			}
-		}
+
+            foreach (Edge removedEdge in edgesToRemove)
+            {
+                edges.Remove(removedEdge);
+            }
+        }
 	}
 }
