@@ -50,7 +50,7 @@
 					Key="V"
 					Command="{Binding PasteSelectedClassesCommand}"/>
         <KeyBinding Key="Delete"
-					Command="{Binding DeleteSelectedClassesCommand}"/>
+					Command="{Binding DeleteSelectedElementsCommand}"/>
         <KeyBinding Modifiers="Control"
 					Key="S"
 					Command="{Binding SaveCommand}"/>
@@ -97,7 +97,7 @@
                         <RibbonButton LargeImageSource="..\Images\paste.png" Label="Paste" Command="{Binding PasteSelectedClassesCommand}" ToolTipTitle="CTRL + V" />
                     </RibbonGroup>
                     <RibbonGroup x:Name="EditGroup" Header="Edit">
-                        <RibbonButton LargeImageSource="..\Images\delete.png" Label="Delete" Command="{Binding DeleteSelectedClassesCommand}" IsEnabled="{Binding CanDelete}" ToolTipTitle="Del"/>
+                        <RibbonButton LargeImageSource="..\Images\delete.png" Label="Delete" Command="{Binding DeleteSelectedElementsCommand}" IsEnabled="{Binding CanDelete}" ToolTipTitle="Del"/>
                         <RibbonButton LargeImageSource="..\Images\undo.png" Label="Undo"  Command="{Binding UndoCommand}" ToolTipTitle="CTRL + Z"  />
 						<RibbonButton LargeImageSource="..\Images\redo.png" Label="Redo" Command="{Binding RedoCommand}" ToolTipTitle="CTRL + Y" />
 						<RibbonButton LargeImageSource="..\Images\selectall.png" Label="Select All" Command="{Binding SelectAllCommand}" ToolTipTitle="CTRL + A" />

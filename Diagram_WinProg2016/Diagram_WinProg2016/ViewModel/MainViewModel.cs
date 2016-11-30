@@ -29,6 +29,7 @@ namespace Diagram_WinProg2016.ViewModel
         public ObservableCollection<Class> Classes { get; set; }
         public ObservableCollection<Class> CopiedClasses { get; set; }
         public ObservableCollection<Edge> Edges { get; set; }
+        public ObservableCollection<Edge> SelectedEdges { get; set; }
         public ObservableCollection<Class> SelectedClassBox { get; set; }
 
         //commands
@@ -41,7 +42,7 @@ namespace Diagram_WinProg2016.ViewModel
         public ICommand MouseUpEdgeCommand { get; private set; }
 
         public ICommand AddClassCommand { get; private set; }
-        public ICommand DeleteSelectedClassesCommand { get; private set; }
+        public ICommand DeleteSelectedElementsCommand { get; private set; }
         public ICommand CutSelectedClassesCommand { get; private set; }
         public ICommand CopySelectedClassesCommand { get; private set; }
         public ICommand PasteSelectedClassesCommand { get; private set; }
@@ -58,7 +59,6 @@ namespace Diagram_WinProg2016.ViewModel
         public ICommand SavePngCommand { get; private set; }
 
         public ICommand AddEdgeCommand { get; private set; }
-        public ICommand ReverseEdgeCommand { get; private set; }
 
 		public ObservableCollection<Class> ClassBoxes { get; set; }
 
@@ -85,13 +85,13 @@ namespace Diagram_WinProg2016.ViewModel
             Classes = new ObservableCollection<Class>();
             SelectedClassBox = new ObservableCollection<Class>();
             Edges = new ObservableCollection<Edge>();
+            SelectedEdges = new ObservableCollection<Edge>();
             CopiedClasses = new ObservableCollection<Class>();
 
             //undoable and redoable commands
             AddEdgeCommand = new RelayCommand(ToggleEdge);
-            ReverseEdgeCommand = new RelayCommand(ChangeArrow, EdgeSelected);
             AddClassCommand = new RelayCommand(AddClassBox);
-            DeleteSelectedClassesCommand = new RelayCommand(DeleteSelectedClasses);
+            DeleteSelectedElementsCommand = new RelayCommand(DeleteSelectedClasses);
             CutSelectedClassesCommand = new RelayCommand(CutSelectedClasses);
             CopySelectedClassesCommand = new RelayCommand(CopySelectedClasses);
             PasteSelectedClassesCommand = new RelayCommand(PasteSelectedClasses);
@@ -273,7 +273,7 @@ namespace Diagram_WinProg2016.ViewModel
 
         public void DeleteSelectedClasses()
         {
-            undoRedoController.AddAndExecute(new DeleteSelectedClassesCommand(Classes, Edges));
+            undoRedoController.AddAndExecute(new DeleteSelectedElementsCommand(Classes, Edges));
         }
 
         public void CopySelectedClasses()
@@ -321,11 +321,24 @@ namespace Diagram_WinProg2016.ViewModel
         
         public void MouseDownEdge(MouseButtonEventArgs e)
         {
-          
+            e.MouseDevice.Target.CaptureMouse();
+            FrameworkElement _clickedEdge = (FrameworkElement)e.MouseDevice.Target;
+            Edge clickedEdge = (Edge)_clickedEdge.DataContext;
+
+            if (!clickedEdge.IsSelected)
+            {
+                clickedEdge.IsSelected = true;
+            }
+            else
+            {
+                clickedEdge.IsSelected = false;
+            }
+            Trace.WriteLine("Edge is selected? " + clickedEdge.IsSelected);
+            e.MouseDevice.Target.ReleaseMouseCapture();
         }
         public void MouseUpEdge(MouseButtonEventArgs e)
         {
-           
+            
         }
 
         public void MouseDownClassBox(MouseButtonEventArgs e)

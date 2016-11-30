@@ -2,26 +2,31 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Diagram_WinProg2016.Commands
 {
-	class DeleteSelectedClassesCommand : IUndoRedoCommand
+	class DeleteSelectedElementsCommand : IUndoRedoCommand
 	{
 		private ObservableCollection<Class> classes;
 		private ObservableCollection<Class> classesToRemove;
         private ObservableCollection<Edge> edges;
         private ObservableCollection<Edge> edgesToRemove;
 
-        public DeleteSelectedClassesCommand(ObservableCollection<Class> _classes, ObservableCollection<Edge> _edges)
+        public DeleteSelectedElementsCommand(ObservableCollection<Class> _classes, ObservableCollection<Edge> _edges)
 		{
+
+            Trace.WriteLine("Delete Command Called");
 			classes = _classes;
 			classesToRemove = new ObservableCollection<Class>();
             edges = _edges;
             edgesToRemove = new ObservableCollection<Edge>();
 
+            //Find out what to delete:
+            //Deleted selected classes and their connected edges
 			foreach (Class classItem in classes)
 			{
                 if (classItem.IsSelected)
@@ -36,8 +41,15 @@ namespace Diagram_WinProg2016.Commands
                     }
                 }
 			}
-
             
+            //Delete selected classes
+            foreach (Edge edgeItem in edges)
+            {
+                if (edgeItem.IsSelected)
+                {
+                    edgesToRemove.Add(edgeItem);
+                }
+            }
 		}
 
 		public void Execute()

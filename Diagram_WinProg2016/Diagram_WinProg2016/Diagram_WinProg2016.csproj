@@ -83,7 +83,7 @@
     <Compile Include="Commands\SelectAllCommand.cs" />
     <Compile Include="Commands\CutSelectedClassesCommand.cs" />
     <Compile Include="Commands\CopySelectedClassesCommand.cs" />
-    <Compile Include="Commands\DeleteSelectedClassesCommand.cs" />
+    <Compile Include="Commands\DeleteSelectedElementsCommand.cs" />
     <Compile Include="Commands\IUndoRedoCommand.cs" />
     <Compile Include="Commands\MoveClassCommand.cs" />
     <Compile Include="Commands\RemoveEdgesCommand.cs" />
