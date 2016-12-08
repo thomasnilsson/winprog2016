@@ -11,7 +11,7 @@
     <Canvas>
         
         <!-- Edge design and data binding -->
-        <Polyline Points="{Binding Points}" StrokeThickness="5">
+        <Polyline Points="{Binding Points}" StrokeThickness="3">
             <i:Interaction.Triggers>
                 <!--All events are from https://msdn.microsoft.com/en-us/library/system.windows.controls.grid_events(v=vs.110).aspx-->
                 <i:EventTrigger EventName="MouseDown">
@@ -26,7 +26,7 @@
                     <Setter Property="Stroke" Value="CornflowerBlue" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Stroke" Value="CornflowerBlue">
+                            <Setter Property="Stroke" Value="Red">
                             </Setter>
                         </Trigger>
                     </Style.Triggers>

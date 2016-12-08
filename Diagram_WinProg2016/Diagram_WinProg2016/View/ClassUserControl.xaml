@@ -8,23 +8,18 @@
              xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
              >
 
-	<Border Background="White" Width="200">
+    <Border VerticalAlignment="Stretch">
 		<!--Her bliver de tre events MouseDown, MouseMove og MouseUp bundet til de tilsvarende kommandoer på MainViewModel.-->
 
-		<!-- ClassBox layout -->
-		<Grid x:Name ="ClassBox">
-			<!-- ClassBox information -->
-			<Border Background="White"/>
-
-			<!-- Hovedinholdet er iden for denne border -->
-			<StackPanel>
+        <Grid x:Name ="ClassContainer">
+            <StackPanel>
                 <Grid>
                     <!--top-fanen som bruges til muserinteraktioner når elementet flyttes-->
-					<Rectangle Fill="CornflowerBlue" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="200">
+                    <Rectangle Fill="CornflowerBlue" HorizontalAlignment="Left" Height ="20" VerticalAlignment="Top" Width="{Binding Width}">
                         <i:Interaction.Triggers> <!--All events are from https://msdn.microsoft.com/en-us/library/system.windows.controls.grid_events(v=vs.110).aspx-->
                             <i:EventTrigger EventName="MouseDown">
-								<cmd:EventToCommand Command="{Binding DataContext.MouseDownClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
-							</i:EventTrigger>
+                                <cmd:EventToCommand Command="{Binding DataContext.MouseDownClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+                            </i:EventTrigger>
 							<i:EventTrigger EventName="MouseMove">
 								<cmd:EventToCommand Command="{Binding DataContext.MouseMoveClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
 							</i:EventTrigger>
@@ -36,35 +31,38 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
 					</Rectangle>
-                    <ToggleButton  x:Name="SelectedButton" IsChecked="{Binding IsSelected, Mode=TwoWay}" HorizontalAlignment = "Center" Margin="0,0,180,0" Width="20" Content="" ClipToBounds="True" >
+                    <ToggleButton  x:Name="SelectedButton" IsChecked="{Binding IsSelected, Mode=TwoWay}" HorizontalAlignment = "Center" Margin="0,0,230,0" Width="20" Content="" ClipToBounds="True" >
 					</ToggleButton>
 				</Grid>
 				<!--Name containeren -->
-				<TextBox
-                Name="NameContainer"
+                <TextBox   
+                x:Name="NameContainer"
                 FontWeight="Bold"
                 AcceptsReturn="True"
                 TextWrapping="Wrap"
                 TextAlignment="Center"
-                Text="{Binding ClassName}"
+                TextBlock.LineHeight="10" 
+                Text="{Binding ClassName, UpdateSourceTrigger=PropertyChanged}"
                 >
-				</TextBox>
+                </TextBox>
 
 				<!-- Field containeren -->
-				<TextBox
-                Name="FieldContainer"
+                <TextBox
+                x:Name="FieldContainer"
                 AcceptsReturn="True"
                 TextWrapping="Wrap"
-                Text="{Binding FieldString}"
+                TextBlock.LineHeight="10" 
+                Text="{Binding FieldString, UpdateSourceTrigger=PropertyChanged}"
                 >
-				</TextBox>
+                </TextBox>
 
 				<!-- Metode containeren -->
 				<TextBox
                 Name="MethodContainer"
                 AcceptsReturn="True"
                 TextWrapping="Wrap"
-                Text="{Binding MethodString}"
+                TextBlock.LineHeight="10" 
+                Text="{Binding MethodString, UpdateSourceTrigger=PropertyChanged}"
                 >
 				</TextBox>
 

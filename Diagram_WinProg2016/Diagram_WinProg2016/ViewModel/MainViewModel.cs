@@ -23,24 +23,27 @@ namespace Diagram_WinProg2016.ViewModel
     {
 
         #region FIELDS
-        //bruges til save
-        private Thread saveThread;
         //classes som er databindet
         public ObservableCollection<Class> Classes { get; set; }
         public ObservableCollection<Class> CopiedClasses { get; set; }
         public ObservableCollection<Edge> Edges { get; set; }
         public ObservableCollection<Edge> SelectedEdges { get; set; }
         public ObservableCollection<Class> SelectedClassBox { get; set; }
-
+        
         //commands
+        //mouse commands
         public ICommand HelpCommand { get; private set; }
         public ICommand MouseDownClassBoxCommand { get; private set; }
         public ICommand MouseMoveClassBoxCommand { get; private set; }
         public ICommand MouseUpClassBoxCommand { get; private set; }
-        public ICommand RightClickClassCommand { get; private set; }
         public ICommand MouseDownEdgeCommand { get; private set; }
         public ICommand MouseUpEdgeCommand { get; private set; }
+        public ICommand MouseDownBackgroundCommand { get; private set; }
+        public ICommand MouseUpBackgroundCommand { get; private set; }
+        public ICommand RightClickBackgroundCommand { get; private set; }
 
+
+        //misc commands
         public ICommand AddClassCommand { get; private set; }
         public ICommand DeleteSelectedElementsCommand { get; private set; }
         public ICommand CutSelectedClassesCommand { get; private set; }
@@ -48,9 +51,10 @@ namespace Diagram_WinProg2016.ViewModel
         public ICommand PasteSelectedClassesCommand { get; private set; }
 		public ICommand SelectAllCommand { get; private set; }
 		public ICommand DeselectAllCommand { get; private set; }
+        
 
 
-		public ICommand UndoCommand { get; set; }
+        public ICommand UndoCommand { get; set; }
         public ICommand RedoCommand { get; set; }
 
         public ICommand SaveCommand { get; private set; }
@@ -60,7 +64,7 @@ namespace Diagram_WinProg2016.ViewModel
 
         public ICommand AddEdgeCommand { get; private set; }
 
-		public ObservableCollection<Class> ClassBoxes { get; set; }
+        public ObservableCollection<Class> ClassBoxes { get; set; }
 
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
         public object ExportToImage { get; private set; }
@@ -110,12 +114,39 @@ namespace Diagram_WinProg2016.ViewModel
             MouseDownClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClassBox);
             MouseMoveClassBoxCommand = new RelayCommand<MouseEventArgs>(MouseMoveClassBox);
             MouseUpClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpClassBox);
-            RightClickClassCommand = new RelayCommand<MouseButtonEventArgs>(RightClickClass);
+            RightClickBackgroundCommand = new RelayCommand<MouseButtonEventArgs>(RightClickBackground);
             MouseDownEdgeCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownEdge);
             MouseUpEdgeCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpEdge);
+            MouseUpBackgroundCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpBackground);
+            MouseDownBackgroundCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownBackground);
+
         }
 
-		private void ShowHelpBox()
+        private void MouseUpBackground(MouseButtonEventArgs e)
+        {
+            //clears keyboard focus from text boxes, or anything else for that matter
+            Keyboard.ClearFocus();
+            UpdateVisual(); //update arrow placement
+            e.MouseDevice.Target.ReleaseMouseCapture(); 
+        }
+
+        private void MouseDownBackground(MouseButtonEventArgs e)
+        {
+            e.MouseDevice.Target.CaptureMouse();
+        }
+
+        private void RightClickBackground(MouseButtonEventArgs obj)
+        {
+            //clears adding edges, fx if the user misclicked on "add connector"
+            isAddingEdge = false;
+            foreach (Class selClass in SelectedClassBox)
+            {
+                selClass.IsSelected = false;
+            }
+            SelectedClassBox.Clear();
+        }
+
+        private void ShowHelpBox()
         {
             //shows a message box the user, with instructions.
             string message1 = "To create a new class box press 'Class'. To create additional fields and methods user the ENTER button inside the text boxes.";
@@ -296,14 +327,48 @@ namespace Diagram_WinProg2016.ViewModel
 		public void DeselectAll() {
 			undoRedoController.AddAndExecute(new DeselectAllCommand(Classes));
 		}
-        
+        private static int CountLines(string str)
+        {
+            if (str == null)
+                throw new ArgumentNullException("str");
+            if (str == string.Empty)
+                return 0;
+            int index = -1;
+            int count = 0;
+            while (-1 != (index = str.IndexOf(Environment.NewLine, index + 1)))
+                count++;
+
+            return count + 1;
+        }
+        //updates the visual height of the box, used for connecting the edges visually correctly
+        public void UpdateVisual()
+        {
+            foreach (Class _class in Classes)
+            {
+                var nameLineCount = CountLines(_class.ClassName);
+                var fieldLineCount = CountLines(_class.FieldString);
+                var methodLineCount = CountLines(_class.MethodString);
+                _class.Height = 25 + (nameLineCount * 16) + (fieldLineCount * 16) + (methodLineCount * 16);
+                foreach (Edge edge in Edges)
+                {
+                    if (_class.Equals(edge.EndA))
+                    {
+                        edge.Points = new Edge(_class, edge.EndB).Points;
+                    }
+                    if (_class.Equals(edge.EndB))
+                    {
+                        edge.Points = new Edge(edge.EndA, _class).Points;
+                    }
+                }
+            }
+        }
         // Add Edge
         public void ToggleEdge()
         {
-            Trace.WriteLine("Add edge was called!");
+            Trace.WriteLine("Toggle edge was called");
             isAddingEdge = true;
-            Trace.WriteLine("adding edge?: " + isAddingEdge);
-            RaisePropertyChanged("ModeOpacity");
+            UpdateVisual();
+
         }
 
         public void Undo()
@@ -334,20 +399,22 @@ namespace Diagram_WinProg2016.ViewModel
                 clickedEdge.IsSelected = false;
             }
             Trace.WriteLine("Edge is selected? " + clickedEdge.IsSelected);
-            e.MouseDevice.Target.ReleaseMouseCapture();
+            
         }
         public void MouseUpEdge(MouseButtonEventArgs e)
         {
-            
+            e.MouseDevice.Target.ReleaseMouseCapture();
         }
 
         public void MouseDownClassBox(MouseButtonEventArgs e)
         {
+            
             e.MouseDevice.Target.CaptureMouse();
             FrameworkElement _movingClass = (FrameworkElement)e.MouseDevice.Target;
             Class movingClass = (Class)_movingClass.DataContext;
             Canvas canvas = FindParentOfType<Canvas>(_movingClass);
 
+            Trace.WriteLine(_movingClass.ActualHeight);
             if (!isAddingEdge)
             {
                 
@@ -387,7 +454,6 @@ namespace Diagram_WinProg2016.ViewModel
                 int maxX = (int) (SystemParameters.WorkArea.Width - 200); //hardcoded width and height
                 int maxY = (int) (SystemParameters.WorkArea.Height - 235);
 
-                Trace.WriteLine(maxY);
                 #region coordinate constraints
                 
                 //if going more to the left than possible
@@ -473,7 +539,6 @@ namespace Diagram_WinProg2016.ViewModel
 
                     //Clear the selected classes
                     isAddingEdge = false;
-                    RaisePropertyChanged("ModeOpacity");
                     SelectedClassBox[0].IsSelected = false;
                     SelectedClassBox[1].IsSelected = false;
                     SelectedClassBox.Clear();
@@ -494,16 +559,7 @@ namespace Diagram_WinProg2016.ViewModel
                 e.MouseDevice.Target.ReleaseMouseCapture();
         }
 
-        private void RightClickClass(MouseButtonEventArgs obj)
-        {
-            //clears adding edges, e.g. if the user misclicked on "add connector"
-            isAddingEdge = false;
-            foreach (Class selClass in SelectedClassBox)
-            {
-                selClass.IsSelected = false;
-            }
-            SelectedClassBox.Clear();
-        }
+        
         private static T FindParentOfType<T>(DependencyObject o) where T : DependencyObject
         {
             DependencyObject parent = VisualTreeHelper.GetParent(o);

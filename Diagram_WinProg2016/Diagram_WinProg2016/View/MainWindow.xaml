@@ -8,6 +8,8 @@
         xmlns:View="clr-namespace:Diagram_WinProg2016.View"
         xmlns:local="clr-namespace:Diagram_WinProg2016"
         mc:Ignorable="d"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="Class Diagrammer"
         WindowState="Maximized"
@@ -117,8 +119,20 @@
         </Grid>
 
         <Grid Background="#242424"> <!--this sets the back ground color, this won't be included when exported to PNG however.-->
-
+            <i:Interaction.Triggers>
+                <!--All events are from https://msdn.microsoft.com/en-us/library/system.windows.controls.grid_events(v=vs.110).aspx-->
+                <i:EventTrigger EventName="MouseDown">
+                    <cmd:EventToCommand Command="{Binding MouseDownBackgroundCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseUp">
+                    <cmd:EventToCommand Command="{Binding MouseUpBackgroundCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseRightButtonDown">
+                    <cmd:EventToCommand Command="{Binding RightClickBackgroundCommand}" PassEventArgsToCommand="True"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <Canvas x:Name="MainCanvas" DockPanel.Dock="Bottom" Height="Auto" ClipToBounds="True">
+                
                 <ItemsControl ItemsSource="{Binding Edges}" Name="edges"/>
                 <ItemsControl ItemsSource="{Binding Classes}" Name="class">
 
@@ -132,6 +146,8 @@
                         <Style TargetType="ContentPresenter">
                             <Setter Property="Canvas.Left" Value="{Binding X}"/>
                             <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                            <Setter Property="Canvas.Width" Value="{Binding Width}"/>
+                            <!--<Setter Property="Canvas.Height" Value="{Binding Height}"/>-->
                         </Style>
                     </ItemsControl.ItemContainerStyle>
 

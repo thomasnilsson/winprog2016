@@ -22,6 +22,8 @@
         //Default Constructor
         public Class()
         {
+            Width = 250;
+            Height = 100; //this height is arbitrary, it just needs to be large enough to display the whole container.
             X = 100;
             Y = 100;
             ClassName = "New Class";
