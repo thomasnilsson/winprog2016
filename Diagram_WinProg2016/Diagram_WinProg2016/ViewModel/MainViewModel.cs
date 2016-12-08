@@ -122,36 +122,12 @@ namespace Diagram_WinProg2016.ViewModel
 
         }
 
-        private void MouseUpBackground(MouseButtonEventArgs e)
-        {
-            //clears keyboard focus from text boxes, or anything else for that matter
-            Keyboard.ClearFocus();
-            UpdateVisual(); //update arrow placement
-            e.MouseDevice.Target.ReleaseMouseCapture(); 
-        }
-
-        private void MouseDownBackground(MouseButtonEventArgs e)
-        {
-            e.MouseDevice.Target.CaptureMouse();
-        }
-
-        private void RightClickBackground(MouseButtonEventArgs obj)
-        {
-            //clears adding edges, fx if the user misclicked on "add connector"
-            isAddingEdge = false;
-            foreach (Class selClass in SelectedClassBox)
-            {
-                selClass.IsSelected = false;
-            }
-            SelectedClassBox.Clear();
-        }
-
         private void ShowHelpBox()
         {
             //shows a message box the user, with instructions.
             string message1 = "To create a new class box press 'Class'. To create additional fields and methods user the ENTER button inside the text boxes.";
             string message2 = "To create a new relation between classes press 'Insert Connector' and press on two classes in succession.";
-            string message3 = "If you regret pressing 'Insert Connector', simply right click on any class box.";
+            string message3 = "If you regret pressing 'Insert Connector', simply right click anywhere.";
             string message4 = "Shortcuts: ";
             string message5 = "Insert class: CTRL + N";
             string message6 = "Add edge: CTRL + E";
@@ -383,7 +359,33 @@ namespace Diagram_WinProg2016.ViewModel
         #endregion
 
         #region MOUSE ACTIONS
-        
+
+
+        private void MouseUpBackground(MouseButtonEventArgs e)
+        {
+            //clears keyboard focus from text boxes, or anything else for that matter
+            Keyboard.ClearFocus();
+            UpdateVisual(); //update arrow placement
+            e.MouseDevice.Target.ReleaseMouseCapture();
+        }
+
+        private void MouseDownBackground(MouseButtonEventArgs e)
+        {
+            e.MouseDevice.Target.CaptureMouse();
+        }
+
+        private void RightClickBackground(MouseButtonEventArgs obj)
+        {
+            //clears adding edges, fx if the user misclicked on "add connector"
+            isAddingEdge = false;
+            foreach (Class selClass in SelectedClassBox)
+            {
+                selClass.IsSelected = false;
+            }
+            SelectedClassBox.Clear();
+        }
+
+
         public void MouseDownEdge(MouseButtonEventArgs e)
         {
             e.MouseDevice.Target.CaptureMouse();
