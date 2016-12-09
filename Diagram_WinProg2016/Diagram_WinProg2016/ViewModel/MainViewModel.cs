@@ -363,8 +363,6 @@ namespace Diagram_WinProg2016.ViewModel
 
         private void MouseUpBackground(MouseButtonEventArgs e)
         {
-            //clears keyboard focus from text boxes, or anything else for that matter
-            Keyboard.ClearFocus();
             UpdateVisual(); //update arrow placement
             e.MouseDevice.Target.ReleaseMouseCapture();
         }
@@ -574,7 +572,7 @@ namespace Diagram_WinProg2016.ViewModel
 			throw new NotImplementedException();
 		}
 
-	}
+    }
 
 
     #endregion
