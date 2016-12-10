@@ -1,38 +1,33 @@
 ﻿using Diagram_WinProg2016.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Diagram_WinProg2016.Commands
 {
     class PasteSelectedClassesCommand : IUndoRedoCommand
     {
-        private ObservableCollection<Class> classBoxes;
-        private ObservableCollection<Class> copyBoxes;
+        private ObservableCollection<Class> Classes;
+        private ObservableCollection<Class> CopiedClasses;
 		private ObservableCollection<Class> undoCollection;
 
         public PasteSelectedClassesCommand(ObservableCollection<Class> classBoxes, ObservableCollection<Class> copyBoxes)
         {
 			undoCollection = new ObservableCollection<Class>();
-            this.classBoxes = classBoxes;
-            this.copyBoxes = copyBoxes;
+            this.Classes = classBoxes;
+            this.CopiedClasses = copyBoxes;
         }
 
         public void Execute()
         {
-            foreach (Class classItem in copyBoxes)
+            foreach (var classItem in CopiedClasses)
             {
-                Class newClass = new Class();
+                var newClass = new Class();
                 newClass.X = classItem.X + 20;
                 newClass.Y = classItem.Y + 20;
                 newClass.ClassName = classItem.ClassName;
                 newClass.FieldString = classItem.FieldString;
                 newClass.MethodString = classItem.MethodString;
-                classBoxes.Add(newClass);
+                Classes.Add(newClass);
 				undoCollection.Add(newClass);
 
             }
@@ -40,9 +35,9 @@ namespace Diagram_WinProg2016.Commands
 
         public void UnExecute()
         {
-			foreach (Class classItem in undoCollection)
+			foreach (var classItem in undoCollection)
 			{
-				classBoxes.Remove(classItem);
+				Classes.Remove(classItem);
 			}
         }
     }

@@ -12,17 +12,17 @@ namespace Diagram_WinProg2016.Commands
     // Class used to move the x- and y-coordinates of a ClassBox
     //
 
-    public class MoveClassBoxCommand : IUndoRedoCommand
+    public class MoveClassCommand : IUndoRedoCommand
     {
-        private Class classBox;
+        private Class Class;
         private ObservableCollection<Edge> edges;
         private int x;
         private int y;
         private int newX;
         private int newY;
 
-        public MoveClassBoxCommand(Class _classBox, ObservableCollection<Edge> _edges, int _newX, int _newY, int _x, int _y) { 
-            classBox = _classBox;
+        public MoveClassCommand(Class _Class, ObservableCollection<Edge> _edges, int _newX, int _newY, int _x, int _y) { 
+            Class = _Class;
             edges = _edges;
             newX = _newX; 
             newY = _newY; 
@@ -32,18 +32,18 @@ namespace Diagram_WinProg2016.Commands
 
         public void Execute()
         {
-            classBox.X = newX;
-            classBox.Y = newY;
+            Class.X = newX;
+            Class.Y = newY;
             
-           foreach (Edge edge in edges)
+           foreach (var edge in edges)
             {
-                if (classBox.Equals(edge.EndA))
+                if (Class.Equals(edge.EndA))
                 {
-                    edge.Points = new Edge(classBox, edge.EndB).Points;
+                    edge.Points = new Edge(Class, edge.EndB).Points;
                 }
-                if (classBox.Equals(edge.EndB))
+                if (Class.Equals(edge.EndB))
                 {
-                    edge.Points = new Edge(edge.EndA, classBox).Points;
+                    edge.Points = new Edge(edge.EndA, Class).Points;
                 }
             }
              
@@ -53,18 +53,18 @@ namespace Diagram_WinProg2016.Commands
 
         public void UnExecute()
         {
-            classBox.X = x;
-            classBox.Y = y;
+            Class.X = x;
+            Class.Y = y;
             
-            foreach (Edge edge in edges)
+            foreach (var edge in edges)
             {
-                if (classBox.Equals(edge.EndA))
+                if (Class.Equals(edge.EndA))
                 {
-                    edge.Points = new Edge(classBox, edge.EndB).Points;
+                    edge.Points = new Edge(Class, edge.EndB).Points;
                 }
-                if (classBox.Equals(edge.EndB))
+                if (Class.Equals(edge.EndB))
                 {
-                    edge.Points = new Edge(edge.EndA, classBox).Points;
+                    edge.Points = new Edge(edge.EndA, Class).Points;
                 }
             }
             

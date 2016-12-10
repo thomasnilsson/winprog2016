@@ -27,12 +27,12 @@ namespace Diagram_WinProg2016.Commands
 
             //Find out what to delete:
             //Deleted selected classes and their connected edges
-			foreach (Class classItem in classes)
+			foreach (var classItem in classes)
 			{
                 if (classItem.IsSelected)
                 {
                     classesToRemove.Add(classItem);
-                    foreach (Edge edgeItem in edges)
+                    foreach (var edgeItem in edges)
                     {
                         if (classItem.Equals(edgeItem.EndA) || classItem.Equals(edgeItem.EndB))
                         {
@@ -43,7 +43,7 @@ namespace Diagram_WinProg2016.Commands
 			}
             
             //Delete selected classes
-            foreach (Edge edgeItem in edges)
+            foreach (var edgeItem in edges)
             {
                 if (edgeItem.IsSelected)
                 {
@@ -54,12 +54,12 @@ namespace Diagram_WinProg2016.Commands
 
 		public void Execute()
 		{
-			foreach (Class classToRemove in classesToRemove)
+			foreach (var classToRemove in classesToRemove)
 			{
 				classes.Remove(classToRemove);
 			}
 
-            foreach (Edge edgeToRemove in edgesToRemove)
+            foreach (var edgeToRemove in edgesToRemove)
             {
                 edges.Remove(edgeToRemove);
             }
@@ -67,12 +67,12 @@ namespace Diagram_WinProg2016.Commands
 
 		public void UnExecute()
 		{
-			foreach (Class removedClass in classesToRemove)
+			foreach (var removedClass in classesToRemove)
 			{
 				classes.Add(removedClass);
 			}
 
-            foreach (Edge removedEdge in edgesToRemove)
+            foreach (var removedEdge in edgesToRemove)
             {
                 edges.Remove(removedEdge);
             }

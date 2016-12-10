@@ -15,23 +15,23 @@ namespace Diagram_WinProg2016.Commands
 
     public class AddClassCommand : IUndoRedoCommand
     {
-        private ObservableCollection<Class> classBoxes;
-        private Class classBox;
+        private ObservableCollection<Class>Classes;
+        private Class NewClass;
 
-        public AddClassCommand(ObservableCollection<Class> classBoxes)
+        public AddClassCommand(ObservableCollection<Class> _Classes)
         {
-            this.classBoxes = classBoxes;
-            classBox = new Class();
+            this.Classes = _Classes;
+            NewClass = new Class();
         }
 
         public void Execute()
         {
-            classBoxes.Add(classBox);
+            Classes.Add(NewClass);
         }
 
         public void UnExecute()
         {
-            classBoxes.Remove(classBox);
+            Classes.Remove(NewClass);
         }
     }
 }

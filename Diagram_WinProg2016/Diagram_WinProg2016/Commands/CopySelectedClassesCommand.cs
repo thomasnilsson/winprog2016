@@ -6,33 +6,33 @@ namespace Diagram_WinProg2016.Commands
 {
     class CopySelectedClassesCommand : IUndoRedoCommand
     {
-        private ObservableCollection<Class> classBoxes;
-        private ObservableCollection<Class> copyBoxes;
+        private ObservableCollection<Class> Classes;
+        private ObservableCollection<Class> CopiedClasses;
 		private ObservableCollection<Class> undoCollection;
 
 		public CopySelectedClassesCommand(ObservableCollection<Class> classBoxes, ObservableCollection<Class> copyBoxes)
         {
 			this.undoCollection = new ObservableCollection<Class>();
-            this.classBoxes = classBoxes;
-            this.copyBoxes = copyBoxes;
-            this.copyBoxes.Clear();
+            this.Classes = classBoxes;
+            this.CopiedClasses = copyBoxes;
+            this.CopiedClasses.Clear();
         }
 
         public void Execute()
         {
 
-            foreach (Class classItem in classBoxes)
+            foreach (var classItem in Classes)
             {
                 if (classItem.IsSelected)
                 {
-                    Class copyClass = new Class();
+                    var copyClass = new Class();
                     copyClass.X = classItem.X;
                     copyClass.Y = classItem.Y;
                     copyClass.ClassName = classItem.ClassName;
                     copyClass.FieldString = classItem.FieldString;
                     copyClass.MethodString = classItem.MethodString;
 
-                    copyBoxes.Add(copyClass);
+                    CopiedClasses.Add(copyClass);
                     classItem.IsSelected = false;
                 }
             }
@@ -40,7 +40,10 @@ namespace Diagram_WinProg2016.Commands
 
         public void UnExecute()
         {
-
+            foreach (var classItem in CopiedClasses)
+            {
+                Classes.Remove(classItem);
+            }
         }
     }
 }

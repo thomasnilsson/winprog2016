@@ -28,14 +28,14 @@ namespace Diagram_WinProg2016.ViewModel
         public ObservableCollection<Class> CopiedClasses { get; set; }
         public ObservableCollection<Edge> Edges { get; set; }
         public ObservableCollection<Edge> SelectedEdges { get; set; }
-        public ObservableCollection<Class> SelectedClassBox { get; set; }
+        public ObservableCollection<Class> SelectedClass { get; set; }
         
         //commands
         //mouse commands
         public ICommand HelpCommand { get; private set; }
-        public ICommand MouseDownClassBoxCommand { get; private set; }
-        public ICommand MouseMoveClassBoxCommand { get; private set; }
-        public ICommand MouseUpClassBoxCommand { get; private set; }
+        public ICommand MouseDownClassCommand { get; private set; }
+        public ICommand MouseMoveClassCommand { get; private set; }
+        public ICommand MouseUpClassCommand { get; private set; }
         public ICommand MouseDownEdgeCommand { get; private set; }
         public ICommand MouseUpEdgeCommand { get; private set; }
         public ICommand MouseDownBackgroundCommand { get; private set; }
@@ -64,12 +64,9 @@ namespace Diagram_WinProg2016.ViewModel
 
         public ICommand AddEdgeCommand { get; private set; }
 
-        public ObservableCollection<Class> ClassBoxes { get; set; }
-
         private UndoRedoController undoRedoController = UndoRedoController.GetInstance();
-        public object ExportToImage { get; private set; }
         //Punkter når der flyttes rundt. 
-        private Point moveClassBoxPoint;// Gemmer det første punkt som punktet har under en flytning.
+        private Point initialPoint;// Gemmer det første punkt som punktet har under en flytning.
         private Point offsetPosition; //Bruges så klassen bliver flyttet flot rundt
         private int oldPosX; // bruges naar moveClassCommand kaldes
         private int oldPosY;// bruges naar moveClassCommand kaldes
@@ -87,14 +84,14 @@ namespace Diagram_WinProg2016.ViewModel
         {
             //observable collections
             Classes = new ObservableCollection<Class>();
-            SelectedClassBox = new ObservableCollection<Class>();
+            SelectedClass = new ObservableCollection<Class>();
             Edges = new ObservableCollection<Edge>();
             SelectedEdges = new ObservableCollection<Edge>();
             CopiedClasses = new ObservableCollection<Class>();
 
             //undoable and redoable commands
             AddEdgeCommand = new RelayCommand(ToggleEdge);
-            AddClassCommand = new RelayCommand(AddClassBox);
+            AddClassCommand = new RelayCommand(AddNewClass);
             DeleteSelectedElementsCommand = new RelayCommand(DeleteSelectedClasses);
             CutSelectedClassesCommand = new RelayCommand(CutSelectedClasses);
             CopySelectedClassesCommand = new RelayCommand(CopySelectedClasses);
@@ -111,9 +108,9 @@ namespace Diagram_WinProg2016.ViewModel
             SavePngCommand = new RelayCommand<Canvas>(SavePNG);
 
             //Mouse commands
-            MouseDownClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClassBox);
-            MouseMoveClassBoxCommand = new RelayCommand<MouseEventArgs>(MouseMoveClassBox);
-            MouseUpClassBoxCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpClassBox);
+            MouseDownClassCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownClass);
+            MouseMoveClassCommand = new RelayCommand<MouseEventArgs>(MouseMoveClass);
+            MouseUpClassCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpClass);
             RightClickBackgroundCommand = new RelayCommand<MouseButtonEventArgs>(RightClickBackground);
             MouseDownEdgeCommand = new RelayCommand<MouseButtonEventArgs>(MouseDownEdge);
             MouseUpEdgeCommand = new RelayCommand<MouseButtonEventArgs>(MouseUpEdge);
@@ -145,14 +142,14 @@ namespace Diagram_WinProg2016.ViewModel
 
         private void SaveXML()
         {
-            SaveFileDialog dialog = new SaveFileDialog();
+            var dialog = new SaveFileDialog();
             dialog.FileName = "Class Diagram";
             dialog.Filter = "XML file (*.xml)|*.xml| All files (*.*) | *.*";
 
             if (dialog.ShowDialog() == true)
             {
-                string path = dialog.FileName;
-                BackgroundWorker serializer = new BackgroundWorker();
+                var path = dialog.FileName;
+                var serializer = new BackgroundWorker();
                 serializer.DoWork += serializer_DoWork;
                 serializer.RunWorkerAsync(path);
             }
@@ -161,7 +158,7 @@ namespace Diagram_WinProg2016.ViewModel
         //taken from top answer by "mservidio" http://stackoverflow.com/questions/5794386/basic-backgroundworker-usage-with-parameters
         private void serializer_DoWork(object sender, DoWorkEventArgs e)
         {
-            string path = e.Argument as string;
+            var path = e.Argument as string;
             SerializeObjectToXML(path);
             
         }
@@ -174,7 +171,7 @@ namespace Diagram_WinProg2016.ViewModel
             dialog.Filter = "XML file (*.xml)|*.xml| All files (*.*) | *.*";
             if (dialog.ShowDialog() == true)
             {
-                string path = dialog.FileName;
+                var path = dialog.FileName;
                 DeSerializeXMLToObject(path);
             }
         }
@@ -185,18 +182,18 @@ namespace Diagram_WinProg2016.ViewModel
         //from http://stackoverflow.com/questions/34821089/extract-image-from-wpf-image-control-and-save-it-to-a-png-file-on-my-local-pcc
         public void SavePNG(Canvas screen)
         {
-            SaveFileDialog dialog = new SaveFileDialog();
+            var dialog = new SaveFileDialog();
             dialog.FileName = "Class Diagram Printout";
             dialog.Filter = "PNG file (*.png)|*.png| All files (*.*) | *.*";
             if (dialog.ShowDialog() == true)
             {
 
-                PngBitmapEncoder encoder = new PngBitmapEncoder();
-                RenderTargetBitmap renderBitmap = new RenderTargetBitmap((int)screen.ActualWidth, (int)screen.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);
+                var encoder = new PngBitmapEncoder();
+                var renderBitmap = new RenderTargetBitmap((int)screen.ActualWidth, (int)screen.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);
                 renderBitmap.Render(screen);
 
                 encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-                FileStream stream = new FileStream(dialog.FileName, FileMode.Create);
+                var stream = new FileStream(dialog.FileName, FileMode.Create);
                 encoder.Save(stream);
             }
         }
@@ -204,26 +201,26 @@ namespace Diagram_WinProg2016.ViewModel
         //serialization used when saving as XML
         public void SerializeObjectToXML(string filepath)
         {
-            ObservableCollection<Class> serializetype = Classes;
-            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Class>));
-            using (StreamWriter wr = new StreamWriter(filepath))
+            var SerializedClasses = Classes;
+            var serializer = new XmlSerializer(typeof(ObservableCollection<Class>));
+            using (var wr = new StreamWriter(filepath))
             {
-                serializer.Serialize(wr, serializetype);
+                serializer.Serialize(wr, SerializedClasses);
             }
 
         }
-        //de-serialization used when loading from XMl
+        //de-serialization used when loading from XML
         private void DeSerializeXMLToObject(string filepath)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Class>));
-            using (StreamReader wr = new StreamReader(filepath))
+            var serializer = new XmlSerializer(typeof(ObservableCollection<Class>));
+            using (var wr = new StreamReader(filepath))
             {
-                ObservableCollection<Class> LoadedClasses = (ObservableCollection<Class>)serializer.Deserialize(wr);
+                var LoadedClasses = (ObservableCollection<Class>)serializer.Deserialize(wr);
                 Classes.Clear();
-                foreach (Class classItem in LoadedClasses)
+                Edges.Clear();
+                foreach (var classItem in LoadedClasses)
                 {
                     Classes.Add(classItem);
-                    System.Console.WriteLine();
                 }
                 undoRedoController.Reset();
             }
@@ -240,7 +237,7 @@ namespace Diagram_WinProg2016.ViewModel
             selectedEdge = null;
         }
 
-        // Remove ClassBox and connected Edges
+        // Remove selected Class and connected Edges
         public void DeleteEdge()
         {
             if (selectedEdge != null)
@@ -252,28 +249,11 @@ namespace Diagram_WinProg2016.ViewModel
             
         }
 
-        private Boolean EdgeSelected()
-        {
-            return selectedEdge != null;
-        }
-        // is a ClassBox selected?
-        public bool SelectedClass()
-        {
-            return SelectedClassBox.Count == 1;
-        }
-        // is anything selected?
-        public bool SelectedClassOrEdge()
-        {
-            if (SelectedClassBox.Count == 1) { return true; }
-            else if (selectedEdge != null) { return true; }
-            else { return false; }
-        }
-
         #endregion
 
         #region COMMANDS
 
-        public void AddClassBox()
+        public void AddNewClass()
         {
             undoRedoController.AddAndExecute(new AddClassCommand(Classes));
         }
@@ -319,13 +299,13 @@ namespace Diagram_WinProg2016.ViewModel
         //updates the visual height of the box, used for connecting the edges visually correctly
         public void UpdateVisual()
         {
-            foreach (Class _class in Classes)
+            foreach (var _class in Classes)
             {
                 var nameLineCount = CountLines(_class.ClassName);
                 var fieldLineCount = CountLines(_class.FieldString);
                 var methodLineCount = CountLines(_class.MethodString);
                 _class.Height = 25 + (nameLineCount * 16) + (fieldLineCount * 16) + (methodLineCount * 16);
-                foreach (Edge edge in Edges)
+                foreach (var edge in Edges)
                 {
                     if (_class.Equals(edge.EndA))
                     {
@@ -376,19 +356,19 @@ namespace Diagram_WinProg2016.ViewModel
         {
             //clears adding edges, fx if the user misclicked on "add connector"
             isAddingEdge = false;
-            foreach (Class selClass in SelectedClassBox)
+            foreach (var selClass in SelectedClass)
             {
                 selClass.IsSelected = false;
             }
-            SelectedClassBox.Clear();
+            SelectedClass.Clear();
         }
 
 
         public void MouseDownEdge(MouseButtonEventArgs e)
         {
             e.MouseDevice.Target.CaptureMouse();
-            FrameworkElement _clickedEdge = (FrameworkElement)e.MouseDevice.Target;
-            Edge clickedEdge = (Edge)_clickedEdge.DataContext;
+            var _clickedEdge = (FrameworkElement)e.MouseDevice.Target;
+            var clickedEdge = (Edge)_clickedEdge.DataContext;
 
             if (!clickedEdge.IsSelected)
             {
@@ -406,13 +386,13 @@ namespace Diagram_WinProg2016.ViewModel
             e.MouseDevice.Target.ReleaseMouseCapture();
         }
 
-        public void MouseDownClassBox(MouseButtonEventArgs e)
+        public void MouseDownClass(MouseButtonEventArgs e)
         {
             
             e.MouseDevice.Target.CaptureMouse();
-            FrameworkElement _movingClass = (FrameworkElement)e.MouseDevice.Target;
-            Class movingClass = (Class)_movingClass.DataContext;
-            Canvas canvas = FindParentOfType<Canvas>(_movingClass);
+            var _movingClass = (FrameworkElement)e.MouseDevice.Target;
+            var movingClass = (Class)_movingClass.DataContext;
+            var canvas = FindParentOfType<Canvas>(_movingClass);
 
             Trace.WriteLine(_movingClass.ActualHeight);
             if (!isAddingEdge)
@@ -422,116 +402,115 @@ namespace Diagram_WinProg2016.ViewModel
                 oldPosX = movingClass.X;
                 oldPosY = movingClass.Y;
 
-                if (SelectedClassBox.Count == 0)
+                if (SelectedClass.Count == 0)
                 {
-                    SelectedClassBox.Add(movingClass);
+                    SelectedClass.Add(movingClass);
                 }
                 else
                 {
-                    SelectedClassBox.ElementAt(0).IsSelected = false;
-                    SelectedClassBox.Clear();
-                    SelectedClassBox.Add(movingClass);
+                    SelectedClass.ElementAt(0).IsSelected = false;
+                    SelectedClass.Clear();
+                    SelectedClass.Add(movingClass);
                 }
-                SelectedClassBox.Clear();
+                SelectedClass.Clear();
             }
         }
         // Action for Mouse move trigger
-        public void MouseMoveClassBox(MouseEventArgs e)
+        public void MouseMoveClass(MouseEventArgs e)
         {
             // Tjek at musen er fanget og at der ikke er ved at blive tilføjet en kant.
             if (Mouse.Captured != null && !isAddingEdge)
             {
-                FrameworkElement movingClass = (FrameworkElement)e.MouseDevice.Target;
-                Class movingClassBox = (Class) movingClass.DataContext;
+                var _movingClassElement = (FrameworkElement)e.MouseDevice.Target;
+                var movingClassElement = (Class) _movingClassElement.DataContext;
 
-                Canvas canvas = FindParentOfType<Canvas>(movingClass);
-                Point mousePosition = Mouse.GetPosition(canvas);
+                var canvas = FindParentOfType<Canvas>(_movingClassElement);
+                var mousePosition = Mouse.GetPosition(canvas);
 
                 mousePosition.X = mousePosition.X - offsetPosition.X;
                 mousePosition.Y = mousePosition.Y - offsetPosition.Y;
-
-                //int maxX = (int) SystemParameters.WorkArea.Width - movingClassBox.Width;
-                int maxX = (int) (SystemParameters.WorkArea.Width - 200); //hardcoded width and height
-                int maxY = (int) (SystemParameters.WorkArea.Height - 235);
+                
+                var maxX = (int) (SystemParameters.WorkArea.Width - 200); //hardcoded width and height
+                var maxY = (int) (SystemParameters.WorkArea.Height - 235);
 
                 #region coordinate constraints
                 
                 //if going more to the left than possible
                 if (oldPosX + mousePosition.X >= 0)
                 {
-                    moveClassBoxPoint.X = movingClassBox.X = oldPosX + (int)mousePosition.X;
+                    initialPoint.X = movingClassElement.X = oldPosX + (int)mousePosition.X;
                 }else{
-                    moveClassBoxPoint.X = movingClassBox.X = 0;
+                    initialPoint.X = movingClassElement.X = 0;
                 }
                 
                 //if going more to the right than possible
                 if (oldPosX + mousePosition.X <= maxX)
                 {
-                    moveClassBoxPoint.X = movingClassBox.X = oldPosX + (int)mousePosition.X;
+                    initialPoint.X = movingClassElement.X = oldPosX + (int)mousePosition.X;
                 }else{
-                    moveClassBoxPoint.X = movingClassBox.X = maxX;
+                    initialPoint.X = movingClassElement.X = maxX;
                 }
 
                 //if going higher than possible
                 if (oldPosY + mousePosition.Y >= 0)
                 {
-                   moveClassBoxPoint.Y = movingClassBox.Y = oldPosY + (int)mousePosition.Y;
+                   initialPoint.Y = movingClassElement.Y = oldPosY + (int)mousePosition.Y;
                 }else {
-                    moveClassBoxPoint.Y = movingClassBox.Y = 0;
+                    initialPoint.Y = movingClassElement.Y = 0;
                 }
 
                 //if going lower than possible
                 if (oldPosY + mousePosition.Y <= maxY)
                 {
-                    moveClassBoxPoint.Y = movingClassBox.Y = oldPosY + (int)mousePosition.Y;
+                    initialPoint.Y = movingClassElement.Y = oldPosY + (int)mousePosition.Y;
                 }
                 else
                 {
-                    moveClassBoxPoint.Y = movingClassBox.Y = maxY;
+                    initialPoint.Y = movingClassElement.Y = maxY;
                 }
                 #endregion
 
-                foreach (Edge edge in Edges)
+                foreach (var edge in Edges)
                 {
-                    if (movingClassBox.Equals(edge.EndA))
+                    if (movingClassElement.Equals(edge.EndA))
                     {
-                        edge.Points = new Edge(movingClassBox, edge.EndB).Points;
+                        edge.Points = new Edge(movingClassElement, edge.EndB).Points;
                     }
-                    if (movingClassBox.Equals(edge.EndB))
+                    if (movingClassElement.Equals(edge.EndB))
                     {
-                        edge.Points = new Edge(edge.EndA, movingClassBox).Points;
+                        edge.Points = new Edge(edge.EndA, movingClassElement).Points;
                     }
                 }
             }
         }
-        // Action for Mouse up trigger on ClassBox
+        // Action for Mouse up trigger on Class element
         // Benyttes til at flytte punkter og tilføje kanter.
-        public void MouseUpClassBox(MouseButtonEventArgs e)
+        public void MouseUpClass(MouseButtonEventArgs e)
         {
-            FrameworkElement _movingClass = (FrameworkElement)e.MouseDevice.Target;
-            Class movingClass = (Class)_movingClass.DataContext;
+            var _movingClass = (FrameworkElement)e.MouseDevice.Target;
+            var movingClass = (Class)_movingClass.DataContext;
             Trace.WriteLine("Mouse up, is adding edge? " + isAddingEdge);
             if (isAddingEdge)
             {
                 //no classes have been selected
-                if (SelectedClassBox.Count == 0)
+                if (SelectedClass.Count == 0)
                 {
-                    SelectedClassBox.Add(movingClass);
+                    SelectedClass.Add(movingClass);
                     movingClass.IsSelected = true;
-                    Trace.WriteLine("Mouse up, one class " + SelectedClassBox.Count);
+                    Trace.WriteLine("Mouse up, one class " + SelectedClass.Count);
                     //COUNT IS NOW 1
                 }
                // 1 class is selecteds
-                else if (SelectedClassBox[0] != movingClass)
+                else if (SelectedClass[0] != movingClass)
                 {
-                    SelectedClassBox.Add(movingClass);
+                    SelectedClass.Add(movingClass);
                     movingClass.IsSelected = true;
 
-                    Trace.WriteLine("Mouse up, 2 classes " + SelectedClassBox.Count);
-                    Trace.WriteLine(SelectedClassBox[0].X + ", " + SelectedClassBox[0].Y);
-                    Trace.WriteLine(SelectedClassBox[1].X + ", " + SelectedClassBox[1].Y);
+                    Trace.WriteLine("Mouse up, 2 classes " + SelectedClass.Count);
+                    Trace.WriteLine(SelectedClass[0].X + ", " + SelectedClass[0].Y);
+                    Trace.WriteLine(SelectedClass[1].X + ", " + SelectedClass[1].Y);
 
-                    undoRedoController.AddAndExecute(new AddEdgeCommand(Edges, SelectedClassBox[0], SelectedClassBox[1]));
+                    undoRedoController.AddAndExecute(new AddEdgeCommand(Edges, SelectedClass[0], SelectedClass[1]));
 
                     Trace.WriteLine("New edge created:");
                     Trace.WriteLine(Edges[Edges.Count - 1].EndA.X + ", " + Edges[Edges.Count - 1].EndA.Y);
@@ -539,19 +518,19 @@ namespace Diagram_WinProg2016.ViewModel
 
                     //Clear the selected classes
                     isAddingEdge = false;
-                    SelectedClassBox[0].IsSelected = false;
-                    SelectedClassBox[1].IsSelected = false;
-                    SelectedClassBox.Clear();
+                    SelectedClass[0].IsSelected = false;
+                    SelectedClass[1].IsSelected = false;
+                    SelectedClass.Clear();
                 }
             }
 
-            if (moveClassBoxPoint != default(Point))
+            if (initialPoint != default(Point))
             {
-                Canvas canvas = FindParentOfType<Canvas>(_movingClass);
-                Point mousePosition = Mouse.GetPosition(canvas);
-                undoRedoController.AddAndExecute(new MoveClassBoxCommand(movingClass, Edges, movingClass.X, movingClass.Y, (int)oldPosX, (int)oldPosY));
+                var canvas = FindParentOfType<Canvas>(_movingClass);
+                var mousePosition = Mouse.GetPosition(canvas);
+                undoRedoController.AddAndExecute(new MoveClassCommand(movingClass, Edges, movingClass.X, movingClass.Y, (int)oldPosX, (int)oldPosY));
                 // Nulstil værdier.
-                moveClassBoxPoint = new Point();
+                initialPoint = new Point();
                 // Musen frigøres.
                 e.MouseDevice.Target.ReleaseMouseCapture();
             }
@@ -562,7 +541,7 @@ namespace Diagram_WinProg2016.ViewModel
         
         private static T FindParentOfType<T>(DependencyObject o) where T : DependencyObject
         {
-            DependencyObject parent = VisualTreeHelper.GetParent(o);
+            var parent = VisualTreeHelper.GetParent(o);
             if (parent == null) return null;
             return parent.GetType().IsAssignableFrom(typeof(T)) ? (T)parent : FindParentOfType<T>(parent);
         }

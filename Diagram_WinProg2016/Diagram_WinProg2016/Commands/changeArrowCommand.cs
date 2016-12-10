@@ -10,13 +10,13 @@ namespace Diagram_WinProg2016.Commands
 {
     class ChangeArrowCommand : IUndoRedoCommand
     {
-        private Edge edge, edgeNew;
-        private ObservableCollection<Edge> edges;
+        private Edge edge, newEdge;
+        private ObservableCollection<Edge> Edges;
         private Class start, end;
 
-        public ChangeArrowCommand(ObservableCollection<Edge> _edges, Edge _edge)
+        public ChangeArrowCommand(ObservableCollection<Edge> _Edges, Edge _edge)
         {
-            edges = _edges;
+            Edges = _Edges;
             edge = _edge;
             start = edge.EndA;
             end = edge.EndB;
@@ -24,15 +24,15 @@ namespace Diagram_WinProg2016.Commands
 
         public void Execute()
         {
-            edges.Remove(edge);
-            edgeNew = new Edge(end, start);
-            edges.Add(edgeNew);
+            Edges.Remove(edge);
+            newEdge = new Edge(end, start);
+            Edges.Add(newEdge);
         }
 
         public void UnExecute()
         {
-            edges.Remove(edgeNew);
-            edges.Add(edge);
+            Edges.Remove(newEdge);
+            Edges.Add(edge);
         }
     }
 }

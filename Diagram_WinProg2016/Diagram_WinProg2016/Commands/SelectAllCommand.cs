@@ -10,16 +10,16 @@ namespace Diagram_WinProg2016.Commands
 {
 	class SelectAllCommand : IUndoRedoCommand
 	{
-		private ObservableCollection<Class> classBoxes;
+		private ObservableCollection<Class> Classes;
 
-		public SelectAllCommand(ObservableCollection<Class> classBoxes)
+		public SelectAllCommand(ObservableCollection<Class> _Classes)
 		{
-			this.classBoxes = classBoxes;
+			this.Classes = _Classes;
 		}
 
 		public void Execute()
 		{
-			foreach (Class classItem in classBoxes)
+			foreach (var classItem in Classes)
 			{
 				classItem.IsSelected = true;
 			}
@@ -27,7 +27,7 @@ namespace Diagram_WinProg2016.Commands
 
 		public void UnExecute()
 		{
-			foreach (Class classItem in classBoxes)
+			foreach (var classItem in Classes)
 			{
 				classItem.IsSelected = false;
 			}

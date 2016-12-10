@@ -18,13 +18,13 @@
                     <Rectangle Fill="CornflowerBlue" HorizontalAlignment="Left" Height ="20" VerticalAlignment="Top" Width="{Binding Width}">
                         <i:Interaction.Triggers> <!--All events are from https://msdn.microsoft.com/en-us/library/system.windows.controls.grid_events(v=vs.110).aspx-->
                             <i:EventTrigger EventName="MouseDown">
-                                <cmd:EventToCommand Command="{Binding DataContext.MouseDownClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+                                <cmd:EventToCommand Command="{Binding DataContext.MouseDownClassCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
                             </i:EventTrigger>
 							<i:EventTrigger EventName="MouseMove">
-								<cmd:EventToCommand Command="{Binding DataContext.MouseMoveClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+								<cmd:EventToCommand Command="{Binding DataContext.MouseMoveClassCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
 							</i:EventTrigger>
 							<i:EventTrigger EventName="MouseUp">
-								<cmd:EventToCommand Command="{Binding DataContext.MouseUpClassBoxCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
+								<cmd:EventToCommand Command="{Binding DataContext.MouseUpClassCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
 							</i:EventTrigger>
                             <i:EventTrigger EventName="MouseRightButtonDown">
                                 <cmd:EventToCommand Command="{Binding DataContext.RightClickClassCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" PassEventArgsToCommand="True"/>
