@@ -18,8 +18,8 @@ namespace Diagram_WinProg2016.Commands
         {
             Edges = _Edges;
             edge = _edge;
-            start = edge.EndA;
-            end = edge.EndB;
+            start = edge.From;
+            end = edge.To;
         }
 
         public void Execute()

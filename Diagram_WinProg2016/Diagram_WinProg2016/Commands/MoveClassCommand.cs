@@ -37,13 +37,13 @@ namespace Diagram_WinProg2016.Commands
             
            foreach (var edge in edges)
             {
-                if (Class.Equals(edge.EndA))
+                if (Class.Equals(edge.From))
                 {
-                    edge.Points = new Edge(Class, edge.EndB).Points;
+                    edge.Points = new Edge(Class, edge.To).Points;
                 }
-                if (Class.Equals(edge.EndB))
+                if (Class.Equals(edge.To))
                 {
-                    edge.Points = new Edge(edge.EndA, Class).Points;
+                    edge.Points = new Edge(edge.From, Class).Points;
                 }
             }
              
@@ -58,13 +58,13 @@ namespace Diagram_WinProg2016.Commands
             
             foreach (var edge in edges)
             {
-                if (Class.Equals(edge.EndA))
+                if (Class.Equals(edge.From))
                 {
-                    edge.Points = new Edge(Class, edge.EndB).Points;
+                    edge.Points = new Edge(Class, edge.To).Points;
                 }
-                if (Class.Equals(edge.EndB))
+                if (Class.Equals(edge.To))
                 {
-                    edge.Points = new Edge(edge.EndA, Class).Points;
+                    edge.Points = new Edge(edge.From, Class).Points;
                 }
             }
             

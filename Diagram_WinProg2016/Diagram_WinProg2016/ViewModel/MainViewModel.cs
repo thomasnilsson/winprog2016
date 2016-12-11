@@ -307,13 +307,13 @@ namespace Diagram_WinProg2016.ViewModel
                 _class.Height = 25 + (nameLineCount * 16) + (fieldLineCount * 16) + (methodLineCount * 16);
                 foreach (var edge in Edges)
                 {
-                    if (_class.Equals(edge.EndA))
+                    if (_class.Equals(edge.From))
                     {
-                        edge.Points = new Edge(_class, edge.EndB).Points;
+                        edge.Points = new Edge(_class, edge.To).Points;
                     }
-                    if (_class.Equals(edge.EndB))
+                    if (_class.Equals(edge.To))
                     {
-                        edge.Points = new Edge(edge.EndA, _class).Points;
+                        edge.Points = new Edge(edge.From, _class).Points;
                     }
                 }
             }
@@ -468,13 +468,13 @@ namespace Diagram_WinProg2016.ViewModel
 
                 foreach (var edge in Edges)
                 {
-                    if (movingClassElement.Equals(edge.EndA))
+                    if (movingClassElement.Equals(edge.From))
                     {
-                        edge.Points = new Edge(movingClassElement, edge.EndB).Points;
+                        edge.Points = new Edge(movingClassElement, edge.To).Points;
                     }
-                    if (movingClassElement.Equals(edge.EndB))
+                    if (movingClassElement.Equals(edge.To))
                     {
-                        edge.Points = new Edge(edge.EndA, movingClassElement).Points;
+                        edge.Points = new Edge(edge.From, movingClassElement).Points;
                     }
                 }
             }

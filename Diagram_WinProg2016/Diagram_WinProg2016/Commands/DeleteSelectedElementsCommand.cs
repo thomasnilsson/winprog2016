@@ -34,7 +34,7 @@ namespace Diagram_WinProg2016.Commands
                     classesToRemove.Add(classItem);
                     foreach (var edgeItem in edges)
                     {
-                        if (classItem.Equals(edgeItem.EndA) || classItem.Equals(edgeItem.EndB))
+                        if (classItem.Equals(edgeItem.From) || classItem.Equals(edgeItem.To))
                         {
                             edgesToRemove.Add(edgeItem);
                         }

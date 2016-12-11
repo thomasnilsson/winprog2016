@@ -11,39 +11,39 @@ namespace Diagram_WinProg2016.Model
 {
     public class Edge : NotifyBase
     {
-        public Edge(Class a, Class b)
+        public Edge(Class _from, Class _to)
         {
-            endA = a;
-            endB = b;
-
-            points = setPoints(endA, endB);
+            From = _from;
+            To = _to;
+            edgeCoordinates = generateEdge(From, To);
+        }
+        #region Properties
+        
+        private Class from;
+        public Class From
+        {
+            get { return from; }
+            set { if (from == value) return; from = value; NotifyPropertyChanged(); }
         }
 
-        private Class endA;
-        public Class EndA
+        private Class to;
+        public Class To
         {
-            get { return endA; }
-            set { if (endA == value) return; endA = value; NotifyPropertyChanged("EndA"); }
+            get { return to; }
+            set { if (to == value) return; to = value; NotifyPropertyChanged(); }
         }
 
-        private Class endB;
-        public Class EndB
-        {
-            get { return endB; }
-            set { if (endB == value) return; endB = value; NotifyPropertyChanged("EndB"); }
-        }
-
-        private PointCollection points = new PointCollection();
+        private PointCollection edgeCoordinates;
         public PointCollection Points
         {
             get
             {
-                return points;
+                return edgeCoordinates;
             }
             set
             {
-                points = setPoints(endA, endB);
-                NotifyPropertyChanged("Points");
+                edgeCoordinates = generateEdge(from, to);
+                NotifyPropertyChanged();
             }
         }
         private bool isSelected;
@@ -56,22 +56,22 @@ namespace Diagram_WinProg2016.Model
             set
             {
                 isSelected = value;
-                NotifyPropertyChanged("IsSelected");
-                NotifyPropertyChanged("SelectedColor");
+                NotifyPropertyChanged();
             }
 
         }
+        #endregion
 
-        private PointCollection setPoints(Class endA, Class endB)
+        private PointCollection generateEdge(Class _From, Class _To)
         {
             #region variable declaration
             var ClassWidth = 250; //static for now
 
-            var X1 = endA.CenterX;
-            var Y1 = endA.CenterY;
+            var X1 = _From.CenterX;
+            var Y1 = _From.CenterY;
 
-            var X2 = endB.CenterX;
-            var Y2 = endB.CenterY; 
+            var X2 = _To.CenterX;
+            var Y2 = _To.CenterY; 
 
             var DeltaX = Math.Abs(X1 - X2);
             var DeltaY = Math.Abs(Y1 - Y2);
@@ -86,13 +86,13 @@ namespace Diagram_WinProg2016.Model
             {
                 if (Y1 <= Y2)
                 {
-                    startPoint = new Point(X1, Y1 + endA.Height / 2);
-                    endPoint = new Point(X2, Y2 - endB.Height / 2);
+                    startPoint = new Point(X1, Y1 + _From.Height / 2);
+                    endPoint = new Point(X2, Y2 - _To.Height / 2);
                 }
                 else
                 {
-                    startPoint = new Point(X1, Y1 - endA.Height / 2);
-                    endPoint = new Point(X2, Y2 + endB.Height / 2);
+                    startPoint = new Point(X1, Y1 - _From.Height / 2);
+                    endPoint = new Point(X2, Y2 + _To.Height / 2);
                 }
             }
 
