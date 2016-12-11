@@ -64,44 +64,54 @@ namespace Diagram_WinProg2016.Model
 
         private PointCollection setPoints(Class endA, Class endB)
         {
-            int x1 = endA.CenterX, y1 = endA.CenterY, width1 = endA.Width, height1 = endA.Height,
-                x2 = endB.CenterX, y2 = endB.CenterY, width2 = endB.Width, height2 = endB.Height;
-            int xWidth = Math.Abs(x1 - x2), yWidth = Math.Abs(y1 - y2);
-            Point startPoint, endPoint;
-            PointCollection points = new PointCollection();
+            #region variable declaration
+            var ClassWidth = 250; //static for now
 
-            if (xWidth <= yWidth)
+            var X1 = endA.CenterX;
+            var Y1 = endA.CenterY;
+
+            var X2 = endB.CenterX;
+            var Y2 = endB.CenterY; 
+
+            var DeltaX = Math.Abs(X1 - X2);
+            var DeltaY = Math.Abs(Y1 - Y2);
+
+            var startPoint = new Point(0,0);
+            var endPoint = new Point(0,0);
+
+            PointCollection points = new PointCollection();
+            #endregion
+
+            if (DeltaX <= DeltaY)
             {
-                if (y1 <= y2)
+                if (Y1 <= Y2)
                 {
-                    startPoint = new Point(x1, y1 + height1 / 2);
-                    endPoint = new Point(x2, y2 - height2 / 2);
+                    startPoint = new Point(X1, Y1 + endA.Height / 2);
+                    endPoint = new Point(X2, Y2 - endB.Height / 2);
                 }
                 else
                 {
-                    startPoint = new Point(x1, y1 - height1 / 2);
-                    endPoint = new Point(x2, y2 + height2 / 2);
+                    startPoint = new Point(X1, Y1 - endA.Height / 2);
+                    endPoint = new Point(X2, Y2 + endB.Height / 2);
                 }
             }
 
             else
             {
-                if (x1 <= x2)
+                if (X1 <= X2)
                 {
-                    startPoint = new Point(x1 + width1 / 2, y1);
-                    endPoint = new Point(x2 - width2 / 2, y2);
+                    startPoint = new Point(X1 + ClassWidth / 2, Y1);
+                    endPoint = new Point(X2 - ClassWidth / 2, Y2);
                 }
                 else
                 {
-                    startPoint = new Point(x1 - width1 / 2, y1);
-                    endPoint = new Point(x2 + width2 / 2, y2);
+                    startPoint = new Point(X1 - ClassWidth / 2, Y1);
+                    endPoint = new Point(X2 + ClassWidth / 2, Y2);
 
                 }
             }
 
             points.Add(startPoint);
-            points.Add(endPoint);
-            points.Add(endPoint);
             points.Add(endPoint);
             return points;
         }

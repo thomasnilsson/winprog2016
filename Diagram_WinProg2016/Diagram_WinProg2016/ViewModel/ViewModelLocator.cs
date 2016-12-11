@@ -40,4 +40,4 @@ namespace Diagram_WinProg2016.ViewModel
         
         public static void Cleanup(){ }
     }
-}
+}   
