@@ -1,9 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -17,6 +12,7 @@ namespace Diagram_WinProg2016.Model
             To = _to;
             edgeCoordinates = generateEdge(From, To);
         }
+
         #region Properties
         
         private Class from;
@@ -82,6 +78,9 @@ namespace Diagram_WinProg2016.Model
             PointCollection points = new PointCollection();
             #endregion
 
+            #region logic
+            
+
             if (DeltaX <= DeltaY)
             {
                 if (Y1 <= Y2)
@@ -114,6 +113,7 @@ namespace Diagram_WinProg2016.Model
             points.Add(startPoint);
             points.Add(endPoint);
             return points;
+            #endregion
         }
     }
 }
