@@ -75,7 +75,7 @@ namespace Diagram_WinProg2016.Model
             var startPoint = new Point(0,0);
             var endPoint = new Point(0,0);
 
-            PointCollection points = new PointCollection();
+            var points = new PointCollection();
             #endregion
 
             #region logic
