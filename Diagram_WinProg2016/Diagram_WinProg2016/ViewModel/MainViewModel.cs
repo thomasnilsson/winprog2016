@@ -289,8 +289,8 @@ namespace Diagram_WinProg2016.ViewModel
                 throw new ArgumentNullException("str");
             if (str == string.Empty)
                 return 0;
-            int index = -1;
-            int count = 0;
+            var index = -1;
+            var count = 0;
             while (-1 != (index = str.IndexOf(Environment.NewLine, index + 1)))
                 count++;
 
@@ -321,7 +321,6 @@ namespace Diagram_WinProg2016.ViewModel
         // Add Edge
         public void ToggleEdge()
         {
-            Trace.WriteLine("Toggle edge was called");
             isAddingEdge = true;
             UpdateVisual();
 
@@ -378,7 +377,6 @@ namespace Diagram_WinProg2016.ViewModel
             {
                 clickedEdge.IsSelected = false;
             }
-            Trace.WriteLine("Edge is selected? " + clickedEdge.IsSelected);
             
         }
         public void MouseUpEdge(MouseButtonEventArgs e)
@@ -393,8 +391,6 @@ namespace Diagram_WinProg2016.ViewModel
             var _movingClass = (FrameworkElement)e.MouseDevice.Target;
             var movingClass = (Class)_movingClass.DataContext;
             var canvas = FindParentOfType<Canvas>(_movingClass);
-
-            Trace.WriteLine(_movingClass.ActualHeight);
             if (!isAddingEdge)
             {
                 
@@ -489,7 +485,6 @@ namespace Diagram_WinProg2016.ViewModel
         {
             var _movingClass = (FrameworkElement)e.MouseDevice.Target;
             var movingClass = (Class)_movingClass.DataContext;
-            Trace.WriteLine("Mouse up, is adding edge? " + isAddingEdge);
             if (isAddingEdge)
             {
                 //no classes have been selected
@@ -497,7 +492,6 @@ namespace Diagram_WinProg2016.ViewModel
                 {
                     SelectedClass.Add(movingClass);
                     movingClass.IsSelected = true;
-                    Trace.WriteLine("Mouse up, one class " + SelectedClass.Count);
                     //COUNT IS NOW 1
                 }
                // 1 class is selecteds
@@ -505,16 +499,7 @@ namespace Diagram_WinProg2016.ViewModel
                 {
                     SelectedClass.Add(movingClass);
                     movingClass.IsSelected = true;
-
-                    Trace.WriteLine("Mouse up, 2 classes " + SelectedClass.Count);
-                    Trace.WriteLine(SelectedClass[0].X + ", " + SelectedClass[0].Y);
-                    Trace.WriteLine(SelectedClass[1].X + ", " + SelectedClass[1].Y);
-
                     undoRedoController.AddAndExecute(new AddEdgeCommand(Edges, SelectedClass[0], SelectedClass[1]));
-
-                    Trace.WriteLine("New edge created:");
-                    Trace.WriteLine(Edges[Edges.Count - 1].EndA.X + ", " + Edges[Edges.Count - 1].EndA.Y);
-                    Trace.WriteLine(Edges[Edges.Count - 1].EndB.X + ", " + Edges[Edges.Count - 1].EndB.Y);
 
                     //Clear the selected classes
                     isAddingEdge = false;
